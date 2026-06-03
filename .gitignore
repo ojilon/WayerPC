@@ -1,0 +1,9 @@
+build/CmakeFile
+build/.ninja_deps
+build/.ninja_log
+build/cmake_install.cmake
+build/CmakeCache.txt
+received/
+shared/
+go/
+compile_flags.txt
