@@ -5,5 +5,5 @@ build/cmake_install.cmake
 build/CmakeCache.txt
 received/
 shared/
-go/
+build/compile_commands.json
 compile_flags.txt
