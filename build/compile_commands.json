@@ -1,0 +1,8 @@
+[
+{
+  "directory": "C:/Users/ojilong/Desktop/StudyAssistant/WayerPC/build",
+  "command": "D:\\mingw64\\bin\\gcc.exe -Dfilesearch_EXPORTS -o c\\CMakeFiles\\filesearch.dir\\file_search.c.obj -c C:\\Users\\ojilong\\Desktop\\StudyAssistant\\WayerPC\\c\\file_search.c",
+  "file": "C:/Users/ojilong/Desktop/StudyAssistant/WayerPC/c/file_search.c",
+  "output": "C:/Users/ojilong/Desktop/StudyAssistant/WayerPC/build/c/CMakeFiles/filesearch.dir/file_search.c.obj"
+}
+]

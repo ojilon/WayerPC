@@ -42,7 +42,7 @@ rule C_SHARED_LIBRARY_LINKER__filesearch_
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = D:\mingw64\bin\cmake.exe --regenerate-during-build -SC:\Users\ojilong\Desktop\StudyAssistant\WayerPC_V.0.0.0 -BC:\Users\ojilong\Desktop\StudyAssistant\WayerPC_V.0.0.0\build
+  command = D:\mingw64\bin\cmake.exe --regenerate-during-build -SC:\Users\ojilong\Desktop\StudyAssistant\WayerPC -BC:\Users\ojilong\Desktop\StudyAssistant\WayerPC\build
   description = Re-running CMake...
   generator = 1
 

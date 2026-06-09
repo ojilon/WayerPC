@@ -1,7 +1,7 @@
 import socket
 from transfer import send_file
 from config import *
-from Locate import nail_file_location, get_project_root, nail_folder_location
+from Locate import nail_file_location, get_project_root, search_root_subfolder
 
 import os
 import ctypes
@@ -9,33 +9,13 @@ import ctypes
 #lcoate the .dll file for file search
 location_to_dll = nail_file_location("libfilesearch.dll")
 if not location_to_dll:
-    print("socekt_server3.py : dll file (libfilesearch.dll) failed to locate")
+    print("Failed to get the 'libfilesearch.dll' file ")
     exit(1)
 
-#locate the 'shared' folder
-location_to_shared = nail_folder_location("shared")
-if not location_to_shared:
-    print("socekt_server3.pu :  failed to get the 'shared' folder ")
-    print("Attempting to create new 'shared'  folder")
-
-    root = get_project_root()
-    if not root:
-        print(f"Failed to get the root path \n What was obtained ->  {location_to_shared}")
-        exit(1)
-    
-    #location_to_shared = os.path.join(location_to_shared, "shared")
-    #correct Pathlib way
-    location_to_shared = root / "shared"
-
-    # This creates the folder on hard drive
-    # parents=True creates any missing parent folders; exist_ok=True prevents errors if it suddenly exists
-    location_to_shared.mkdir(parents=True, exist_ok=True)
-
-    if not location_to_shared.is_dir():
-        print(f"Failed to create the folder: {location_to_shared} \n Try it yourself")
-        exit(1)
-
-    print(f"Folder created:  Location -> {location_to_shared}")
+location_to_shared = search_root_subfolder("shared")
+if not location_to_shared.is_dir():
+    print(f"Failed to create the folder: {location_to_shared} \n Try it yourself")
+    exit(1)
 
 
 dll = ctypes.CDLL(location_to_dll)
@@ -117,25 +97,12 @@ def handle_client(conn):
             filesize = int(parts[1].strip())
             
             # Ensure the target directory exists on your PC
-            save_dir = nail_folder_location("received")
-            if not save_dir:
-                print("socekt_server3.py : Failed to get the 'received' folder ")
-                print("Creating a new 'received' folder")
-                save_dir_root = get_project_root()
-                if not save_dir_root:
-                    print(f"Failed to get the root path \n What was obtained ->  {save_dir}")
+            save_dir = search_root_subfolder("received")
+            if not save_dir.is_dir():
+                print(f"Failed to create the folder: {save_dir} \n do it yourself")
+                exit(1)
 
-                #save_dir = os.path.join(save_dir, "received"), sticking to pathlib
-                save_dir = save_dir_root / "received"
-                save_dir.mkdir(parents=True, exist_ok=True)
-
-                if not save_dir.is_dir():
-                    print(f"Failed to create the folder: {save_dir} \n do it yourself")
-                    exit(1)
-
-                print(f"Folder created:  Location -> {save_dir}")
-
-                                
+                                            
             filepath = os.path.join(save_dir, filename)
             
             # Tell the phone the PC is ready to receive bytes

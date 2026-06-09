@@ -42,7 +42,6 @@ events:
       - "D:/AndroidCLI/gradle/bin/"
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/Go/bin/"
-      - "C:/Program Files/nodejs/"
       - "D:/AndroidCLI/openjdk/bin/"
       - "D:/AndroidCLI/openjdk/"
       - "D:/AndroidCLI/gradle/"
@@ -53,12 +52,17 @@ events:
       - "C:/Program Files/Intel/WiFi/bin/"
       - "C:/Program Files/Common Files/Intel/WirelessCommon/"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/ojilong/go/bin/"
-      - "C:/Users/ojilong/AppData/Roaming/npm/"
+      - "C:/Program Files/nodejs/"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/"
+      - "D:/c3-windows/c3/c3c.exe/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/"
+      - "C:/Users/ojilong/AppData/Roaming/npm/"
     searched_directories:
       - "C:/Program Files (x86)/PerkinElmerInformatics/ChemOffice2016/ChemScript/Lib/ninja-build.com"
       - "C:/Program Files (x86)/PerkinElmerInformatics/ChemOffice2016/ChemScript/Lib/ninja-build.exe"
@@ -152,7 +156,6 @@ events:
         - "D:\\AndroidCLI\\gradle\\bin"
         - "C:\\Program Files\\Git\\cmd"
         - "C:\\Program Files\\Go\\bin"
-        - "C:\\Program Files\\nodejs\\"
         - "D:\\AndroidCLI\\openjdk\\bin"
         - "D:\\AndroidCLI\\openjdk"
         - "D:\\AndroidCLI\\gradle"
@@ -162,13 +165,20 @@ events:
         - "D:\\c3-windows\\c3"
         - "C:\\Program Files\\Intel\\WiFi\\bin\\"
         - "C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts"
+        - "C:\\Users\\ojilong\\go\\bin"
+        - "C:\\Program Files\\nodejs\\"
+        - "D:\\c3-windows\\c3lsp-windows-amd64\\server\\bin\\release\\c3lsp.exe"
+        - "D:\\c3-windows\\c3\\c3c.exe"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\Scripts\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\"
-        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\ojilong\\go\\bin"
-        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WinGet\\Packages\\zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe\\zig-x86_64-windows-0.16.0"
+        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
   -
     kind: "find-v1"
     backtrace:
@@ -208,7 +218,6 @@ events:
       - "D:/AndroidCLI/gradle/bin/"
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/Go/bin/"
-      - "C:/Program Files/nodejs/"
       - "D:/AndroidCLI/openjdk/bin/"
       - "D:/AndroidCLI/openjdk/"
       - "D:/AndroidCLI/gradle/"
@@ -219,12 +228,17 @@ events:
       - "C:/Program Files/Intel/WiFi/bin/"
       - "C:/Program Files/Common Files/Intel/WirelessCommon/"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/ojilong/go/bin/"
-      - "C:/Users/ojilong/AppData/Roaming/npm/"
+      - "C:/Program Files/nodejs/"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/"
+      - "D:/c3-windows/c3/c3c.exe/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/"
+      - "C:/Users/ojilong/AppData/Roaming/npm/"
     searched_directories:
       - "C:/Program Files (x86)/PerkinElmerInformatics/ChemOffice2016/ChemScript/Lib/cc.com"
       - "C:/Program Files (x86)/PerkinElmerInformatics/ChemOffice2016/ChemScript/Lib/cc.exe"
@@ -414,7 +428,6 @@ events:
         - "D:\\AndroidCLI\\gradle\\bin"
         - "C:\\Program Files\\Git\\cmd"
         - "C:\\Program Files\\Go\\bin"
-        - "C:\\Program Files\\nodejs\\"
         - "D:\\AndroidCLI\\openjdk\\bin"
         - "D:\\AndroidCLI\\openjdk"
         - "D:\\AndroidCLI\\gradle"
@@ -424,13 +437,20 @@ events:
         - "D:\\c3-windows\\c3"
         - "C:\\Program Files\\Intel\\WiFi\\bin\\"
         - "C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts"
+        - "C:\\Users\\ojilong\\go\\bin"
+        - "C:\\Program Files\\nodejs\\"
+        - "D:\\c3-windows\\c3lsp-windows-amd64\\server\\bin\\release\\c3lsp.exe"
+        - "D:\\c3-windows\\c3\\c3c.exe"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\Scripts\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\"
-        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\ojilong\\go\\bin"
-        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WinGet\\Packages\\zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe\\zig-x86_64-windows-0.16.0"
+        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
   -
     kind: "find-v1"
     backtrace:
@@ -471,7 +491,6 @@ events:
         - "D:\\AndroidCLI\\gradle\\bin"
         - "C:\\Program Files\\Git\\cmd"
         - "C:\\Program Files\\Go\\bin"
-        - "C:\\Program Files\\nodejs\\"
         - "D:\\AndroidCLI\\openjdk\\bin"
         - "D:\\AndroidCLI\\openjdk"
         - "D:\\AndroidCLI\\gradle"
@@ -481,13 +500,20 @@ events:
         - "D:\\c3-windows\\c3"
         - "C:\\Program Files\\Intel\\WiFi\\bin\\"
         - "C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts"
+        - "C:\\Users\\ojilong\\go\\bin"
+        - "C:\\Program Files\\nodejs\\"
+        - "D:\\c3-windows\\c3lsp-windows-amd64\\server\\bin\\release\\c3lsp.exe"
+        - "D:\\c3-windows\\c3\\c3c.exe"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\Scripts\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\"
-        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\ojilong\\go\\bin"
-        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WinGet\\Packages\\zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe\\zig-x86_64-windows-0.16.0"
+        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
   -
     kind: "message-v1"
     backtrace:
@@ -508,7 +534,7 @@ events:
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.exe"
       
       The C compiler identification is GNU, found in:
-        C:/Users/ojilong/Desktop/StudyAssistant/WayerPC_V.0.0.0/build/CMakeFiles/4.2.1/CompilerIdC/a.exe
+        C:/Users/ojilong/Desktop/StudyAssistant/WayerPC/build/CMakeFiles/4.2.1/CompilerIdC/a.exe
       
   -
     kind: "find-v1"
@@ -543,7 +569,6 @@ events:
       - "D:/AndroidCLI/gradle/bin/"
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/Go/bin/"
-      - "C:/Program Files/nodejs/"
       - "D:/AndroidCLI/openjdk/bin/"
       - "D:/AndroidCLI/openjdk/"
       - "D:/AndroidCLI/gradle/"
@@ -554,12 +579,17 @@ events:
       - "C:/Program Files/Intel/WiFi/bin/"
       - "C:/Program Files/Common Files/Intel/WirelessCommon/"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/ojilong/go/bin/"
-      - "C:/Users/ojilong/AppData/Roaming/npm/"
+      - "C:/Program Files/nodejs/"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/"
+      - "D:/c3-windows/c3/c3c.exe/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/"
+      - "C:/Users/ojilong/AppData/Roaming/npm/"
     searched_directories:
       - "D:/mingw64/bin/ar.com"
     found: "D:/mingw64/bin/ar.exe"
@@ -578,7 +608,6 @@ events:
         - "D:\\AndroidCLI\\gradle\\bin"
         - "C:\\Program Files\\Git\\cmd"
         - "C:\\Program Files\\Go\\bin"
-        - "C:\\Program Files\\nodejs\\"
         - "D:\\AndroidCLI\\openjdk\\bin"
         - "D:\\AndroidCLI\\openjdk"
         - "D:\\AndroidCLI\\gradle"
@@ -588,13 +617,20 @@ events:
         - "D:\\c3-windows\\c3"
         - "C:\\Program Files\\Intel\\WiFi\\bin\\"
         - "C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts"
+        - "C:\\Users\\ojilong\\go\\bin"
+        - "C:\\Program Files\\nodejs\\"
+        - "D:\\c3-windows\\c3lsp-windows-amd64\\server\\bin\\release\\c3lsp.exe"
+        - "D:\\c3-windows\\c3\\c3c.exe"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\Scripts\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\"
-        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\ojilong\\go\\bin"
-        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WinGet\\Packages\\zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe\\zig-x86_64-windows-0.16.0"
+        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
   -
     kind: "find-v1"
     backtrace:
@@ -628,7 +664,6 @@ events:
       - "D:/AndroidCLI/gradle/bin/"
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/Go/bin/"
-      - "C:/Program Files/nodejs/"
       - "D:/AndroidCLI/openjdk/bin/"
       - "D:/AndroidCLI/openjdk/"
       - "D:/AndroidCLI/gradle/"
@@ -639,12 +674,17 @@ events:
       - "C:/Program Files/Intel/WiFi/bin/"
       - "C:/Program Files/Common Files/Intel/WirelessCommon/"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/ojilong/go/bin/"
-      - "C:/Users/ojilong/AppData/Roaming/npm/"
+      - "C:/Program Files/nodejs/"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/"
+      - "D:/c3-windows/c3/c3c.exe/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/"
+      - "C:/Users/ojilong/AppData/Roaming/npm/"
     searched_directories:
       - "D:/mingw64/bin/ranlib.com"
     found: "D:/mingw64/bin/ranlib.exe"
@@ -663,7 +703,6 @@ events:
         - "D:\\AndroidCLI\\gradle\\bin"
         - "C:\\Program Files\\Git\\cmd"
         - "C:\\Program Files\\Go\\bin"
-        - "C:\\Program Files\\nodejs\\"
         - "D:\\AndroidCLI\\openjdk\\bin"
         - "D:\\AndroidCLI\\openjdk"
         - "D:\\AndroidCLI\\gradle"
@@ -673,13 +712,20 @@ events:
         - "D:\\c3-windows\\c3"
         - "C:\\Program Files\\Intel\\WiFi\\bin\\"
         - "C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts"
+        - "C:\\Users\\ojilong\\go\\bin"
+        - "C:\\Program Files\\nodejs\\"
+        - "D:\\c3-windows\\c3lsp-windows-amd64\\server\\bin\\release\\c3lsp.exe"
+        - "D:\\c3-windows\\c3\\c3c.exe"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\Scripts\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\"
-        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\ojilong\\go\\bin"
-        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WinGet\\Packages\\zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe\\zig-x86_64-windows-0.16.0"
+        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
   -
     kind: "find-v1"
     backtrace:
@@ -713,7 +759,6 @@ events:
       - "D:/AndroidCLI/gradle/bin/"
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/Go/bin/"
-      - "C:/Program Files/nodejs/"
       - "D:/AndroidCLI/openjdk/bin/"
       - "D:/AndroidCLI/openjdk/"
       - "D:/AndroidCLI/gradle/"
@@ -724,12 +769,17 @@ events:
       - "C:/Program Files/Intel/WiFi/bin/"
       - "C:/Program Files/Common Files/Intel/WirelessCommon/"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/ojilong/go/bin/"
-      - "C:/Users/ojilong/AppData/Roaming/npm/"
+      - "C:/Program Files/nodejs/"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/"
+      - "D:/c3-windows/c3/c3c.exe/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/"
+      - "C:/Users/ojilong/AppData/Roaming/npm/"
     searched_directories:
       - "D:/mingw64/bin/strip.com"
     found: "D:/mingw64/bin/strip.exe"
@@ -748,7 +798,6 @@ events:
         - "D:\\AndroidCLI\\gradle\\bin"
         - "C:\\Program Files\\Git\\cmd"
         - "C:\\Program Files\\Go\\bin"
-        - "C:\\Program Files\\nodejs\\"
         - "D:\\AndroidCLI\\openjdk\\bin"
         - "D:\\AndroidCLI\\openjdk"
         - "D:\\AndroidCLI\\gradle"
@@ -758,13 +807,20 @@ events:
         - "D:\\c3-windows\\c3"
         - "C:\\Program Files\\Intel\\WiFi\\bin\\"
         - "C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts"
+        - "C:\\Users\\ojilong\\go\\bin"
+        - "C:\\Program Files\\nodejs\\"
+        - "D:\\c3-windows\\c3lsp-windows-amd64\\server\\bin\\release\\c3lsp.exe"
+        - "D:\\c3-windows\\c3\\c3c.exe"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\Scripts\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\"
-        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\ojilong\\go\\bin"
-        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WinGet\\Packages\\zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe\\zig-x86_64-windows-0.16.0"
+        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
   -
     kind: "find-v1"
     backtrace:
@@ -798,7 +854,6 @@ events:
       - "D:/AndroidCLI/gradle/bin/"
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/Go/bin/"
-      - "C:/Program Files/nodejs/"
       - "D:/AndroidCLI/openjdk/bin/"
       - "D:/AndroidCLI/openjdk/"
       - "D:/AndroidCLI/gradle/"
@@ -809,12 +864,17 @@ events:
       - "C:/Program Files/Intel/WiFi/bin/"
       - "C:/Program Files/Common Files/Intel/WirelessCommon/"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/ojilong/go/bin/"
-      - "C:/Users/ojilong/AppData/Roaming/npm/"
+      - "C:/Program Files/nodejs/"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/"
+      - "D:/c3-windows/c3/c3c.exe/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/"
+      - "C:/Users/ojilong/AppData/Roaming/npm/"
     searched_directories:
       - "D:/mingw64/bin/ld.com"
     found: "D:/mingw64/bin/ld.exe"
@@ -833,7 +893,6 @@ events:
         - "D:\\AndroidCLI\\gradle\\bin"
         - "C:\\Program Files\\Git\\cmd"
         - "C:\\Program Files\\Go\\bin"
-        - "C:\\Program Files\\nodejs\\"
         - "D:\\AndroidCLI\\openjdk\\bin"
         - "D:\\AndroidCLI\\openjdk"
         - "D:\\AndroidCLI\\gradle"
@@ -843,13 +902,20 @@ events:
         - "D:\\c3-windows\\c3"
         - "C:\\Program Files\\Intel\\WiFi\\bin\\"
         - "C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts"
+        - "C:\\Users\\ojilong\\go\\bin"
+        - "C:\\Program Files\\nodejs\\"
+        - "D:\\c3-windows\\c3lsp-windows-amd64\\server\\bin\\release\\c3lsp.exe"
+        - "D:\\c3-windows\\c3\\c3c.exe"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\Scripts\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\"
-        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\ojilong\\go\\bin"
-        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WinGet\\Packages\\zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe\\zig-x86_64-windows-0.16.0"
+        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
   -
     kind: "find-v1"
     backtrace:
@@ -883,7 +949,6 @@ events:
       - "D:/AndroidCLI/gradle/bin/"
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/Go/bin/"
-      - "C:/Program Files/nodejs/"
       - "D:/AndroidCLI/openjdk/bin/"
       - "D:/AndroidCLI/openjdk/"
       - "D:/AndroidCLI/gradle/"
@@ -894,12 +959,17 @@ events:
       - "C:/Program Files/Intel/WiFi/bin/"
       - "C:/Program Files/Common Files/Intel/WirelessCommon/"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/ojilong/go/bin/"
-      - "C:/Users/ojilong/AppData/Roaming/npm/"
+      - "C:/Program Files/nodejs/"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/"
+      - "D:/c3-windows/c3/c3c.exe/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/"
+      - "C:/Users/ojilong/AppData/Roaming/npm/"
     searched_directories:
       - "D:/mingw64/bin/nm.com"
     found: "D:/mingw64/bin/nm.exe"
@@ -918,7 +988,6 @@ events:
         - "D:\\AndroidCLI\\gradle\\bin"
         - "C:\\Program Files\\Git\\cmd"
         - "C:\\Program Files\\Go\\bin"
-        - "C:\\Program Files\\nodejs\\"
         - "D:\\AndroidCLI\\openjdk\\bin"
         - "D:\\AndroidCLI\\openjdk"
         - "D:\\AndroidCLI\\gradle"
@@ -928,13 +997,20 @@ events:
         - "D:\\c3-windows\\c3"
         - "C:\\Program Files\\Intel\\WiFi\\bin\\"
         - "C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts"
+        - "C:\\Users\\ojilong\\go\\bin"
+        - "C:\\Program Files\\nodejs\\"
+        - "D:\\c3-windows\\c3lsp-windows-amd64\\server\\bin\\release\\c3lsp.exe"
+        - "D:\\c3-windows\\c3\\c3c.exe"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\Scripts\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\"
-        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\ojilong\\go\\bin"
-        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WinGet\\Packages\\zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe\\zig-x86_64-windows-0.16.0"
+        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
   -
     kind: "find-v1"
     backtrace:
@@ -968,7 +1044,6 @@ events:
       - "D:/AndroidCLI/gradle/bin/"
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/Go/bin/"
-      - "C:/Program Files/nodejs/"
       - "D:/AndroidCLI/openjdk/bin/"
       - "D:/AndroidCLI/openjdk/"
       - "D:/AndroidCLI/gradle/"
@@ -979,12 +1054,17 @@ events:
       - "C:/Program Files/Intel/WiFi/bin/"
       - "C:/Program Files/Common Files/Intel/WirelessCommon/"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/ojilong/go/bin/"
-      - "C:/Users/ojilong/AppData/Roaming/npm/"
+      - "C:/Program Files/nodejs/"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/"
+      - "D:/c3-windows/c3/c3c.exe/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/"
+      - "C:/Users/ojilong/AppData/Roaming/npm/"
     searched_directories:
       - "D:/mingw64/bin/objdump.com"
     found: "D:/mingw64/bin/objdump.exe"
@@ -1003,7 +1083,6 @@ events:
         - "D:\\AndroidCLI\\gradle\\bin"
         - "C:\\Program Files\\Git\\cmd"
         - "C:\\Program Files\\Go\\bin"
-        - "C:\\Program Files\\nodejs\\"
         - "D:\\AndroidCLI\\openjdk\\bin"
         - "D:\\AndroidCLI\\openjdk"
         - "D:\\AndroidCLI\\gradle"
@@ -1013,13 +1092,20 @@ events:
         - "D:\\c3-windows\\c3"
         - "C:\\Program Files\\Intel\\WiFi\\bin\\"
         - "C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts"
+        - "C:\\Users\\ojilong\\go\\bin"
+        - "C:\\Program Files\\nodejs\\"
+        - "D:\\c3-windows\\c3lsp-windows-amd64\\server\\bin\\release\\c3lsp.exe"
+        - "D:\\c3-windows\\c3\\c3c.exe"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\Scripts\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\"
-        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\ojilong\\go\\bin"
-        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WinGet\\Packages\\zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe\\zig-x86_64-windows-0.16.0"
+        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
   -
     kind: "find-v1"
     backtrace:
@@ -1053,7 +1139,6 @@ events:
       - "D:/AndroidCLI/gradle/bin/"
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/Go/bin/"
-      - "C:/Program Files/nodejs/"
       - "D:/AndroidCLI/openjdk/bin/"
       - "D:/AndroidCLI/openjdk/"
       - "D:/AndroidCLI/gradle/"
@@ -1064,12 +1149,17 @@ events:
       - "C:/Program Files/Intel/WiFi/bin/"
       - "C:/Program Files/Common Files/Intel/WirelessCommon/"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/ojilong/go/bin/"
-      - "C:/Users/ojilong/AppData/Roaming/npm/"
+      - "C:/Program Files/nodejs/"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/"
+      - "D:/c3-windows/c3/c3c.exe/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/"
+      - "C:/Users/ojilong/AppData/Roaming/npm/"
     searched_directories:
       - "D:/mingw64/bin/objcopy.com"
     found: "D:/mingw64/bin/objcopy.exe"
@@ -1088,7 +1178,6 @@ events:
         - "D:\\AndroidCLI\\gradle\\bin"
         - "C:\\Program Files\\Git\\cmd"
         - "C:\\Program Files\\Go\\bin"
-        - "C:\\Program Files\\nodejs\\"
         - "D:\\AndroidCLI\\openjdk\\bin"
         - "D:\\AndroidCLI\\openjdk"
         - "D:\\AndroidCLI\\gradle"
@@ -1098,13 +1187,20 @@ events:
         - "D:\\c3-windows\\c3"
         - "C:\\Program Files\\Intel\\WiFi\\bin\\"
         - "C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts"
+        - "C:\\Users\\ojilong\\go\\bin"
+        - "C:\\Program Files\\nodejs\\"
+        - "D:\\c3-windows\\c3lsp-windows-amd64\\server\\bin\\release\\c3lsp.exe"
+        - "D:\\c3-windows\\c3\\c3c.exe"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\Scripts\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\"
-        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\ojilong\\go\\bin"
-        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WinGet\\Packages\\zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe\\zig-x86_64-windows-0.16.0"
+        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
   -
     kind: "find-v1"
     backtrace:
@@ -1138,7 +1234,6 @@ events:
       - "D:/AndroidCLI/gradle/bin/"
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/Go/bin/"
-      - "C:/Program Files/nodejs/"
       - "D:/AndroidCLI/openjdk/bin/"
       - "D:/AndroidCLI/openjdk/"
       - "D:/AndroidCLI/gradle/"
@@ -1149,12 +1244,17 @@ events:
       - "C:/Program Files/Intel/WiFi/bin/"
       - "C:/Program Files/Common Files/Intel/WirelessCommon/"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/ojilong/go/bin/"
-      - "C:/Users/ojilong/AppData/Roaming/npm/"
+      - "C:/Program Files/nodejs/"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/"
+      - "D:/c3-windows/c3/c3c.exe/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/"
+      - "C:/Users/ojilong/AppData/Roaming/npm/"
     searched_directories:
       - "D:/mingw64/bin/readelf.com"
     found: "D:/mingw64/bin/readelf.exe"
@@ -1173,7 +1273,6 @@ events:
         - "D:\\AndroidCLI\\gradle\\bin"
         - "C:\\Program Files\\Git\\cmd"
         - "C:\\Program Files\\Go\\bin"
-        - "C:\\Program Files\\nodejs\\"
         - "D:\\AndroidCLI\\openjdk\\bin"
         - "D:\\AndroidCLI\\openjdk"
         - "D:\\AndroidCLI\\gradle"
@@ -1183,13 +1282,20 @@ events:
         - "D:\\c3-windows\\c3"
         - "C:\\Program Files\\Intel\\WiFi\\bin\\"
         - "C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts"
+        - "C:\\Users\\ojilong\\go\\bin"
+        - "C:\\Program Files\\nodejs\\"
+        - "D:\\c3-windows\\c3lsp-windows-amd64\\server\\bin\\release\\c3lsp.exe"
+        - "D:\\c3-windows\\c3\\c3c.exe"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\Scripts\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\"
-        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\ojilong\\go\\bin"
-        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WinGet\\Packages\\zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe\\zig-x86_64-windows-0.16.0"
+        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
   -
     kind: "find-v1"
     backtrace:
@@ -1223,7 +1329,6 @@ events:
       - "D:/AndroidCLI/gradle/bin/"
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/Go/bin/"
-      - "C:/Program Files/nodejs/"
       - "D:/AndroidCLI/openjdk/bin/"
       - "D:/AndroidCLI/openjdk/"
       - "D:/AndroidCLI/gradle/"
@@ -1234,12 +1339,17 @@ events:
       - "C:/Program Files/Intel/WiFi/bin/"
       - "C:/Program Files/Common Files/Intel/WirelessCommon/"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/ojilong/go/bin/"
-      - "C:/Users/ojilong/AppData/Roaming/npm/"
+      - "C:/Program Files/nodejs/"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/"
+      - "D:/c3-windows/c3/c3c.exe/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/"
+      - "C:/Users/ojilong/AppData/Roaming/npm/"
     searched_directories:
       - "D:/mingw64/bin/dlltool.com"
     found: "D:/mingw64/bin/dlltool.exe"
@@ -1258,7 +1368,6 @@ events:
         - "D:\\AndroidCLI\\gradle\\bin"
         - "C:\\Program Files\\Git\\cmd"
         - "C:\\Program Files\\Go\\bin"
-        - "C:\\Program Files\\nodejs\\"
         - "D:\\AndroidCLI\\openjdk\\bin"
         - "D:\\AndroidCLI\\openjdk"
         - "D:\\AndroidCLI\\gradle"
@@ -1268,13 +1377,20 @@ events:
         - "D:\\c3-windows\\c3"
         - "C:\\Program Files\\Intel\\WiFi\\bin\\"
         - "C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts"
+        - "C:\\Users\\ojilong\\go\\bin"
+        - "C:\\Program Files\\nodejs\\"
+        - "D:\\c3-windows\\c3lsp-windows-amd64\\server\\bin\\release\\c3lsp.exe"
+        - "D:\\c3-windows\\c3\\c3c.exe"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\Scripts\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\"
-        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\ojilong\\go\\bin"
-        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WinGet\\Packages\\zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe\\zig-x86_64-windows-0.16.0"
+        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
   -
     kind: "find-v1"
     backtrace:
@@ -1308,7 +1424,6 @@ events:
       - "D:/AndroidCLI/gradle/bin/"
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/Go/bin/"
-      - "C:/Program Files/nodejs/"
       - "D:/AndroidCLI/openjdk/bin/"
       - "D:/AndroidCLI/openjdk/"
       - "D:/AndroidCLI/gradle/"
@@ -1319,12 +1434,17 @@ events:
       - "C:/Program Files/Intel/WiFi/bin/"
       - "C:/Program Files/Common Files/Intel/WirelessCommon/"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/ojilong/go/bin/"
-      - "C:/Users/ojilong/AppData/Roaming/npm/"
+      - "C:/Program Files/nodejs/"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/"
+      - "D:/c3-windows/c3/c3c.exe/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/"
+      - "C:/Users/ojilong/AppData/Roaming/npm/"
     searched_directories:
       - "D:/mingw64/bin/addr2line.com"
     found: "D:/mingw64/bin/addr2line.exe"
@@ -1343,7 +1463,6 @@ events:
         - "D:\\AndroidCLI\\gradle\\bin"
         - "C:\\Program Files\\Git\\cmd"
         - "C:\\Program Files\\Go\\bin"
-        - "C:\\Program Files\\nodejs\\"
         - "D:\\AndroidCLI\\openjdk\\bin"
         - "D:\\AndroidCLI\\openjdk"
         - "D:\\AndroidCLI\\gradle"
@@ -1353,13 +1472,20 @@ events:
         - "D:\\c3-windows\\c3"
         - "C:\\Program Files\\Intel\\WiFi\\bin\\"
         - "C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts"
+        - "C:\\Users\\ojilong\\go\\bin"
+        - "C:\\Program Files\\nodejs\\"
+        - "D:\\c3-windows\\c3lsp-windows-amd64\\server\\bin\\release\\c3lsp.exe"
+        - "D:\\c3-windows\\c3\\c3c.exe"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\Scripts\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\"
-        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\ojilong\\go\\bin"
-        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WinGet\\Packages\\zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe\\zig-x86_64-windows-0.16.0"
+        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
   -
     kind: "find-v1"
     backtrace:
@@ -1393,7 +1519,6 @@ events:
       - "D:/AndroidCLI/gradle/bin/"
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/Go/bin/"
-      - "C:/Program Files/nodejs/"
       - "D:/AndroidCLI/openjdk/bin/"
       - "D:/AndroidCLI/openjdk/"
       - "D:/AndroidCLI/gradle/"
@@ -1404,12 +1529,17 @@ events:
       - "C:/Program Files/Intel/WiFi/bin/"
       - "C:/Program Files/Common Files/Intel/WirelessCommon/"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/ojilong/go/bin/"
-      - "C:/Users/ojilong/AppData/Roaming/npm/"
+      - "C:/Program Files/nodejs/"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/"
+      - "D:/c3-windows/c3/c3c.exe/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/"
+      - "C:/Users/ojilong/AppData/Roaming/npm/"
     searched_directories:
       - "D:/mingw64/bin/tapi.com"
       - "D:/mingw64/bin/tapi.exe"
@@ -1450,9 +1580,6 @@ events:
       - "C:/Program Files/Go/bin/tapi.com"
       - "C:/Program Files/Go/bin/tapi.exe"
       - "C:/Program Files/Go/bin/tapi"
-      - "C:/Program Files/nodejs/tapi.com"
-      - "C:/Program Files/nodejs/tapi.exe"
-      - "C:/Program Files/nodejs/tapi"
       - "D:/AndroidCLI/openjdk/bin/tapi.com"
       - "D:/AndroidCLI/openjdk/bin/tapi.exe"
       - "D:/AndroidCLI/openjdk/bin/tapi"
@@ -1483,24 +1610,39 @@ events:
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/tapi.com"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/tapi.exe"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/tapi"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/tapi.com"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/tapi.exe"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/tapi"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/tapi.com"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/tapi.exe"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/tapi"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/tapi.com"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/tapi.exe"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/tapi"
       - "C:/Users/ojilong/go/bin/tapi.com"
       - "C:/Users/ojilong/go/bin/tapi.exe"
       - "C:/Users/ojilong/go/bin/tapi"
-      - "C:/Users/ojilong/AppData/Roaming/npm/tapi.com"
-      - "C:/Users/ojilong/AppData/Roaming/npm/tapi.exe"
-      - "C:/Users/ojilong/AppData/Roaming/npm/tapi"
+      - "C:/Program Files/nodejs/tapi.com"
+      - "C:/Program Files/nodejs/tapi.exe"
+      - "C:/Program Files/nodejs/tapi"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/tapi.com"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/tapi.exe"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/tapi"
+      - "D:/c3-windows/c3/c3c.exe/tapi.com"
+      - "D:/c3-windows/c3/c3c.exe/tapi.exe"
+      - "D:/c3-windows/c3/c3c.exe/tapi"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/tapi.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/tapi.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/tapi"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/tapi.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/tapi.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/tapi"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/tapi.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/tapi.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/tapi"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/tapi.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/tapi.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/tapi"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/tapi.com"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/tapi.exe"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/tapi"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/tapi.com"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/tapi.exe"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/tapi"
+      - "C:/Users/ojilong/AppData/Roaming/npm/tapi.com"
+      - "C:/Users/ojilong/AppData/Roaming/npm/tapi.exe"
+      - "C:/Users/ojilong/AppData/Roaming/npm/tapi"
     found: false
     search_context:
       ENV{PATH}:
@@ -1517,7 +1659,6 @@ events:
         - "D:\\AndroidCLI\\gradle\\bin"
         - "C:\\Program Files\\Git\\cmd"
         - "C:\\Program Files\\Go\\bin"
-        - "C:\\Program Files\\nodejs\\"
         - "D:\\AndroidCLI\\openjdk\\bin"
         - "D:\\AndroidCLI\\openjdk"
         - "D:\\AndroidCLI\\gradle"
@@ -1527,13 +1668,20 @@ events:
         - "D:\\c3-windows\\c3"
         - "C:\\Program Files\\Intel\\WiFi\\bin\\"
         - "C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts"
+        - "C:\\Users\\ojilong\\go\\bin"
+        - "C:\\Program Files\\nodejs\\"
+        - "D:\\c3-windows\\c3lsp-windows-amd64\\server\\bin\\release\\c3lsp.exe"
+        - "D:\\c3-windows\\c3\\c3c.exe"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\Scripts\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\"
-        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\ojilong\\go\\bin"
-        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WinGet\\Packages\\zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe\\zig-x86_64-windows-0.16.0"
+        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
   -
     kind: "find-v1"
     backtrace:
@@ -1570,7 +1718,6 @@ events:
       - "D:/AndroidCLI/gradle/bin/"
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/Go/bin/"
-      - "C:/Program Files/nodejs/"
       - "D:/AndroidCLI/openjdk/bin/"
       - "D:/AndroidCLI/openjdk/"
       - "D:/AndroidCLI/gradle/"
@@ -1581,12 +1728,17 @@ events:
       - "C:/Program Files/Intel/WiFi/bin/"
       - "C:/Program Files/Common Files/Intel/WirelessCommon/"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/ojilong/go/bin/"
-      - "C:/Users/ojilong/AppData/Roaming/npm/"
+      - "C:/Program Files/nodejs/"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/"
+      - "D:/c3-windows/c3/c3c.exe/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/"
+      - "C:/Users/ojilong/AppData/Roaming/npm/"
     searched_directories:
       - "D:/mingw64/bin/gcc-ar-15.2.com"
       - "D:/mingw64/bin/gcc-ar-15.2.exe"
@@ -1627,9 +1779,6 @@ events:
       - "C:/Program Files/Go/bin/gcc-ar-15.2.com"
       - "C:/Program Files/Go/bin/gcc-ar-15.2.exe"
       - "C:/Program Files/Go/bin/gcc-ar-15.2"
-      - "C:/Program Files/nodejs/gcc-ar-15.2.com"
-      - "C:/Program Files/nodejs/gcc-ar-15.2.exe"
-      - "C:/Program Files/nodejs/gcc-ar-15.2"
       - "D:/AndroidCLI/openjdk/bin/gcc-ar-15.2.com"
       - "D:/AndroidCLI/openjdk/bin/gcc-ar-15.2.exe"
       - "D:/AndroidCLI/openjdk/bin/gcc-ar-15.2"
@@ -1660,24 +1809,39 @@ events:
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/gcc-ar-15.2.com"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/gcc-ar-15.2.exe"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/gcc-ar-15.2"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ar-15.2.com"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ar-15.2.exe"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ar-15.2"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ar-15.2.com"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ar-15.2.exe"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ar-15.2"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ar-15.2.com"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ar-15.2.exe"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ar-15.2"
       - "C:/Users/ojilong/go/bin/gcc-ar-15.2.com"
       - "C:/Users/ojilong/go/bin/gcc-ar-15.2.exe"
       - "C:/Users/ojilong/go/bin/gcc-ar-15.2"
-      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ar-15.2.com"
-      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ar-15.2.exe"
-      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ar-15.2"
+      - "C:/Program Files/nodejs/gcc-ar-15.2.com"
+      - "C:/Program Files/nodejs/gcc-ar-15.2.exe"
+      - "C:/Program Files/nodejs/gcc-ar-15.2"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/gcc-ar-15.2.com"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/gcc-ar-15.2.exe"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/gcc-ar-15.2"
+      - "D:/c3-windows/c3/c3c.exe/gcc-ar-15.2.com"
+      - "D:/c3-windows/c3/c3c.exe/gcc-ar-15.2.exe"
+      - "D:/c3-windows/c3/c3c.exe/gcc-ar-15.2"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/gcc-ar-15.2.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/gcc-ar-15.2.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/gcc-ar-15.2"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/gcc-ar-15.2.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/gcc-ar-15.2.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/gcc-ar-15.2"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ar-15.2.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ar-15.2.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ar-15.2"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ar-15.2.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ar-15.2.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ar-15.2"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ar-15.2.com"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ar-15.2.exe"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ar-15.2"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/gcc-ar-15.2.com"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/gcc-ar-15.2.exe"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/gcc-ar-15.2"
+      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ar-15.2.com"
+      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ar-15.2.exe"
+      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ar-15.2"
       - "D:/mingw64/bin/gcc-ar-15.com"
       - "D:/mingw64/bin/gcc-ar-15.exe"
       - "D:/mingw64/bin/gcc-ar-15"
@@ -1717,9 +1881,6 @@ events:
       - "C:/Program Files/Go/bin/gcc-ar-15.com"
       - "C:/Program Files/Go/bin/gcc-ar-15.exe"
       - "C:/Program Files/Go/bin/gcc-ar-15"
-      - "C:/Program Files/nodejs/gcc-ar-15.com"
-      - "C:/Program Files/nodejs/gcc-ar-15.exe"
-      - "C:/Program Files/nodejs/gcc-ar-15"
       - "D:/AndroidCLI/openjdk/bin/gcc-ar-15.com"
       - "D:/AndroidCLI/openjdk/bin/gcc-ar-15.exe"
       - "D:/AndroidCLI/openjdk/bin/gcc-ar-15"
@@ -1750,24 +1911,39 @@ events:
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/gcc-ar-15.com"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/gcc-ar-15.exe"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/gcc-ar-15"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ar-15.com"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ar-15.exe"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ar-15"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ar-15.com"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ar-15.exe"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ar-15"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ar-15.com"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ar-15.exe"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ar-15"
       - "C:/Users/ojilong/go/bin/gcc-ar-15.com"
       - "C:/Users/ojilong/go/bin/gcc-ar-15.exe"
       - "C:/Users/ojilong/go/bin/gcc-ar-15"
-      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ar-15.com"
-      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ar-15.exe"
-      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ar-15"
+      - "C:/Program Files/nodejs/gcc-ar-15.com"
+      - "C:/Program Files/nodejs/gcc-ar-15.exe"
+      - "C:/Program Files/nodejs/gcc-ar-15"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/gcc-ar-15.com"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/gcc-ar-15.exe"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/gcc-ar-15"
+      - "D:/c3-windows/c3/c3c.exe/gcc-ar-15.com"
+      - "D:/c3-windows/c3/c3c.exe/gcc-ar-15.exe"
+      - "D:/c3-windows/c3/c3c.exe/gcc-ar-15"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/gcc-ar-15.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/gcc-ar-15.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/gcc-ar-15"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/gcc-ar-15.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/gcc-ar-15.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/gcc-ar-15"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ar-15.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ar-15.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ar-15"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ar-15.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ar-15.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ar-15"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ar-15.com"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ar-15.exe"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ar-15"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/gcc-ar-15.com"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/gcc-ar-15.exe"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/gcc-ar-15"
+      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ar-15.com"
+      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ar-15.exe"
+      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ar-15"
       - "D:/mingw64/bin/gcc-ar15.com"
       - "D:/mingw64/bin/gcc-ar15.exe"
       - "D:/mingw64/bin/gcc-ar15"
@@ -1807,9 +1983,6 @@ events:
       - "C:/Program Files/Go/bin/gcc-ar15.com"
       - "C:/Program Files/Go/bin/gcc-ar15.exe"
       - "C:/Program Files/Go/bin/gcc-ar15"
-      - "C:/Program Files/nodejs/gcc-ar15.com"
-      - "C:/Program Files/nodejs/gcc-ar15.exe"
-      - "C:/Program Files/nodejs/gcc-ar15"
       - "D:/AndroidCLI/openjdk/bin/gcc-ar15.com"
       - "D:/AndroidCLI/openjdk/bin/gcc-ar15.exe"
       - "D:/AndroidCLI/openjdk/bin/gcc-ar15"
@@ -1840,24 +2013,39 @@ events:
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/gcc-ar15.com"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/gcc-ar15.exe"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/gcc-ar15"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ar15.com"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ar15.exe"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ar15"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ar15.com"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ar15.exe"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ar15"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ar15.com"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ar15.exe"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ar15"
       - "C:/Users/ojilong/go/bin/gcc-ar15.com"
       - "C:/Users/ojilong/go/bin/gcc-ar15.exe"
       - "C:/Users/ojilong/go/bin/gcc-ar15"
-      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ar15.com"
-      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ar15.exe"
-      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ar15"
+      - "C:/Program Files/nodejs/gcc-ar15.com"
+      - "C:/Program Files/nodejs/gcc-ar15.exe"
+      - "C:/Program Files/nodejs/gcc-ar15"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/gcc-ar15.com"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/gcc-ar15.exe"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/gcc-ar15"
+      - "D:/c3-windows/c3/c3c.exe/gcc-ar15.com"
+      - "D:/c3-windows/c3/c3c.exe/gcc-ar15.exe"
+      - "D:/c3-windows/c3/c3c.exe/gcc-ar15"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/gcc-ar15.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/gcc-ar15.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/gcc-ar15"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/gcc-ar15.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/gcc-ar15.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/gcc-ar15"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ar15.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ar15.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ar15"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ar15.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ar15.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ar15"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ar15.com"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ar15.exe"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ar15"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/gcc-ar15.com"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/gcc-ar15.exe"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/gcc-ar15"
+      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ar15.com"
+      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ar15.exe"
+      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ar15"
       - "D:/mingw64/bin/gcc-ar.com"
     found: "D:/mingw64/bin/gcc-ar.exe"
     search_context:
@@ -1875,7 +2063,6 @@ events:
         - "D:\\AndroidCLI\\gradle\\bin"
         - "C:\\Program Files\\Git\\cmd"
         - "C:\\Program Files\\Go\\bin"
-        - "C:\\Program Files\\nodejs\\"
         - "D:\\AndroidCLI\\openjdk\\bin"
         - "D:\\AndroidCLI\\openjdk"
         - "D:\\AndroidCLI\\gradle"
@@ -1885,13 +2072,20 @@ events:
         - "D:\\c3-windows\\c3"
         - "C:\\Program Files\\Intel\\WiFi\\bin\\"
         - "C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts"
+        - "C:\\Users\\ojilong\\go\\bin"
+        - "C:\\Program Files\\nodejs\\"
+        - "D:\\c3-windows\\c3lsp-windows-amd64\\server\\bin\\release\\c3lsp.exe"
+        - "D:\\c3-windows\\c3\\c3c.exe"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\Scripts\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\"
-        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\ojilong\\go\\bin"
-        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WinGet\\Packages\\zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe\\zig-x86_64-windows-0.16.0"
+        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
   -
     kind: "find-v1"
     backtrace:
@@ -1928,7 +2122,6 @@ events:
       - "D:/AndroidCLI/gradle/bin/"
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/Go/bin/"
-      - "C:/Program Files/nodejs/"
       - "D:/AndroidCLI/openjdk/bin/"
       - "D:/AndroidCLI/openjdk/"
       - "D:/AndroidCLI/gradle/"
@@ -1939,12 +2132,17 @@ events:
       - "C:/Program Files/Intel/WiFi/bin/"
       - "C:/Program Files/Common Files/Intel/WirelessCommon/"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/ojilong/go/bin/"
-      - "C:/Users/ojilong/AppData/Roaming/npm/"
+      - "C:/Program Files/nodejs/"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/"
+      - "D:/c3-windows/c3/c3c.exe/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/"
+      - "C:/Users/ojilong/AppData/Roaming/npm/"
     searched_directories:
       - "D:/mingw64/bin/gcc-ranlib-15.2.com"
       - "D:/mingw64/bin/gcc-ranlib-15.2.exe"
@@ -1985,9 +2183,6 @@ events:
       - "C:/Program Files/Go/bin/gcc-ranlib-15.2.com"
       - "C:/Program Files/Go/bin/gcc-ranlib-15.2.exe"
       - "C:/Program Files/Go/bin/gcc-ranlib-15.2"
-      - "C:/Program Files/nodejs/gcc-ranlib-15.2.com"
-      - "C:/Program Files/nodejs/gcc-ranlib-15.2.exe"
-      - "C:/Program Files/nodejs/gcc-ranlib-15.2"
       - "D:/AndroidCLI/openjdk/bin/gcc-ranlib-15.2.com"
       - "D:/AndroidCLI/openjdk/bin/gcc-ranlib-15.2.exe"
       - "D:/AndroidCLI/openjdk/bin/gcc-ranlib-15.2"
@@ -2018,24 +2213,39 @@ events:
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/gcc-ranlib-15.2.com"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/gcc-ranlib-15.2.exe"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/gcc-ranlib-15.2"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ranlib-15.2.com"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ranlib-15.2.exe"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ranlib-15.2"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ranlib-15.2.com"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ranlib-15.2.exe"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ranlib-15.2"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ranlib-15.2.com"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ranlib-15.2.exe"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ranlib-15.2"
       - "C:/Users/ojilong/go/bin/gcc-ranlib-15.2.com"
       - "C:/Users/ojilong/go/bin/gcc-ranlib-15.2.exe"
       - "C:/Users/ojilong/go/bin/gcc-ranlib-15.2"
-      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ranlib-15.2.com"
-      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ranlib-15.2.exe"
-      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ranlib-15.2"
+      - "C:/Program Files/nodejs/gcc-ranlib-15.2.com"
+      - "C:/Program Files/nodejs/gcc-ranlib-15.2.exe"
+      - "C:/Program Files/nodejs/gcc-ranlib-15.2"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/gcc-ranlib-15.2.com"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/gcc-ranlib-15.2.exe"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/gcc-ranlib-15.2"
+      - "D:/c3-windows/c3/c3c.exe/gcc-ranlib-15.2.com"
+      - "D:/c3-windows/c3/c3c.exe/gcc-ranlib-15.2.exe"
+      - "D:/c3-windows/c3/c3c.exe/gcc-ranlib-15.2"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/gcc-ranlib-15.2.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/gcc-ranlib-15.2.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/gcc-ranlib-15.2"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/gcc-ranlib-15.2.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/gcc-ranlib-15.2.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/gcc-ranlib-15.2"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ranlib-15.2.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ranlib-15.2.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ranlib-15.2"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ranlib-15.2.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ranlib-15.2.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ranlib-15.2"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ranlib-15.2.com"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ranlib-15.2.exe"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ranlib-15.2"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/gcc-ranlib-15.2.com"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/gcc-ranlib-15.2.exe"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/gcc-ranlib-15.2"
+      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ranlib-15.2.com"
+      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ranlib-15.2.exe"
+      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ranlib-15.2"
       - "D:/mingw64/bin/gcc-ranlib-15.com"
       - "D:/mingw64/bin/gcc-ranlib-15.exe"
       - "D:/mingw64/bin/gcc-ranlib-15"
@@ -2075,9 +2285,6 @@ events:
       - "C:/Program Files/Go/bin/gcc-ranlib-15.com"
       - "C:/Program Files/Go/bin/gcc-ranlib-15.exe"
       - "C:/Program Files/Go/bin/gcc-ranlib-15"
-      - "C:/Program Files/nodejs/gcc-ranlib-15.com"
-      - "C:/Program Files/nodejs/gcc-ranlib-15.exe"
-      - "C:/Program Files/nodejs/gcc-ranlib-15"
       - "D:/AndroidCLI/openjdk/bin/gcc-ranlib-15.com"
       - "D:/AndroidCLI/openjdk/bin/gcc-ranlib-15.exe"
       - "D:/AndroidCLI/openjdk/bin/gcc-ranlib-15"
@@ -2108,24 +2315,39 @@ events:
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/gcc-ranlib-15.com"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/gcc-ranlib-15.exe"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/gcc-ranlib-15"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ranlib-15.com"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ranlib-15.exe"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ranlib-15"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ranlib-15.com"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ranlib-15.exe"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ranlib-15"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ranlib-15.com"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ranlib-15.exe"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ranlib-15"
       - "C:/Users/ojilong/go/bin/gcc-ranlib-15.com"
       - "C:/Users/ojilong/go/bin/gcc-ranlib-15.exe"
       - "C:/Users/ojilong/go/bin/gcc-ranlib-15"
-      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ranlib-15.com"
-      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ranlib-15.exe"
-      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ranlib-15"
+      - "C:/Program Files/nodejs/gcc-ranlib-15.com"
+      - "C:/Program Files/nodejs/gcc-ranlib-15.exe"
+      - "C:/Program Files/nodejs/gcc-ranlib-15"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/gcc-ranlib-15.com"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/gcc-ranlib-15.exe"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/gcc-ranlib-15"
+      - "D:/c3-windows/c3/c3c.exe/gcc-ranlib-15.com"
+      - "D:/c3-windows/c3/c3c.exe/gcc-ranlib-15.exe"
+      - "D:/c3-windows/c3/c3c.exe/gcc-ranlib-15"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/gcc-ranlib-15.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/gcc-ranlib-15.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/gcc-ranlib-15"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/gcc-ranlib-15.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/gcc-ranlib-15.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/gcc-ranlib-15"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ranlib-15.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ranlib-15.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ranlib-15"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ranlib-15.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ranlib-15.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ranlib-15"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ranlib-15.com"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ranlib-15.exe"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ranlib-15"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/gcc-ranlib-15.com"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/gcc-ranlib-15.exe"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/gcc-ranlib-15"
+      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ranlib-15.com"
+      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ranlib-15.exe"
+      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ranlib-15"
       - "D:/mingw64/bin/gcc-ranlib15.com"
       - "D:/mingw64/bin/gcc-ranlib15.exe"
       - "D:/mingw64/bin/gcc-ranlib15"
@@ -2165,9 +2387,6 @@ events:
       - "C:/Program Files/Go/bin/gcc-ranlib15.com"
       - "C:/Program Files/Go/bin/gcc-ranlib15.exe"
       - "C:/Program Files/Go/bin/gcc-ranlib15"
-      - "C:/Program Files/nodejs/gcc-ranlib15.com"
-      - "C:/Program Files/nodejs/gcc-ranlib15.exe"
-      - "C:/Program Files/nodejs/gcc-ranlib15"
       - "D:/AndroidCLI/openjdk/bin/gcc-ranlib15.com"
       - "D:/AndroidCLI/openjdk/bin/gcc-ranlib15.exe"
       - "D:/AndroidCLI/openjdk/bin/gcc-ranlib15"
@@ -2198,24 +2417,39 @@ events:
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/gcc-ranlib15.com"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/gcc-ranlib15.exe"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/gcc-ranlib15"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ranlib15.com"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ranlib15.exe"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ranlib15"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ranlib15.com"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ranlib15.exe"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ranlib15"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ranlib15.com"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ranlib15.exe"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ranlib15"
       - "C:/Users/ojilong/go/bin/gcc-ranlib15.com"
       - "C:/Users/ojilong/go/bin/gcc-ranlib15.exe"
       - "C:/Users/ojilong/go/bin/gcc-ranlib15"
-      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ranlib15.com"
-      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ranlib15.exe"
-      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ranlib15"
+      - "C:/Program Files/nodejs/gcc-ranlib15.com"
+      - "C:/Program Files/nodejs/gcc-ranlib15.exe"
+      - "C:/Program Files/nodejs/gcc-ranlib15"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/gcc-ranlib15.com"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/gcc-ranlib15.exe"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/gcc-ranlib15"
+      - "D:/c3-windows/c3/c3c.exe/gcc-ranlib15.com"
+      - "D:/c3-windows/c3/c3c.exe/gcc-ranlib15.exe"
+      - "D:/c3-windows/c3/c3c.exe/gcc-ranlib15"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/gcc-ranlib15.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/gcc-ranlib15.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/gcc-ranlib15"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/gcc-ranlib15.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/gcc-ranlib15.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/gcc-ranlib15"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ranlib15.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ranlib15.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ranlib15"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ranlib15.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ranlib15.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ranlib15"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ranlib15.com"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ranlib15.exe"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ranlib15"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/gcc-ranlib15.com"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/gcc-ranlib15.exe"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/gcc-ranlib15"
+      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ranlib15.com"
+      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ranlib15.exe"
+      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ranlib15"
       - "D:/mingw64/bin/gcc-ranlib.com"
     found: "D:/mingw64/bin/gcc-ranlib.exe"
     search_context:
@@ -2233,7 +2467,6 @@ events:
         - "D:\\AndroidCLI\\gradle\\bin"
         - "C:\\Program Files\\Git\\cmd"
         - "C:\\Program Files\\Go\\bin"
-        - "C:\\Program Files\\nodejs\\"
         - "D:\\AndroidCLI\\openjdk\\bin"
         - "D:\\AndroidCLI\\openjdk"
         - "D:\\AndroidCLI\\gradle"
@@ -2243,13 +2476,20 @@ events:
         - "D:\\c3-windows\\c3"
         - "C:\\Program Files\\Intel\\WiFi\\bin\\"
         - "C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts"
+        - "C:\\Users\\ojilong\\go\\bin"
+        - "C:\\Program Files\\nodejs\\"
+        - "D:\\c3-windows\\c3lsp-windows-amd64\\server\\bin\\release\\c3lsp.exe"
+        - "D:\\c3-windows\\c3\\c3c.exe"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\Scripts\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\"
-        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\ojilong\\go\\bin"
-        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WinGet\\Packages\\zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe\\zig-x86_64-windows-0.16.0"
+        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
   -
     kind: "find-v1"
     backtrace:
@@ -2294,7 +2534,6 @@ events:
         - "D:\\AndroidCLI\\gradle\\bin"
         - "C:\\Program Files\\Git\\cmd"
         - "C:\\Program Files\\Go\\bin"
-        - "C:\\Program Files\\nodejs\\"
         - "D:\\AndroidCLI\\openjdk\\bin"
         - "D:\\AndroidCLI\\openjdk"
         - "D:\\AndroidCLI\\gradle"
@@ -2304,13 +2543,20 @@ events:
         - "D:\\c3-windows\\c3"
         - "C:\\Program Files\\Intel\\WiFi\\bin\\"
         - "C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts"
+        - "C:\\Users\\ojilong\\go\\bin"
+        - "C:\\Program Files\\nodejs\\"
+        - "D:\\c3-windows\\c3lsp-windows-amd64\\server\\bin\\release\\c3lsp.exe"
+        - "D:\\c3-windows\\c3\\c3c.exe"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\Scripts\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\"
-        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\ojilong\\go\\bin"
-        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WinGet\\Packages\\zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe\\zig-x86_64-windows-0.16.0"
+        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
   -
     kind: "find-v1"
     backtrace:
@@ -2351,7 +2597,6 @@ events:
         - "D:\\AndroidCLI\\gradle\\bin"
         - "C:\\Program Files\\Git\\cmd"
         - "C:\\Program Files\\Go\\bin"
-        - "C:\\Program Files\\nodejs\\"
         - "D:\\AndroidCLI\\openjdk\\bin"
         - "D:\\AndroidCLI\\openjdk"
         - "D:\\AndroidCLI\\gradle"
@@ -2361,13 +2606,20 @@ events:
         - "D:\\c3-windows\\c3"
         - "C:\\Program Files\\Intel\\WiFi\\bin\\"
         - "C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts"
+        - "C:\\Users\\ojilong\\go\\bin"
+        - "C:\\Program Files\\nodejs\\"
+        - "D:\\c3-windows\\c3lsp-windows-amd64\\server\\bin\\release\\c3lsp.exe"
+        - "D:\\c3-windows\\c3\\c3c.exe"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\Scripts\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\"
-        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\ojilong\\go\\bin"
-        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WinGet\\Packages\\zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe\\zig-x86_64-windows-0.16.0"
+        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
   -
     kind: "message-v1"
     backtrace:
@@ -2388,7 +2640,7 @@ events:
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.exe"
       
       The CXX compiler identification is GNU, found in:
-        C:/Users/ojilong/Desktop/StudyAssistant/WayerPC_V.0.0.0/build/CMakeFiles/4.2.1/CompilerIdCXX/a.exe
+        C:/Users/ojilong/Desktop/StudyAssistant/WayerPC/build/CMakeFiles/4.2.1/CompilerIdCXX/a.exe
       
   -
     kind: "find-v1"
@@ -2426,7 +2678,6 @@ events:
       - "D:/AndroidCLI/gradle/bin/"
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/Go/bin/"
-      - "C:/Program Files/nodejs/"
       - "D:/AndroidCLI/openjdk/bin/"
       - "D:/AndroidCLI/openjdk/"
       - "D:/AndroidCLI/gradle/"
@@ -2437,12 +2688,17 @@ events:
       - "C:/Program Files/Intel/WiFi/bin/"
       - "C:/Program Files/Common Files/Intel/WirelessCommon/"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/ojilong/go/bin/"
-      - "C:/Users/ojilong/AppData/Roaming/npm/"
+      - "C:/Program Files/nodejs/"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/"
+      - "D:/c3-windows/c3/c3c.exe/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/"
+      - "C:/Users/ojilong/AppData/Roaming/npm/"
     searched_directories:
       - "D:/mingw64/bin/gcc-ar-15.2.com"
       - "D:/mingw64/bin/gcc-ar-15.2.exe"
@@ -2483,9 +2739,6 @@ events:
       - "C:/Program Files/Go/bin/gcc-ar-15.2.com"
       - "C:/Program Files/Go/bin/gcc-ar-15.2.exe"
       - "C:/Program Files/Go/bin/gcc-ar-15.2"
-      - "C:/Program Files/nodejs/gcc-ar-15.2.com"
-      - "C:/Program Files/nodejs/gcc-ar-15.2.exe"
-      - "C:/Program Files/nodejs/gcc-ar-15.2"
       - "D:/AndroidCLI/openjdk/bin/gcc-ar-15.2.com"
       - "D:/AndroidCLI/openjdk/bin/gcc-ar-15.2.exe"
       - "D:/AndroidCLI/openjdk/bin/gcc-ar-15.2"
@@ -2516,24 +2769,39 @@ events:
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/gcc-ar-15.2.com"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/gcc-ar-15.2.exe"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/gcc-ar-15.2"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ar-15.2.com"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ar-15.2.exe"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ar-15.2"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ar-15.2.com"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ar-15.2.exe"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ar-15.2"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ar-15.2.com"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ar-15.2.exe"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ar-15.2"
       - "C:/Users/ojilong/go/bin/gcc-ar-15.2.com"
       - "C:/Users/ojilong/go/bin/gcc-ar-15.2.exe"
       - "C:/Users/ojilong/go/bin/gcc-ar-15.2"
-      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ar-15.2.com"
-      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ar-15.2.exe"
-      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ar-15.2"
+      - "C:/Program Files/nodejs/gcc-ar-15.2.com"
+      - "C:/Program Files/nodejs/gcc-ar-15.2.exe"
+      - "C:/Program Files/nodejs/gcc-ar-15.2"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/gcc-ar-15.2.com"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/gcc-ar-15.2.exe"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/gcc-ar-15.2"
+      - "D:/c3-windows/c3/c3c.exe/gcc-ar-15.2.com"
+      - "D:/c3-windows/c3/c3c.exe/gcc-ar-15.2.exe"
+      - "D:/c3-windows/c3/c3c.exe/gcc-ar-15.2"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/gcc-ar-15.2.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/gcc-ar-15.2.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/gcc-ar-15.2"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/gcc-ar-15.2.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/gcc-ar-15.2.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/gcc-ar-15.2"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ar-15.2.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ar-15.2.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ar-15.2"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ar-15.2.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ar-15.2.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ar-15.2"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ar-15.2.com"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ar-15.2.exe"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ar-15.2"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/gcc-ar-15.2.com"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/gcc-ar-15.2.exe"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/gcc-ar-15.2"
+      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ar-15.2.com"
+      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ar-15.2.exe"
+      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ar-15.2"
       - "D:/mingw64/bin/gcc-ar-15.com"
       - "D:/mingw64/bin/gcc-ar-15.exe"
       - "D:/mingw64/bin/gcc-ar-15"
@@ -2573,9 +2841,6 @@ events:
       - "C:/Program Files/Go/bin/gcc-ar-15.com"
       - "C:/Program Files/Go/bin/gcc-ar-15.exe"
       - "C:/Program Files/Go/bin/gcc-ar-15"
-      - "C:/Program Files/nodejs/gcc-ar-15.com"
-      - "C:/Program Files/nodejs/gcc-ar-15.exe"
-      - "C:/Program Files/nodejs/gcc-ar-15"
       - "D:/AndroidCLI/openjdk/bin/gcc-ar-15.com"
       - "D:/AndroidCLI/openjdk/bin/gcc-ar-15.exe"
       - "D:/AndroidCLI/openjdk/bin/gcc-ar-15"
@@ -2606,24 +2871,39 @@ events:
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/gcc-ar-15.com"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/gcc-ar-15.exe"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/gcc-ar-15"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ar-15.com"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ar-15.exe"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ar-15"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ar-15.com"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ar-15.exe"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ar-15"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ar-15.com"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ar-15.exe"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ar-15"
       - "C:/Users/ojilong/go/bin/gcc-ar-15.com"
       - "C:/Users/ojilong/go/bin/gcc-ar-15.exe"
       - "C:/Users/ojilong/go/bin/gcc-ar-15"
-      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ar-15.com"
-      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ar-15.exe"
-      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ar-15"
+      - "C:/Program Files/nodejs/gcc-ar-15.com"
+      - "C:/Program Files/nodejs/gcc-ar-15.exe"
+      - "C:/Program Files/nodejs/gcc-ar-15"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/gcc-ar-15.com"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/gcc-ar-15.exe"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/gcc-ar-15"
+      - "D:/c3-windows/c3/c3c.exe/gcc-ar-15.com"
+      - "D:/c3-windows/c3/c3c.exe/gcc-ar-15.exe"
+      - "D:/c3-windows/c3/c3c.exe/gcc-ar-15"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/gcc-ar-15.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/gcc-ar-15.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/gcc-ar-15"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/gcc-ar-15.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/gcc-ar-15.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/gcc-ar-15"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ar-15.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ar-15.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ar-15"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ar-15.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ar-15.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ar-15"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ar-15.com"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ar-15.exe"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ar-15"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/gcc-ar-15.com"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/gcc-ar-15.exe"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/gcc-ar-15"
+      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ar-15.com"
+      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ar-15.exe"
+      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ar-15"
       - "D:/mingw64/bin/gcc-ar15.com"
       - "D:/mingw64/bin/gcc-ar15.exe"
       - "D:/mingw64/bin/gcc-ar15"
@@ -2663,9 +2943,6 @@ events:
       - "C:/Program Files/Go/bin/gcc-ar15.com"
       - "C:/Program Files/Go/bin/gcc-ar15.exe"
       - "C:/Program Files/Go/bin/gcc-ar15"
-      - "C:/Program Files/nodejs/gcc-ar15.com"
-      - "C:/Program Files/nodejs/gcc-ar15.exe"
-      - "C:/Program Files/nodejs/gcc-ar15"
       - "D:/AndroidCLI/openjdk/bin/gcc-ar15.com"
       - "D:/AndroidCLI/openjdk/bin/gcc-ar15.exe"
       - "D:/AndroidCLI/openjdk/bin/gcc-ar15"
@@ -2696,24 +2973,39 @@ events:
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/gcc-ar15.com"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/gcc-ar15.exe"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/gcc-ar15"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ar15.com"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ar15.exe"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ar15"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ar15.com"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ar15.exe"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ar15"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ar15.com"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ar15.exe"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ar15"
       - "C:/Users/ojilong/go/bin/gcc-ar15.com"
       - "C:/Users/ojilong/go/bin/gcc-ar15.exe"
       - "C:/Users/ojilong/go/bin/gcc-ar15"
-      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ar15.com"
-      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ar15.exe"
-      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ar15"
+      - "C:/Program Files/nodejs/gcc-ar15.com"
+      - "C:/Program Files/nodejs/gcc-ar15.exe"
+      - "C:/Program Files/nodejs/gcc-ar15"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/gcc-ar15.com"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/gcc-ar15.exe"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/gcc-ar15"
+      - "D:/c3-windows/c3/c3c.exe/gcc-ar15.com"
+      - "D:/c3-windows/c3/c3c.exe/gcc-ar15.exe"
+      - "D:/c3-windows/c3/c3c.exe/gcc-ar15"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/gcc-ar15.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/gcc-ar15.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/gcc-ar15"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/gcc-ar15.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/gcc-ar15.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/gcc-ar15"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ar15.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ar15.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ar15"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ar15.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ar15.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ar15"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ar15.com"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ar15.exe"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ar15"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/gcc-ar15.com"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/gcc-ar15.exe"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/gcc-ar15"
+      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ar15.com"
+      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ar15.exe"
+      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ar15"
       - "D:/mingw64/bin/gcc-ar.com"
     found: "D:/mingw64/bin/gcc-ar.exe"
     search_context:
@@ -2731,7 +3023,6 @@ events:
         - "D:\\AndroidCLI\\gradle\\bin"
         - "C:\\Program Files\\Git\\cmd"
         - "C:\\Program Files\\Go\\bin"
-        - "C:\\Program Files\\nodejs\\"
         - "D:\\AndroidCLI\\openjdk\\bin"
         - "D:\\AndroidCLI\\openjdk"
         - "D:\\AndroidCLI\\gradle"
@@ -2741,13 +3032,20 @@ events:
         - "D:\\c3-windows\\c3"
         - "C:\\Program Files\\Intel\\WiFi\\bin\\"
         - "C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts"
+        - "C:\\Users\\ojilong\\go\\bin"
+        - "C:\\Program Files\\nodejs\\"
+        - "D:\\c3-windows\\c3lsp-windows-amd64\\server\\bin\\release\\c3lsp.exe"
+        - "D:\\c3-windows\\c3\\c3c.exe"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\Scripts\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\"
-        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\ojilong\\go\\bin"
-        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WinGet\\Packages\\zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe\\zig-x86_64-windows-0.16.0"
+        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
   -
     kind: "find-v1"
     backtrace:
@@ -2784,7 +3082,6 @@ events:
       - "D:/AndroidCLI/gradle/bin/"
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/Go/bin/"
-      - "C:/Program Files/nodejs/"
       - "D:/AndroidCLI/openjdk/bin/"
       - "D:/AndroidCLI/openjdk/"
       - "D:/AndroidCLI/gradle/"
@@ -2795,12 +3092,17 @@ events:
       - "C:/Program Files/Intel/WiFi/bin/"
       - "C:/Program Files/Common Files/Intel/WirelessCommon/"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/ojilong/go/bin/"
-      - "C:/Users/ojilong/AppData/Roaming/npm/"
+      - "C:/Program Files/nodejs/"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/"
+      - "D:/c3-windows/c3/c3c.exe/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/"
+      - "C:/Users/ojilong/AppData/Roaming/npm/"
     searched_directories:
       - "D:/mingw64/bin/gcc-ranlib-15.2.com"
       - "D:/mingw64/bin/gcc-ranlib-15.2.exe"
@@ -2841,9 +3143,6 @@ events:
       - "C:/Program Files/Go/bin/gcc-ranlib-15.2.com"
       - "C:/Program Files/Go/bin/gcc-ranlib-15.2.exe"
       - "C:/Program Files/Go/bin/gcc-ranlib-15.2"
-      - "C:/Program Files/nodejs/gcc-ranlib-15.2.com"
-      - "C:/Program Files/nodejs/gcc-ranlib-15.2.exe"
-      - "C:/Program Files/nodejs/gcc-ranlib-15.2"
       - "D:/AndroidCLI/openjdk/bin/gcc-ranlib-15.2.com"
       - "D:/AndroidCLI/openjdk/bin/gcc-ranlib-15.2.exe"
       - "D:/AndroidCLI/openjdk/bin/gcc-ranlib-15.2"
@@ -2874,24 +3173,39 @@ events:
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/gcc-ranlib-15.2.com"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/gcc-ranlib-15.2.exe"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/gcc-ranlib-15.2"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ranlib-15.2.com"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ranlib-15.2.exe"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ranlib-15.2"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ranlib-15.2.com"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ranlib-15.2.exe"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ranlib-15.2"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ranlib-15.2.com"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ranlib-15.2.exe"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ranlib-15.2"
       - "C:/Users/ojilong/go/bin/gcc-ranlib-15.2.com"
       - "C:/Users/ojilong/go/bin/gcc-ranlib-15.2.exe"
       - "C:/Users/ojilong/go/bin/gcc-ranlib-15.2"
-      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ranlib-15.2.com"
-      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ranlib-15.2.exe"
-      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ranlib-15.2"
+      - "C:/Program Files/nodejs/gcc-ranlib-15.2.com"
+      - "C:/Program Files/nodejs/gcc-ranlib-15.2.exe"
+      - "C:/Program Files/nodejs/gcc-ranlib-15.2"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/gcc-ranlib-15.2.com"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/gcc-ranlib-15.2.exe"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/gcc-ranlib-15.2"
+      - "D:/c3-windows/c3/c3c.exe/gcc-ranlib-15.2.com"
+      - "D:/c3-windows/c3/c3c.exe/gcc-ranlib-15.2.exe"
+      - "D:/c3-windows/c3/c3c.exe/gcc-ranlib-15.2"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/gcc-ranlib-15.2.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/gcc-ranlib-15.2.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/gcc-ranlib-15.2"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/gcc-ranlib-15.2.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/gcc-ranlib-15.2.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/gcc-ranlib-15.2"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ranlib-15.2.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ranlib-15.2.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ranlib-15.2"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ranlib-15.2.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ranlib-15.2.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ranlib-15.2"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ranlib-15.2.com"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ranlib-15.2.exe"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ranlib-15.2"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/gcc-ranlib-15.2.com"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/gcc-ranlib-15.2.exe"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/gcc-ranlib-15.2"
+      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ranlib-15.2.com"
+      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ranlib-15.2.exe"
+      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ranlib-15.2"
       - "D:/mingw64/bin/gcc-ranlib-15.com"
       - "D:/mingw64/bin/gcc-ranlib-15.exe"
       - "D:/mingw64/bin/gcc-ranlib-15"
@@ -2931,9 +3245,6 @@ events:
       - "C:/Program Files/Go/bin/gcc-ranlib-15.com"
       - "C:/Program Files/Go/bin/gcc-ranlib-15.exe"
       - "C:/Program Files/Go/bin/gcc-ranlib-15"
-      - "C:/Program Files/nodejs/gcc-ranlib-15.com"
-      - "C:/Program Files/nodejs/gcc-ranlib-15.exe"
-      - "C:/Program Files/nodejs/gcc-ranlib-15"
       - "D:/AndroidCLI/openjdk/bin/gcc-ranlib-15.com"
       - "D:/AndroidCLI/openjdk/bin/gcc-ranlib-15.exe"
       - "D:/AndroidCLI/openjdk/bin/gcc-ranlib-15"
@@ -2964,24 +3275,39 @@ events:
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/gcc-ranlib-15.com"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/gcc-ranlib-15.exe"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/gcc-ranlib-15"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ranlib-15.com"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ranlib-15.exe"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ranlib-15"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ranlib-15.com"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ranlib-15.exe"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ranlib-15"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ranlib-15.com"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ranlib-15.exe"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ranlib-15"
       - "C:/Users/ojilong/go/bin/gcc-ranlib-15.com"
       - "C:/Users/ojilong/go/bin/gcc-ranlib-15.exe"
       - "C:/Users/ojilong/go/bin/gcc-ranlib-15"
-      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ranlib-15.com"
-      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ranlib-15.exe"
-      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ranlib-15"
+      - "C:/Program Files/nodejs/gcc-ranlib-15.com"
+      - "C:/Program Files/nodejs/gcc-ranlib-15.exe"
+      - "C:/Program Files/nodejs/gcc-ranlib-15"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/gcc-ranlib-15.com"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/gcc-ranlib-15.exe"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/gcc-ranlib-15"
+      - "D:/c3-windows/c3/c3c.exe/gcc-ranlib-15.com"
+      - "D:/c3-windows/c3/c3c.exe/gcc-ranlib-15.exe"
+      - "D:/c3-windows/c3/c3c.exe/gcc-ranlib-15"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/gcc-ranlib-15.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/gcc-ranlib-15.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/gcc-ranlib-15"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/gcc-ranlib-15.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/gcc-ranlib-15.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/gcc-ranlib-15"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ranlib-15.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ranlib-15.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ranlib-15"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ranlib-15.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ranlib-15.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ranlib-15"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ranlib-15.com"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ranlib-15.exe"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ranlib-15"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/gcc-ranlib-15.com"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/gcc-ranlib-15.exe"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/gcc-ranlib-15"
+      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ranlib-15.com"
+      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ranlib-15.exe"
+      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ranlib-15"
       - "D:/mingw64/bin/gcc-ranlib15.com"
       - "D:/mingw64/bin/gcc-ranlib15.exe"
       - "D:/mingw64/bin/gcc-ranlib15"
@@ -3021,9 +3347,6 @@ events:
       - "C:/Program Files/Go/bin/gcc-ranlib15.com"
       - "C:/Program Files/Go/bin/gcc-ranlib15.exe"
       - "C:/Program Files/Go/bin/gcc-ranlib15"
-      - "C:/Program Files/nodejs/gcc-ranlib15.com"
-      - "C:/Program Files/nodejs/gcc-ranlib15.exe"
-      - "C:/Program Files/nodejs/gcc-ranlib15"
       - "D:/AndroidCLI/openjdk/bin/gcc-ranlib15.com"
       - "D:/AndroidCLI/openjdk/bin/gcc-ranlib15.exe"
       - "D:/AndroidCLI/openjdk/bin/gcc-ranlib15"
@@ -3054,24 +3377,39 @@ events:
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/gcc-ranlib15.com"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/gcc-ranlib15.exe"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/gcc-ranlib15"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ranlib15.com"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ranlib15.exe"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ranlib15"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ranlib15.com"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ranlib15.exe"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ranlib15"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ranlib15.com"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ranlib15.exe"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ranlib15"
       - "C:/Users/ojilong/go/bin/gcc-ranlib15.com"
       - "C:/Users/ojilong/go/bin/gcc-ranlib15.exe"
       - "C:/Users/ojilong/go/bin/gcc-ranlib15"
-      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ranlib15.com"
-      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ranlib15.exe"
-      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ranlib15"
+      - "C:/Program Files/nodejs/gcc-ranlib15.com"
+      - "C:/Program Files/nodejs/gcc-ranlib15.exe"
+      - "C:/Program Files/nodejs/gcc-ranlib15"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/gcc-ranlib15.com"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/gcc-ranlib15.exe"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/gcc-ranlib15"
+      - "D:/c3-windows/c3/c3c.exe/gcc-ranlib15.com"
+      - "D:/c3-windows/c3/c3c.exe/gcc-ranlib15.exe"
+      - "D:/c3-windows/c3/c3c.exe/gcc-ranlib15"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/gcc-ranlib15.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/gcc-ranlib15.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/gcc-ranlib15"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/gcc-ranlib15.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/gcc-ranlib15.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/gcc-ranlib15"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ranlib15.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ranlib15.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/gcc-ranlib15"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ranlib15.com"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ranlib15.exe"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/gcc-ranlib15"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ranlib15.com"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ranlib15.exe"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/gcc-ranlib15"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/gcc-ranlib15.com"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/gcc-ranlib15.exe"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/gcc-ranlib15"
+      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ranlib15.com"
+      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ranlib15.exe"
+      - "C:/Users/ojilong/AppData/Roaming/npm/gcc-ranlib15"
       - "D:/mingw64/bin/gcc-ranlib.com"
     found: "D:/mingw64/bin/gcc-ranlib.exe"
     search_context:
@@ -3089,7 +3427,6 @@ events:
         - "D:\\AndroidCLI\\gradle\\bin"
         - "C:\\Program Files\\Git\\cmd"
         - "C:\\Program Files\\Go\\bin"
-        - "C:\\Program Files\\nodejs\\"
         - "D:\\AndroidCLI\\openjdk\\bin"
         - "D:\\AndroidCLI\\openjdk"
         - "D:\\AndroidCLI\\gradle"
@@ -3099,13 +3436,20 @@ events:
         - "D:\\c3-windows\\c3"
         - "C:\\Program Files\\Intel\\WiFi\\bin\\"
         - "C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts"
+        - "C:\\Users\\ojilong\\go\\bin"
+        - "C:\\Program Files\\nodejs\\"
+        - "D:\\c3-windows\\c3lsp-windows-amd64\\server\\bin\\release\\c3lsp.exe"
+        - "D:\\c3-windows\\c3\\c3c.exe"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\Scripts\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\"
-        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\ojilong\\go\\bin"
-        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WinGet\\Packages\\zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe\\zig-x86_64-windows-0.16.0"
+        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
   -
     kind: "find-v1"
     backtrace:
@@ -3142,7 +3486,6 @@ events:
       - "D:/AndroidCLI/gradle/bin/"
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/Go/bin/"
-      - "C:/Program Files/nodejs/"
       - "D:/AndroidCLI/openjdk/bin/"
       - "D:/AndroidCLI/openjdk/"
       - "D:/AndroidCLI/gradle/"
@@ -3153,12 +3496,17 @@ events:
       - "C:/Program Files/Intel/WiFi/bin/"
       - "C:/Program Files/Common Files/Intel/WirelessCommon/"
       - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/Scripts/"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/"
-      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/"
-      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/ojilong/go/bin/"
-      - "C:/Users/ojilong/AppData/Roaming/npm/"
+      - "C:/Program Files/nodejs/"
+      - "D:/c3-windows/c3lsp-windows-amd64/server/bin/release/c3lsp.exe/"
+      - "D:/c3-windows/c3/c3c.exe/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/Scripts/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python314/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Launcher/"
+      - "C:/Users/ojilong/AppData/Local/Programs/Python/Python312/"
+      - "C:/Users/ojilong/AppData/Local/Microsoft/WindowsApps/"
       - "C:/Users/ojilong/AppData/Local/Microsoft/WinGet/Packages/zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe/zig-x86_64-windows-0.16.0/"
+      - "C:/Users/ojilong/AppData/Roaming/npm/"
       - "C:/Program Files/bin/"
       - "C:/Program Files/sbin/"
       - "C:/Program Files/"
@@ -3213,7 +3561,6 @@ events:
         - "D:\\AndroidCLI\\gradle\\bin"
         - "C:\\Program Files\\Git\\cmd"
         - "C:\\Program Files\\Go\\bin"
-        - "C:\\Program Files\\nodejs\\"
         - "D:\\AndroidCLI\\openjdk\\bin"
         - "D:\\AndroidCLI\\openjdk"
         - "D:\\AndroidCLI\\gradle"
@@ -3223,13 +3570,20 @@ events:
         - "D:\\c3-windows\\c3"
         - "C:\\Program Files\\Intel\\WiFi\\bin\\"
         - "C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts"
+        - "C:\\Users\\ojilong\\go\\bin"
+        - "C:\\Program Files\\nodejs\\"
+        - "D:\\c3-windows\\c3lsp-windows-amd64\\server\\bin\\release\\c3lsp.exe"
+        - "D:\\c3-windows\\c3\\c3c.exe"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\Scripts\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python314\\"
+        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Python312\\"
-        - "C:\\Users\\ojilong\\AppData\\Local\\Programs\\Python\\Launcher\\"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WindowsApps"
         - "C:\\Users\\ojilong\\go\\bin"
-        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
         - "C:\\Users\\ojilong\\AppData\\Local\\Microsoft\\WinGet\\Packages\\zig.zig_Microsoft.Winget.Source_8wekyb3d8bbwe\\zig-x86_64-windows-0.16.0"
+        - "C:\\Users\\ojilong\\AppData\\Roaming\\npm"
       CMAKE_INSTALL_PREFIX: "C:/Program Files (x86)/FileNode"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "C:/Program Files"
@@ -3245,8 +3599,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "C:/Users/ojilong/Desktop/StudyAssistant/WayerPC_V.0.0.0/build/CMakeFiles/CMakeScratch/TryCompile-qcqsdj"
-      binary: "C:/Users/ojilong/Desktop/StudyAssistant/WayerPC_V.0.0.0/build/CMakeFiles/CMakeScratch/TryCompile-qcqsdj"
+      source: "C:/Users/ojilong/Desktop/StudyAssistant/WayerPC/build/CMakeFiles/CMakeScratch/TryCompile-vlvf9w"
+      binary: "C:/Users/ojilong/Desktop/StudyAssistant/WayerPC/build/CMakeFiles/CMakeScratch/TryCompile-vlvf9w"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -3255,10 +3609,10 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/ojilong/Desktop/StudyAssistant/WayerPC_V.0.0.0/build/CMakeFiles/CMakeScratch/TryCompile-qcqsdj'
+        Change Dir: 'C:/Users/ojilong/Desktop/StudyAssistant/WayerPC/build/CMakeFiles/CMakeScratch/TryCompile-vlvf9w'
         
-        Run Build Command(s): D:/mingw64/bin/ninja.exe -v cmTC_b982d
-        [1/2] D:\\mingw64\\bin\\gcc.exe   -v -o CMakeFiles/cmTC_b982d.dir/CMakeCCompilerABI.c.obj -c D:/mingw64/share/cmake-4.2/Modules/CMakeCCompilerABI.c
+        Run Build Command(s): D:/mingw64/bin/ninja.exe -v cmTC_89336
+        [1/2] D:\\mingw64\\bin\\gcc.exe   -v -o CMakeFiles/cmTC_89336.dir/CMakeCCompilerABI.c.obj -c D:/mingw64/share/cmake-4.2/Modules/CMakeCCompilerABI.c
         Using built-in specs.
         COLLECT_GCC=D:\\mingw64\\bin\\gcc.exe
         OFFLOAD_TARGET_NAMES=nvptx-none
@@ -3267,8 +3621,8 @@ events:
         Thread model: posix
         Supported LTO compression algorithms: zlib zstd
         gcc version 15.2.0 (MinGW-W64 x86_64-ucrt-posix-seh, built by Brecht Sanders, r5) 
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b982d.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_b982d.dir/'
-         D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/cc1.exe -quiet -v -iprefix D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/ -D_REENTRANT D:/mingw64/share/cmake-4.2/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_b982d.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -o C:\\Users\\ojilong\\AppData\\Local\\Temp\\ccF4n0vB.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_89336.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_89336.dir/'
+         D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/cc1.exe -quiet -v -iprefix D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/ -D_REENTRANT D:/mingw64/share/cmake-4.2/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_89336.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -o C:\\Users\\ojilong\\AppData\\Local\\Temp\\ccBO6iH1.s
         GNU C23 (MinGW-W64 x86_64-ucrt-posix-seh, built by Brecht Sanders, r5) version 15.2.0 (x86_64-w64-mingw32)
         	compiled by GNU C version 15.2.0, GMP version 6.3.0, MPFR version 4.2.2, MPC version 1.3.1, isl version isl-0.27-GMP
         
@@ -3287,13 +3641,13 @@ events:
          D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/include
         End of search list.
         Compiler executable checksum: 87d84d620ae688b825d09302a8c52816
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b982d.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_b982d.dir/'
-         D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles/cmTC_b982d.dir/CMakeCCompilerABI.c.obj C:\\Users\\ojilong\\AppData\\Local\\Temp\\ccF4n0vB.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_89336.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_89336.dir/'
+         D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles/cmTC_89336.dir/CMakeCCompilerABI.c.obj C:\\Users\\ojilong\\AppData\\Local\\Temp\\ccBO6iH1.s
         GNU assembler version 2.45.1 (x86_64-w64-mingw32) using BFD version (Binutils for MinGW-W64 x86_64, built by Brecht Sanders, r5) 2.45.1
         COMPILER_PATH=D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/;D:/mingw64/bin/../libexec/gcc/;D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/
         LIBRARY_PATH=D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/;D:/mingw64/bin/../lib/gcc/;D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/;D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/;D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/;D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b982d.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_b982d.dir/CMakeCCompilerABI.c.'
-        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && D:\\mingw64\\bin\\gcc.exe  -v -Wl,-v CMakeFiles/cmTC_b982d.dir/CMakeCCompilerABI.c.obj -o cmTC_b982d.exe -Wl,--out-implib,libcmTC_b982d.dll.a -Wl,--major-image-version,0,--minor-image-version,0   && cd ."
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_89336.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_89336.dir/CMakeCCompilerABI.c.'
+        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && D:\\mingw64\\bin\\gcc.exe  -v -Wl,-v CMakeFiles/cmTC_89336.dir/CMakeCCompilerABI.c.obj -o cmTC_89336.exe -Wl,--out-implib,libcmTC_89336.dll.a -Wl,--major-image-version,0,--minor-image-version,0   && cd ."
         Using built-in specs.
         COLLECT_GCC=D:\\mingw64\\bin\\gcc.exe
         COLLECT_LTO_WRAPPER=D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe
@@ -3305,12 +3659,12 @@ events:
         gcc version 15.2.0 (MinGW-W64 x86_64-ucrt-posix-seh, built by Brecht Sanders, r5) 
         COMPILER_PATH=D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/;D:/mingw64/bin/../libexec/gcc/;D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/
         LIBRARY_PATH=D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/;D:/mingw64/bin/../lib/gcc/;D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/;D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/;D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/;D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_b982d.exe' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_b982d.'
-         D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/collect2.exe -plugin D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\ojilong\\AppData\\Local\\Temp\\ccfx5AsT.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_b982d.exe D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LD:/mingw64/bin/../lib/gcc -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v CMakeFiles/cmTC_b982d.dir/CMakeCCompilerABI.c.obj --out-implib libcmTC_b982d.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_89336.exe' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_89336.'
+         D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/collect2.exe -plugin D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\ojilong\\AppData\\Local\\Temp\\ccAPclya.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_89336.exe D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LD:/mingw64/bin/../lib/gcc -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v CMakeFiles/cmTC_89336.dir/CMakeCCompilerABI.c.obj --out-implib libcmTC_89336.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o
         collect2 version 15.2.0
-        D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe -plugin D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\ojilong\\AppData\\Local\\Temp\\ccfx5AsT.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_b982d.exe D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LD:/mingw64/bin/../lib/gcc -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v CMakeFiles/cmTC_b982d.dir/CMakeCCompilerABI.c.obj --out-implib libcmTC_b982d.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o
+        D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe -plugin D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\ojilong\\AppData\\Local\\Temp\\ccAPclya.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_89336.exe D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LD:/mingw64/bin/../lib/gcc -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v CMakeFiles/cmTC_89336.dir/CMakeCCompilerABI.c.obj --out-implib libcmTC_89336.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o
         GNU ld (Binutils for MinGW-W64 x86_64, built by Brecht Sanders, r5) 2.45.1
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_b982d.exe' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_b982d.'
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_89336.exe' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_89336.'
         
       exitCode: 0
   -
@@ -3345,10 +3699,10 @@ events:
       Parsed C implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)))("|,| |$)]
-        ignore line: [Change Dir: 'C:/Users/ojilong/Desktop/StudyAssistant/WayerPC_V.0.0.0/build/CMakeFiles/CMakeScratch/TryCompile-qcqsdj']
+        ignore line: [Change Dir: 'C:/Users/ojilong/Desktop/StudyAssistant/WayerPC/build/CMakeFiles/CMakeScratch/TryCompile-vlvf9w']
         ignore line: []
-        ignore line: [Run Build Command(s): D:/mingw64/bin/ninja.exe -v cmTC_b982d]
-        ignore line: [[1/2] D:\\mingw64\\bin\\gcc.exe   -v -o CMakeFiles/cmTC_b982d.dir/CMakeCCompilerABI.c.obj -c D:/mingw64/share/cmake-4.2/Modules/CMakeCCompilerABI.c]
+        ignore line: [Run Build Command(s): D:/mingw64/bin/ninja.exe -v cmTC_89336]
+        ignore line: [[1/2] D:\\mingw64\\bin\\gcc.exe   -v -o CMakeFiles/cmTC_89336.dir/CMakeCCompilerABI.c.obj -c D:/mingw64/share/cmake-4.2/Modules/CMakeCCompilerABI.c]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=D:\\mingw64\\bin\\gcc.exe]
         ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none]
@@ -3357,8 +3711,8 @@ events:
         ignore line: [Thread model: posix]
         ignore line: [Supported LTO compression algorithms: zlib zstd]
         ignore line: [gcc version 15.2.0 (MinGW-W64 x86_64-ucrt-posix-seh  built by Brecht Sanders  r5) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b982d.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_b982d.dir/']
-        ignore line: [ D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/cc1.exe -quiet -v -iprefix D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/ -D_REENTRANT D:/mingw64/share/cmake-4.2/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_b982d.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -o C:\\Users\\ojilong\\AppData\\Local\\Temp\\ccF4n0vB.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_89336.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_89336.dir/']
+        ignore line: [ D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/cc1.exe -quiet -v -iprefix D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/ -D_REENTRANT D:/mingw64/share/cmake-4.2/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_89336.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -o C:\\Users\\ojilong\\AppData\\Local\\Temp\\ccBO6iH1.s]
         ignore line: [GNU C23 (MinGW-W64 x86_64-ucrt-posix-seh  built by Brecht Sanders  r5) version 15.2.0 (x86_64-w64-mingw32)]
         ignore line: [	compiled by GNU C version 15.2.0  GMP version 6.3.0  MPFR version 4.2.2  MPC version 1.3.1  isl version isl-0.27-GMP]
         ignore line: []
@@ -3377,8 +3731,8 @@ events:
         ignore line: [ D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/include]
         ignore line: [End of search list.]
         ignore line: [Compiler executable checksum: 87d84d620ae688b825d09302a8c52816]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b982d.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_b982d.dir/']
-        ignore line: [ D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles/cmTC_b982d.dir/CMakeCCompilerABI.c.obj C:\\Users\\ojilong\\AppData\\Local\\Temp\\ccF4n0vB.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_89336.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_89336.dir/']
+        ignore line: [ D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles/cmTC_89336.dir/CMakeCCompilerABI.c.obj C:\\Users\\ojilong\\AppData\\Local\\Temp\\ccBO6iH1.s]
         ignore line: [GNU assembler version 2.45.1 (x86_64-w64-mingw32) using BFD version (Binutils for MinGW-W64 x86_64  built by Brecht Sanders  r5) 2.45.1]
         ignore line: [COMPILER_PATH=D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/]
         ignore line: [D:/mingw64/bin/../libexec/gcc/]
@@ -3389,8 +3743,8 @@ events:
         ignore line: [D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/]
         ignore line: [D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/]
         ignore line: [D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b982d.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_b982d.dir/CMakeCCompilerABI.c.']
-        ignore line: [[2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && D:\\mingw64\\bin\\gcc.exe  -v -Wl -v CMakeFiles/cmTC_b982d.dir/CMakeCCompilerABI.c.obj -o cmTC_b982d.exe -Wl --out-implib libcmTC_b982d.dll.a -Wl --major-image-version 0 --minor-image-version 0   && cd ."]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_89336.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_89336.dir/CMakeCCompilerABI.c.']
+        ignore line: [[2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && D:\\mingw64\\bin\\gcc.exe  -v -Wl -v CMakeFiles/cmTC_89336.dir/CMakeCCompilerABI.c.obj -o cmTC_89336.exe -Wl --out-implib libcmTC_89336.dll.a -Wl --major-image-version 0 --minor-image-version 0   && cd ."]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=D:\\mingw64\\bin\\gcc.exe]
         ignore line: [COLLECT_LTO_WRAPPER=D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe]
@@ -3409,13 +3763,13 @@ events:
         ignore line: [D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/]
         ignore line: [D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/]
         ignore line: [D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_b982d.exe' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_b982d.']
-        link line: [ D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/collect2.exe -plugin D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\ojilong\\AppData\\Local\\Temp\\ccfx5AsT.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_b982d.exe D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LD:/mingw64/bin/../lib/gcc -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v CMakeFiles/cmTC_b982d.dir/CMakeCCompilerABI.c.obj --out-implib libcmTC_b982d.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_89336.exe' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_89336.']
+        link line: [ D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/collect2.exe -plugin D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\ojilong\\AppData\\Local\\Temp\\ccAPclya.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_89336.exe D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LD:/mingw64/bin/../lib/gcc -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v CMakeFiles/cmTC_89336.dir/CMakeCCompilerABI.c.obj --out-implib libcmTC_89336.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o]
           arg [D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/collect2.exe] ==> ignore
           arg [-plugin] ==> ignore
           arg [D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll] ==> ignore
           arg [-plugin-opt=D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe] ==> ignore
-          arg [-plugin-opt=-fresolution=C:\\Users\\ojilong\\AppData\\Local\\Temp\\ccfx5AsT.res] ==> ignore
+          arg [-plugin-opt=-fresolution=C:\\Users\\ojilong\\AppData\\Local\\Temp\\ccAPclya.res] ==> ignore
           arg [-plugin-opt=-pass-through=-lmingw32] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc_eh] ==> ignore
@@ -3437,7 +3791,7 @@ events:
           arg [i386pep] ==> ignore
           arg [-Bdynamic] ==> search dynamic
           arg [-o] ==> ignore
-          arg [cmTC_b982d.exe] ==> ignore
+          arg [cmTC_89336.exe] ==> ignore
           arg [D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o] ==> obj [D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o]
           arg [D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o] ==> obj [D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o]
           arg [-LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0] ==> dir [D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0]
@@ -3447,9 +3801,9 @@ events:
           arg [-LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib] ==> dir [D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib]
           arg [-LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../..] ==> dir [D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../..]
           arg [-v] ==> ignore
-          arg [CMakeFiles/cmTC_b982d.dir/CMakeCCompilerABI.c.obj] ==> ignore
+          arg [CMakeFiles/cmTC_89336.dir/CMakeCCompilerABI.c.obj] ==> ignore
           arg [--out-implib] ==> ignore
-          arg [libcmTC_b982d.dll.a] ==> ignore
+          arg [libcmTC_89336.dll.a] ==> ignore
           arg [--major-image-version] ==> ignore
           arg [0] ==> ignore
           arg [--minor-image-version] ==> ignore
@@ -3531,8 +3885,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "C:/Users/ojilong/Desktop/StudyAssistant/WayerPC_V.0.0.0/build/CMakeFiles/CMakeScratch/TryCompile-0beh0p"
-      binary: "C:/Users/ojilong/Desktop/StudyAssistant/WayerPC_V.0.0.0/build/CMakeFiles/CMakeScratch/TryCompile-0beh0p"
+      source: "C:/Users/ojilong/Desktop/StudyAssistant/WayerPC/build/CMakeFiles/CMakeScratch/TryCompile-9pgzhi"
+      binary: "C:/Users/ojilong/Desktop/StudyAssistant/WayerPC/build/CMakeFiles/CMakeScratch/TryCompile-9pgzhi"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -3542,10 +3896,10 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/ojilong/Desktop/StudyAssistant/WayerPC_V.0.0.0/build/CMakeFiles/CMakeScratch/TryCompile-0beh0p'
+        Change Dir: 'C:/Users/ojilong/Desktop/StudyAssistant/WayerPC/build/CMakeFiles/CMakeScratch/TryCompile-9pgzhi'
         
-        Run Build Command(s): D:/mingw64/bin/ninja.exe -v cmTC_cea19
-        [1/2] D:\\mingw64\\bin\\c++.exe   -v -o CMakeFiles/cmTC_cea19.dir/CMakeCXXCompilerABI.cpp.obj -c D:/mingw64/share/cmake-4.2/Modules/CMakeCXXCompilerABI.cpp
+        Run Build Command(s): D:/mingw64/bin/ninja.exe -v cmTC_b7e45
+        [1/2] D:\\mingw64\\bin\\c++.exe   -v -o CMakeFiles/cmTC_b7e45.dir/CMakeCXXCompilerABI.cpp.obj -c D:/mingw64/share/cmake-4.2/Modules/CMakeCXXCompilerABI.cpp
         Using built-in specs.
         COLLECT_GCC=D:\\mingw64\\bin\\c++.exe
         OFFLOAD_TARGET_NAMES=nvptx-none
@@ -3554,8 +3908,8 @@ events:
         Thread model: posix
         Supported LTO compression algorithms: zlib zstd
         gcc version 15.2.0 (MinGW-W64 x86_64-ucrt-posix-seh, built by Brecht Sanders, r5) 
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_cea19.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_cea19.dir/'
-         D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/cc1plus.exe -quiet -v -iprefix D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/ -D_REENTRANT D:/mingw64/share/cmake-4.2/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_cea19.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -o C:\\Users\\ojilong\\AppData\\Local\\Temp\\ccGYgWB2.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b7e45.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_b7e45.dir/'
+         D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/cc1plus.exe -quiet -v -iprefix D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/ -D_REENTRANT D:/mingw64/share/cmake-4.2/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_b7e45.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -o C:\\Users\\ojilong\\AppData\\Local\\Temp\\cceprp8f.s
         GNU C++17 (MinGW-W64 x86_64-ucrt-posix-seh, built by Brecht Sanders, r5) version 15.2.0 (x86_64-w64-mingw32)
         	compiled by GNU C version 15.2.0, GMP version 6.3.0, MPFR version 4.2.2, MPC version 1.3.1, isl version isl-0.27-GMP
         
@@ -3580,13 +3934,13 @@ events:
          D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/include
         End of search list.
         Compiler executable checksum: 94fe7d5ab71b9a7da9ab1785f32ed774
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_cea19.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_cea19.dir/'
-         D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles/cmTC_cea19.dir/CMakeCXXCompilerABI.cpp.obj C:\\Users\\ojilong\\AppData\\Local\\Temp\\ccGYgWB2.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b7e45.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_b7e45.dir/'
+         D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles/cmTC_b7e45.dir/CMakeCXXCompilerABI.cpp.obj C:\\Users\\ojilong\\AppData\\Local\\Temp\\cceprp8f.s
         GNU assembler version 2.45.1 (x86_64-w64-mingw32) using BFD version (Binutils for MinGW-W64 x86_64, built by Brecht Sanders, r5) 2.45.1
         COMPILER_PATH=D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/;D:/mingw64/bin/../libexec/gcc/;D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/
         LIBRARY_PATH=D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/;D:/mingw64/bin/../lib/gcc/;D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/;D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/;D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/;D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_cea19.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_cea19.dir/CMakeCXXCompilerABI.cpp.'
-        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && D:\\mingw64\\bin\\c++.exe  -v -Wl,-v CMakeFiles/cmTC_cea19.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_cea19.exe -Wl,--out-implib,libcmTC_cea19.dll.a -Wl,--major-image-version,0,--minor-image-version,0   && cd ."
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b7e45.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_b7e45.dir/CMakeCXXCompilerABI.cpp.'
+        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && D:\\mingw64\\bin\\c++.exe  -v -Wl,-v CMakeFiles/cmTC_b7e45.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_b7e45.exe -Wl,--out-implib,libcmTC_b7e45.dll.a -Wl,--major-image-version,0,--minor-image-version,0   && cd ."
         Using built-in specs.
         COLLECT_GCC=D:\\mingw64\\bin\\c++.exe
         COLLECT_LTO_WRAPPER=D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe
@@ -3598,12 +3952,12 @@ events:
         gcc version 15.2.0 (MinGW-W64 x86_64-ucrt-posix-seh, built by Brecht Sanders, r5) 
         COMPILER_PATH=D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/;D:/mingw64/bin/../libexec/gcc/;D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/
         LIBRARY_PATH=D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/;D:/mingw64/bin/../lib/gcc/;D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/;D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/;D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/;D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_cea19.exe' '-foffload-options=-l_GCC_stdc++' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_cea19.'
-         D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/collect2.exe -plugin D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\ojilong\\AppData\\Local\\Temp\\cc3j0rKa.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_cea19.exe D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LD:/mingw64/bin/../lib/gcc -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v CMakeFiles/cmTC_cea19.dir/CMakeCXXCompilerABI.cpp.obj --out-implib libcmTC_cea19.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_b7e45.exe' '-foffload-options=-l_GCC_stdc++' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_b7e45.'
+         D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/collect2.exe -plugin D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\ojilong\\AppData\\Local\\Temp\\ccGpPQHG.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_b7e45.exe D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LD:/mingw64/bin/../lib/gcc -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v CMakeFiles/cmTC_b7e45.dir/CMakeCXXCompilerABI.cpp.obj --out-implib libcmTC_b7e45.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o
         collect2 version 15.2.0
-        D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe -plugin D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\ojilong\\AppData\\Local\\Temp\\cc3j0rKa.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_cea19.exe D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LD:/mingw64/bin/../lib/gcc -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v CMakeFiles/cmTC_cea19.dir/CMakeCXXCompilerABI.cpp.obj --out-implib libcmTC_cea19.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o
+        D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe -plugin D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\ojilong\\AppData\\Local\\Temp\\ccGpPQHG.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_b7e45.exe D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LD:/mingw64/bin/../lib/gcc -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v CMakeFiles/cmTC_b7e45.dir/CMakeCXXCompilerABI.cpp.obj --out-implib libcmTC_b7e45.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o
         GNU ld (Binutils for MinGW-W64 x86_64, built by Brecht Sanders, r5) 2.45.1
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_cea19.exe' '-foffload-options=-l_GCC_stdc++' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_cea19.'
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_b7e45.exe' '-foffload-options=-l_GCC_stdc++' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_b7e45.'
         
       exitCode: 0
   -
@@ -3644,10 +3998,10 @@ events:
       Parsed CXX implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)))("|,| |$)]
-        ignore line: [Change Dir: 'C:/Users/ojilong/Desktop/StudyAssistant/WayerPC_V.0.0.0/build/CMakeFiles/CMakeScratch/TryCompile-0beh0p']
+        ignore line: [Change Dir: 'C:/Users/ojilong/Desktop/StudyAssistant/WayerPC/build/CMakeFiles/CMakeScratch/TryCompile-9pgzhi']
         ignore line: []
-        ignore line: [Run Build Command(s): D:/mingw64/bin/ninja.exe -v cmTC_cea19]
-        ignore line: [[1/2] D:\\mingw64\\bin\\c++.exe   -v -o CMakeFiles/cmTC_cea19.dir/CMakeCXXCompilerABI.cpp.obj -c D:/mingw64/share/cmake-4.2/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Run Build Command(s): D:/mingw64/bin/ninja.exe -v cmTC_b7e45]
+        ignore line: [[1/2] D:\\mingw64\\bin\\c++.exe   -v -o CMakeFiles/cmTC_b7e45.dir/CMakeCXXCompilerABI.cpp.obj -c D:/mingw64/share/cmake-4.2/Modules/CMakeCXXCompilerABI.cpp]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=D:\\mingw64\\bin\\c++.exe]
         ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none]
@@ -3656,8 +4010,8 @@ events:
         ignore line: [Thread model: posix]
         ignore line: [Supported LTO compression algorithms: zlib zstd]
         ignore line: [gcc version 15.2.0 (MinGW-W64 x86_64-ucrt-posix-seh  built by Brecht Sanders  r5) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_cea19.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_cea19.dir/']
-        ignore line: [ D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/cc1plus.exe -quiet -v -iprefix D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/ -D_REENTRANT D:/mingw64/share/cmake-4.2/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_cea19.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -o C:\\Users\\ojilong\\AppData\\Local\\Temp\\ccGYgWB2.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b7e45.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_b7e45.dir/']
+        ignore line: [ D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/cc1plus.exe -quiet -v -iprefix D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/ -D_REENTRANT D:/mingw64/share/cmake-4.2/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_b7e45.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -o C:\\Users\\ojilong\\AppData\\Local\\Temp\\cceprp8f.s]
         ignore line: [GNU C++17 (MinGW-W64 x86_64-ucrt-posix-seh  built by Brecht Sanders  r5) version 15.2.0 (x86_64-w64-mingw32)]
         ignore line: [	compiled by GNU C version 15.2.0  GMP version 6.3.0  MPFR version 4.2.2  MPC version 1.3.1  isl version isl-0.27-GMP]
         ignore line: []
@@ -3682,8 +4036,8 @@ events:
         ignore line: [ D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/include]
         ignore line: [End of search list.]
         ignore line: [Compiler executable checksum: 94fe7d5ab71b9a7da9ab1785f32ed774]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_cea19.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_cea19.dir/']
-        ignore line: [ D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles/cmTC_cea19.dir/CMakeCXXCompilerABI.cpp.obj C:\\Users\\ojilong\\AppData\\Local\\Temp\\ccGYgWB2.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b7e45.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_b7e45.dir/']
+        ignore line: [ D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles/cmTC_b7e45.dir/CMakeCXXCompilerABI.cpp.obj C:\\Users\\ojilong\\AppData\\Local\\Temp\\cceprp8f.s]
         ignore line: [GNU assembler version 2.45.1 (x86_64-w64-mingw32) using BFD version (Binutils for MinGW-W64 x86_64  built by Brecht Sanders  r5) 2.45.1]
         ignore line: [COMPILER_PATH=D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/]
         ignore line: [D:/mingw64/bin/../libexec/gcc/]
@@ -3694,8 +4048,8 @@ events:
         ignore line: [D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/]
         ignore line: [D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/]
         ignore line: [D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_cea19.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_cea19.dir/CMakeCXXCompilerABI.cpp.']
-        ignore line: [[2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && D:\\mingw64\\bin\\c++.exe  -v -Wl -v CMakeFiles/cmTC_cea19.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_cea19.exe -Wl --out-implib libcmTC_cea19.dll.a -Wl --major-image-version 0 --minor-image-version 0   && cd ."]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b7e45.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_b7e45.dir/CMakeCXXCompilerABI.cpp.']
+        ignore line: [[2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && D:\\mingw64\\bin\\c++.exe  -v -Wl -v CMakeFiles/cmTC_b7e45.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_b7e45.exe -Wl --out-implib libcmTC_b7e45.dll.a -Wl --major-image-version 0 --minor-image-version 0   && cd ."]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=D:\\mingw64\\bin\\c++.exe]
         ignore line: [COLLECT_LTO_WRAPPER=D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe]
@@ -3714,13 +4068,13 @@ events:
         ignore line: [D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/]
         ignore line: [D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/]
         ignore line: [D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_cea19.exe' '-foffload-options=-l_GCC_stdc++' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_cea19.']
-        link line: [ D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/collect2.exe -plugin D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\ojilong\\AppData\\Local\\Temp\\cc3j0rKa.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_cea19.exe D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LD:/mingw64/bin/../lib/gcc -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v CMakeFiles/cmTC_cea19.dir/CMakeCXXCompilerABI.cpp.obj --out-implib libcmTC_cea19.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_b7e45.exe' '-foffload-options=-l_GCC_stdc++' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_b7e45.']
+        link line: [ D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/collect2.exe -plugin D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\ojilong\\AppData\\Local\\Temp\\ccGpPQHG.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_b7e45.exe D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LD:/mingw64/bin/../lib/gcc -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v CMakeFiles/cmTC_b7e45.dir/CMakeCXXCompilerABI.cpp.obj --out-implib libcmTC_b7e45.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o]
           arg [D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/collect2.exe] ==> ignore
           arg [-plugin] ==> ignore
           arg [D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll] ==> ignore
           arg [-plugin-opt=D:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe] ==> ignore
-          arg [-plugin-opt=-fresolution=C:\\Users\\ojilong\\AppData\\Local\\Temp\\cc3j0rKa.res] ==> ignore
+          arg [-plugin-opt=-fresolution=C:\\Users\\ojilong\\AppData\\Local\\Temp\\ccGpPQHG.res] ==> ignore
           arg [-plugin-opt=-pass-through=-lmingw32] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
@@ -3742,7 +4096,7 @@ events:
           arg [i386pep] ==> ignore
           arg [-Bdynamic] ==> search dynamic
           arg [-o] ==> ignore
-          arg [cmTC_cea19.exe] ==> ignore
+          arg [cmTC_b7e45.exe] ==> ignore
           arg [D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o] ==> obj [D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o]
           arg [D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o] ==> obj [D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o]
           arg [-LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0] ==> dir [D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0]
@@ -3752,9 +4106,9 @@ events:
           arg [-LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib] ==> dir [D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib]
           arg [-LD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../..] ==> dir [D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../..]
           arg [-v] ==> ignore
-          arg [CMakeFiles/cmTC_cea19.dir/CMakeCXXCompilerABI.cpp.obj] ==> ignore
+          arg [CMakeFiles/cmTC_b7e45.dir/CMakeCXXCompilerABI.cpp.obj] ==> ignore
           arg [--out-implib] ==> ignore
-          arg [libcmTC_cea19.dll.a] ==> ignore
+          arg [libcmTC_b7e45.dll.a] ==> ignore
           arg [--major-image-version] ==> ignore
           arg [0] ==> ignore
           arg [--minor-image-version] ==> ignore

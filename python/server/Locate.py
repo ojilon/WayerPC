@@ -82,6 +82,25 @@ def nail_folder_location(folder_name: str) -> Path | None:
     return None
 
 
+def search_root_subfolder(rsubfodlername: str)-> Path | None:
+    rsubfolder_location = nail_folder_location(rsubfodlername)
+    if not rsubfolder_location:
+        print(f"Server: Failed to get {rsubfodlername} \n Attempting to create")
+
+        root = get_project_root()
+        if not root:
+            print(f"Server: Failed to get root path,  what was obatained {root}")
+            exit(1)
+
+        rsubfolder_location = root / rsubfodlername
+        rsubfolder_location.mkdir(parents=True, exists_ok=True)
+        if not rsubfolder_location.is_dir():
+            return None
+
+        print("Folder created: location -> {rsubfolder_location}")
+        return rsubfolder_location
+    return rsubfolder_location
+
 
 
 #NOT ACTIVELY USED
