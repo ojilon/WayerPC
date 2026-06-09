@@ -103,13 +103,13 @@ For complete setup, configuration, compilation, and troubleshooting:
 Wayer (Complete File Transfer System)
 ├── ojilon/WayerPC (This Repo)
 │   ├── 💻 Python Server + C DLL
-│   ├── Languages: Python (40%), C (32%), C++ (31%), CMake (17%)
+│   ├── Languages: Python, C, C++, CMake
 │   ├── Purpose: File server for handling requests
 │   └── Role: Backend processing & file search
 │
 └── ojilon/Wayer (Separate Repo)
     ├── 📱 Android Application
-    ├── Language: Java (100%)
+    ├── Language: Javas
     ├── Build: Gradle
     └── Purpose: Client app for file browsing & transfer
 ```
@@ -144,8 +144,8 @@ Wayer (Complete File Transfer System)
 - **`shared/`** - Contains files available for download by the phone (auto-created if missing)
 - **`received/`** - Stores files uploaded from the phone (auto-created if missing)
 - **`python/`** - Main server code and utilities
-- **`c/`** - C/C++ DLL source for fast file searching
-- **`build/`** - CMake build output directory
+- **`c/`** - C files
+- **`build/`** - CMake build output directory + DLL file
 
 ---
 
@@ -194,7 +194,6 @@ The compiled DLL will be in `build/c/`.
 | `Locate.py` | Utilities for finding files and folders, locating DLL |
 | `transfer.py` | File streaming and transfer functions |
 | `config.py` | Server configuration (HOST, PORT, etc.) |
-| `FindRoot.py` | Root directory finder utility |
 
 ---
 

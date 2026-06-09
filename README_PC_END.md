@@ -4,16 +4,17 @@ A Python-based server for transferring files between your PC and Android phone t
 
 ## Quick Start
 
-### Prerequisites
+### Requierments
 
 - Python 3.x installed on your PC.
 - MinGW64 or GCC (For C)
+-CMake 3.10+ (for building C DLL)
 
 ### Installation
 
-1. **Clone/Navigate to the pc-end branch**
+1. **Clone/Navigate to the root of the project**
    ```bash
-   git checkout pc-end
+   git checkout main
    ```
 
 ### Running the Server
