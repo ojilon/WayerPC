@@ -2,7 +2,7 @@
 
 Python-based server for transferring files between your PC and Android phone through hotspot connection.
 
-**🔗 [← Back to Wayer](https://github.com/ojilon/Wayer/blob/main/README.md)** | **📖 [Detailed Setup Guide →](https://github.com/ojilon/WayerPC/blob/main/README_PC_END.md)**
+**🔗 [← Back to Main](https://github.com/ojilon/Wayer/blob/main/README.md)** | **📖 [Detailed Setup Guide →](https://github.com/ojilon/Wayer/blob/pc-end/README_PC_END.md)**
 
 ## ⚡ Quick Start
 
@@ -25,7 +25,7 @@ Listening on <HOST>:<PORT>
 ## 📂 Project Structure
 
 ```
-WayerPC/
+pc-end/
 ├── python/
 │   ├── server/              # Main server code
 │   │   ├── app3.py          # Entry point
@@ -60,6 +60,6 @@ Files upload to the `received/` folder automatically.
 For complete setup, configuration, and troubleshooting:
 👉 **[README_PC_END.md](https://github.com/ojilon/WayerPC/blob/main/README_PC_END.md)**
 
-## 🔗 Related Repository
+## 🔗 Related Branch
 
-- **Android Client**: [Wayer - android-end branch](https://github.com/ojilon/Wayer/tree/android-end)
+- **Android Client**: [android-end branch](https://github.com/ojilon/Wayer/tree/android-end)

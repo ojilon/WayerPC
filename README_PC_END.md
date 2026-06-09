@@ -11,10 +11,9 @@ A Python-based server for transferring files between your PC and Android phone t
 
 ### Installation
 
-1. **Clone the repository**
+1. **Clone/Navigate to the pc-end branch**
    ```bash
-   git clone https://github.com/ojilon/WayerPC.git
-   cd WayerPC
+   git checkout pc-end
    ```
 
 ### Running the Server
@@ -34,7 +33,7 @@ Listening on <HOST>:<PORT>
 ## Project Structure
 
 ```
-WayerPC/
+pc-end/
 ├── python/
 │   ├── server/
 │   │   ├── app3.py              # Main entry point - start the server here
