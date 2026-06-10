@@ -100,13 +100,14 @@ def handle_client(conn):
             save_dir = search_root_subfolder("received")
             if not save_dir.is_dir():
                 print(f"Failed to create the folder: {save_dir} \n do it yourself")
+                conn.send(b"Failed to create the folder: 'shared' \n do it yourself")
                 exit(1)
 
                                             
             filepath = os.path.join(save_dir, filename)
             
             # Tell the phone the PC is ready to receive bytes
-            conn.send(b"READY")
+            conn.send(b"READY") #"/send" works too
             
             # Start receiving binary stream
             print(f"Receiving {filename} ({filesize} bytes)...")
@@ -127,7 +128,7 @@ def handle_client(conn):
                 print("Upload interrupted: connection lost prematurely.")
                 
         else:
-            conn.send(b"ERROR unknown_protocol_command")                     
+            conn.send(b"ERROR unknown_protocol_command.")                     
 
     except Exception as e:
         print(f"Server Exception: {e}")

@@ -102,7 +102,6 @@ def search_root_subfolder(rsubfodlername: str)-> Path | None:
     return rsubfolder_location
 
 
-
 #NOT ACTIVELY USED
 def traverse_project(root_path: str):
 
@@ -218,8 +217,10 @@ def get_file_metadata(file_path: str) -> dict:
 
 
 if __name__ == '__main__':
-    file_path = nail_folder_location("received")
-    if file_path:
-        print(f"The path -> {file_path}")
+    start_path = get_project_root()
+    file_list = filter_files_by_extension(start_path, "json")
+    stringed = [str(x) for x in file_list]
+    if stringed:
+        print(f"files -> {stringed}")
     else:
-        print("File path not received......")
+        print("File list not received......")

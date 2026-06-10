@@ -8,7 +8,7 @@
 #define STATUS_NOT_FOUND -2
 
 int search_file(const char*  location_of_shared, const char* filename,char*project_root, char* out_path, size_t max_len) {
-    const char* folder = "shared"; 
+     
     DIR* dir = opendir(location_of_shared);
 
     // Case: directory itself couldn't be opened
