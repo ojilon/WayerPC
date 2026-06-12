@@ -1,5 +1,10 @@
 # 💻 Wayer - PC Server
 
+```
+NOTE, PROJECT ACTIVELY BEING DEVELOPED, CHANGES MAY NOT BE REFLECTED IN THE README.md 
+BUT THE BASIC USAGE MOSTLY REMAINS THE SAME
+```
+
 Python-based server for transferring files between your PC and Android phone through hotspot connection.
 
 **Wayer** is a two-component project:
