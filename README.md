@@ -1,7 +1,7 @@
 # 💻 Wayer - PC Server
 
 ```
-NOTE, PROJECT ACTIVELY BEING DEVELOPED, CHANGES MAY NOT BE REFLECTED IN THE README.md 
+NOTE, PROJECT ACTIVELY BEING DEVELOPED, CHANGES MAY NOT BE REFLECTED IMMEDIATELY IN THE README.md 
 BUT THE BASIC USAGE MOSTLY REMAINS THE SAME
 ```
 
@@ -63,6 +63,8 @@ WayerPC/
 │   │   ├── Locate.py
 │   │   ├── transfer.py
 │   │   └── config.py
+|   |   |__ ItemImporter.py
+|   |  
 │   └── Filesmanager/        # File utilities
 │       └── FindRoot.py
 ├── c/                       # C DLL source for file search

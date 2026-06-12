@@ -42,6 +42,8 @@ pc-end/
 │   │   ├── Locate.py            # File location utilities
 │   │   ├── transfer.py          # File transfer logic
 │   │   └── config.py            # Configuration settings
+|   |   |__ ItemImporter.py      #manual instruct copying a file to 'shared' folder
+|   |   
 │   └── Filesmanager/
 │       └── FindRoot.py          # Root directory finder
 ├── c/                           # C code for file search functionality
@@ -64,12 +66,20 @@ pc-end/
 - Files are saved to the `received/` folder
 - The server streams the file data and saves it to disk
 
+### 3. Copy file into project
+-Navigate to project in your cli
+- start the script to copy file
+- `python python/server/ItemImporter.py`
+- Write the target path and the filename to search for.
+- For multiple results, you will be prompted to choose the path to the intended file
+
 ## Key Components
 
 | File | Purpose |
 |------|----------|
 | `app3.py` | Entry point - starts the server |
 | `socket_server3.py` | Core server logic handling `/ask` and `/upload` commands |
+| `ItemImporter.py` | Helper to copy from from outside into   `shared` folder |
 | `Locate.py` | Utilities for finding files and folders, locating DLL |
 | `transfer.py` | File streaming and transfer functions |
 | `config.py` | Server configuration (HOST, PORT, etc.) |
