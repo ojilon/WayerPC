@@ -1,5 +1,5 @@
 from pathlib import Path
-from Locate import nail_folder_location
+from .Locate import nail_folder_location
 import shutil
 import difflib
 
