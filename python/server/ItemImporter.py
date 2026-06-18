@@ -1,5 +1,5 @@
 from pathlib import Path
-from .Locate import nail_folder_location, traverse_folder_for_paths, get_file_metadata
+from .Locate import nail_folder_location
 import shutil
 import difflib
 
@@ -120,19 +120,5 @@ def pull_file() -> None:
     if shared_folder:
         copy_file(found_path[0], shared_folder)
 
-
-"""
-Get data on files on 'shared' and 'received' subfolders
-"""
-def get_file_info():
-    folder_name = "shared"
-    folder_location = nail_folder_location(folder_name)
-
-    path_list = traverse_folder_for_paths(folder_location)
-
-    for file in path_list:
-        print(get_file_metadata(file))
-
-
 if __name__ == "__main__":
-    get_file_info()
+    pull_file()

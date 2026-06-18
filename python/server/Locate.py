@@ -140,7 +140,17 @@ def get_file_metadata(file_path: str) -> dict | None:
         "date_modified": formatted_date    # C: Formatted local timestamp string
     }
 
+"""
+Get data on files on 'shared' and 'received' subfolders
+"""
+def get_file_info():
+    folder_name = "shared"
+    folder_location = nail_folder_location(folder_name)
 
+    path_list = traverse_folder_for_paths(folder_location)
+
+    for file in path_list:
+        print(get_file_metadata(file))
 
 
 
@@ -244,10 +254,4 @@ def copy_path(source_path: str, destination_path: str):
 
 
 if __name__ == '__main__':
-    start_path = get_project_root()
-    file_list = filter_files_by_extension(start_path, "json")
-    stringed = [str(x) for x in file_list]
-    if stringed:
-        print(f"files -> {stringed}")
-    else:
-        print("File list not received......")
+    get_file_info()
