@@ -4,8 +4,8 @@ import os
 import shutil
 # Import our background server logic and state variables
 from python.server.server4 import start_server, server_stats, stats_lock
-from python.server.ItemImporter import pull_file 
-
+from python.server.ItemImporter import pull_file
+from python.server.Locate import get_file_info
 
 
 def monitorboard():
@@ -34,12 +34,15 @@ def monitorboard():
     print(f" Total Inbound:    {received / (1024 * 1024):.2f} MB")
     print("==========================================")
 
+
 def main():
     print("WayerPC Init!...")
 
     # 1. Start the server socket listener in a BACKGROUND thread
-    server_worker = threading.Thread(target=start_server, name="SocketServerThread")
-    server_worker.daemon = True # This ensures when main.py closes, the server thread closes too
+    server_worker = threading.Thread(
+        target=start_server, name="SocketServerThread")
+    # This ensures when main.py closes, the server thread closes too
+    server_worker.daemon = True
     server_worker.start()
 
     # Give the server thread a brief moment to boot up and bind to its port
@@ -47,15 +50,15 @@ def main():
 
     # 2. Main Interactive Loop (The Frontend CLI)
     while True:
-        print("\n[Main Menu] Options: \n(1) Check Status \n(2) Import File \n(3) Exit")
-        
+        print("\n[Main Menu] Options: \n(1) Check Status \n(2) Import File \n (3) Get file metadata for received files\n (4) Get file metadata for shared files\n (5) Exit")
+
         choice = input("Enter choice: ").strip()
 
         if choice == "1":
             monitorboard()
 
         elif choice == "2":
-            # Running independent file copier routine without freezing the socket server            
+            # Running independent file copier routine without freezing the socket server
             # Running in another separate thread so even the CLI menu doesn't freeze!
             task_thread = threading.Thread(
                 target=pull_file(),
@@ -64,10 +67,17 @@ def main():
             task_thread.start()
 
         elif choice == "3":
+            get_file_info("received")
+
+        elif choice == "4":
+            get_file_info("shared")
+
+        elif choice == "5":
             print("Shutting down....")
             break
         else:
             print("Unknown selection.")
+
 
 if __name__ == "__main__":
     main()
