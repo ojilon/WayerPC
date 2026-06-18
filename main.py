@@ -50,7 +50,7 @@ def main():
 
     # 2. Main Interactive Loop (The Frontend CLI)
     while True:
-        print("\n[Main Menu] Options: \n(1) Check Status \n(2) Import File \n (3) Get file metadata for received files\n (4) Get file metadata for shared files\n (5) Exit")
+        print("\n[Main Menu] Options: \n(1) Check Status \n(2) Import File \n(3) Get file metadata for received files \n(4) Get file metadata for shared files \n(5) Exit")
 
         choice = input("Enter choice: ").strip()
 
