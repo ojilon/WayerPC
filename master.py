@@ -20,7 +20,7 @@ class WayerPCApp(ctk.CTk):
         super().__init__()
 
         # --- Window Setup ---
-        self.title("WayerPC - Server Control Panel")
+        self.title("WayerPC")
         self.geometry("850x550")
         self.minsize(700, 450)
 
@@ -49,7 +49,7 @@ class WayerPCApp(ctk.CTk):
         self.sidebar.grid(row=0, column=0, sticky="nsew", padx=0, pady=0)
         
         # Title Label
-        self.logo_label = ctk.CTkLabel(self.sidebar, text="WayerPC Control", font=ctk.CTkFont(size=20, weight="bold"))
+        self.logo_label = ctk.CTkLabel(self.sidebar, text="Quick Action", font=ctk.CTkFont(size=20, weight="bold"))
         self.logo_label.grid(row=0, column=0, padx=20, pady=30)
 
         # Action Buttons
@@ -161,9 +161,11 @@ class WayerPCApp(ctk.CTk):
     def handle_import_file(self):
         """Spawns asynchronous task routine worker ensuring your layout buttons never drop frames."""
         self.log_message("Triggering explicit pull_file() import worker hook...")
+
+        dialog = ctk.CTkInputDialog(text="Enter path and file name, but seperate: ", title="Import file")
+        entry = dialog.get_input()
         
-        # Notice we pass 'pull_file' as a functional pointer (WITHOUT parentheses ()).
-        task_thread = threading.Thread(target=pull_file, daemon=True)
+        task_thread = threading.Thread(target=pull_file, args=(entry, self.log_message), daemon=True)
         task_thread.start()
 
     def fetch_metadata(self, folder_type):

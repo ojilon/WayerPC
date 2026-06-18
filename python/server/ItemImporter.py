@@ -60,7 +60,7 @@ def copy_file(source_path: str, destination_path: str):
         print(f"Copied file to: {dst}")
 
 
-def pull_file_path(basepath: str, targetfile: str) -> list[str] | None:
+def pull_file_path(basepath: str, targetfile: str) -> list | None:
     starting_point = Path(basepath)
     if not starting_point.is_dir():
         print(f"The path {starting_point} is not a valid one")
@@ -80,17 +80,17 @@ def pull_file_path(basepath: str, targetfile: str) -> list[str] | None:
     return matching_list
 
 
-def pull_file() -> None:
-    entry = input("Enter folder path and file name seperately \n >")
+def pull_file(entry, log_callback=print) -> None:
+    
     parts = entry.split(" ", 2)
 
     if parts.__len__() < 2:
-        print("Usage: path <space> targetfile")
+        log_callback("Usage: path <space> targetfile")
         exit(1)
 
     basepath = parts[0]
     if not Path(basepath).is_dir():
-        print("Usage: path <space> targetfile\n Start with the path.....")
+        log_callback("Usage: path <space> targetfile\n Start with the path.....")
         return None
 
     targetfile = parts[1]
@@ -98,12 +98,12 @@ def pull_file() -> None:
     found_path = pull_file_path(basepath, targetfile)
 
     if found_path is None:
-        print("File not found")
+        log_callback(f"File not found\n Input got {entry}")
         return None
 
     if found_path.__len__() > 1:
-        print("Found more than one \n Choose which to copy ")
-        print(found_path)
+        log_callback("Found more than one \n Choose which to copy ")
+        log_callback(found_path)
 
         for pos, f in enumerate(found_path):
             print(f"{pos}: {f}")
