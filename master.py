@@ -8,8 +8,9 @@ import customtkinter as ctk
 
 # Import backend logic and thread-safe variables
 from python.server.server4 import start_server, server_stats, stats_lock
-from python.server.ItemImporter import pull_file
 from python.server.Locate import get_file_info
+
+from import_panel import FileImportManager
 
 # Configure CustomTkinter appearance
 ctk.set_appearance_mode("Dark")      # Modes: "System", "Dark", "Light"
@@ -38,6 +39,9 @@ class WayerPCApp(ctk.CTk):
         self.log_message("Initializing background networking thread...")
         self.server_worker = threading.Thread(target=start_server, name="SocketServerThread", daemon=True)
         self.server_worker.start()
+
+        #initialize the import manager module
+        self.import_manager = FileImportManager(self, self.log_message)
 
         # --- Start Dashboard Loop ---
         # Schedule the UI to poll the thread-safe stats dictionary every 1000ms (1 second)
@@ -159,14 +163,8 @@ class WayerPCApp(ctk.CTk):
         self.after(1000, self.update_dashboard_metrics)
 
     def handle_import_file(self):
-        """Spawns asynchronous task routine worker ensuring your layout buttons never drop frames."""
-        self.log_message("Triggering explicit pull_file() import worker hook...")
-
-        dialog = ctk.CTkInputDialog(text="Enter path and file name, but seperate: ", title="Import file")
-        entry = dialog.get_input()
-        
-        task_thread = threading.Thread(target=pull_file, args=(entry, self.log_message), daemon=True)
-        task_thread.start()
+        """triggered on clicking 'importfile'. """
+        self.import_manager.start_import_workflow
 
     def fetch_metadata(self, folder_type):
         """Requests file metadata descriptions natively."""

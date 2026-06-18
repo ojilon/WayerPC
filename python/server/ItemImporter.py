@@ -60,11 +60,13 @@ def copy_file(source_path: str, destination_path: str):
         print(f"Copied file to: {dst}")
 
 
-def pull_file_path(basepath: str, targetfile: str) -> list | None:
+INVALIDPATH = 0
+NOFILE = 1
+def pull_file_path(basepath: str, targetfile: str) -> list | int:
     starting_point = Path(basepath)
     if not starting_point.is_dir():
         print(f"The path {starting_point} is not a valid one")
-        return None
+        return INVALIDPATH
 
     print("Attempting searching for file")
 
@@ -75,7 +77,7 @@ def pull_file_path(basepath: str, targetfile: str) -> list | None:
     ]
 
     if matching_list.__len__() < 1:
-        return None
+        return NOFILE
 
     return matching_list
 
@@ -97,7 +99,10 @@ def pull_file(entry, log_callback=print) -> None:
 
     found_path = pull_file_path(basepath, targetfile)
 
-    if found_path is None:
+    if found_path == 0:
+        log_callback(f"Invalid path given\n The path: {basepath}")
+
+    if found_path == 2:
         log_callback(f"File not found\n Input got {entry}")
         return None
 
