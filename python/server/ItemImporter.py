@@ -1,7 +1,8 @@
 from pathlib import Path
-from .Locate import nail_folder_location
 import shutil
 import difflib
+import errno
+import os
 
 
 def pull_close_files(basepath: str, targetfile: str, cutoff: float = 0.6) -> list[Path]:
@@ -47,17 +48,51 @@ def pull_substring_files(basepath: str, targetfile: str) -> list[Path]:
 
 
 # ACTIVELY USED
-def copy_file(source_path: str, destination_path: str):
-    """Copies a file or an entire folder structure to a new destination."""
+def copy_file(source_path: str, destination_path: str) -> int:
+    """Copies a file to a new destination, returning a specific error code.
+    
+    Returns:
+        0: Success
+        1: Source not found (ENOENT)
+        2: Permission denied (EACCES)
+        3: Source is a directory, expected file (EISDIR)
+        4: Disk full (ENOSPC)
+        5: Generic I/O error (EIO)
+    """
     src = Path(source_path)
     dst = Path(destination_path)
 
-    if src.is_file():
+    # LOW-LEVEL CHECK: Verify source existence before allocating buffers
+    if not src.exists():
+        return 1
+
+    # C / ZIG ALIGNMENT: Ensure we are handling a file, not a directory
+    if src.is_dir():
+        return 3
+
+    try:
+        # OS SYSTEM CALL: Create destination parent directories
         dst.parent.mkdir(parents=True, exist_ok=True)
+        
         # C UNDER THE HOOD: Standard file copy reads blocks of data into
         # memory buffers and writes them out using C 'read()' and 'write()' systems.
-        shutil.copy2(src, dst)  # copy2 preserves original file metadata
-        print(f"Copied file to: {dst}")
+        shutil.copy2(src, dst)  # Preserves metadata (utime, permissions)
+        return 0
+
+    except PermissionError:
+        # EACCES: Triggered by restricted file permissions or locked handles
+        return 2
+        
+    except IsADirectoryError:
+        # EISDIR: Triggered if destination path conflicts with an existing folder
+        return 3
+        
+    except OSError as e:
+        # ENOSPC: Check system error numbers for disk fullness
+        if e.errno == errno.ENOSPC:
+            return 4
+        # EIO: Fallback for unhandled low-level hardware or filesystem errors
+        return 5
 
 
 INVALIDPATH = 0
@@ -81,49 +116,5 @@ def pull_file_path(basepath: str, targetfile: str) -> list | int:
 
     return matching_list
 
-
-def pull_file(entry, log_callback=print) -> None:
-    
-    parts = entry.split(" ", 2)
-
-    if parts.__len__() < 2:
-        log_callback("Usage: path <space> targetfile")
-        exit(1)
-
-    basepath = parts[0]
-    if not Path(basepath).is_dir():
-        log_callback("Usage: path <space> targetfile\n Start with the path.....")
-        return None
-
-    targetfile = parts[1]
-
-    found_path = pull_file_path(basepath, targetfile)
-
-    if found_path == 0:
-        log_callback(f"Invalid path given\n The path: {basepath}")
-
-    if found_path == 2:
-        log_callback(f"File not found\n Input got {entry}")
-        return None
-
-    if found_path.__len__() > 1:
-        log_callback("Found more than one \n Choose which to copy ")
-        log_callback(found_path)
-
-        for pos, f in enumerate(found_path):
-            print(f"{pos}: {f}")
-
-        choice = int(input())
-        if choice < found_path.__len__():
-            shared_folder = nail_folder_location("shared")
-            if shared_folder:
-                copy_file(found_path[choice], shared_folder)
-
-        return None
-
-    shared_folder = nail_folder_location("shared")
-    if shared_folder:
-        copy_file(found_path[0], shared_folder)
-
 if __name__ == "__main__":
-    pull_file()
+    pass

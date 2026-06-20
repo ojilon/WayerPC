@@ -18,13 +18,14 @@ class FileImportManager:
 
     def start_import_workflow(self):
         """Step 1: Get the initial search query from the user via GUI."""
-        self.log("Opening import wizard...")
+        self.log("Opening The import helper........")
         
         dialog = ctk.CTkInputDialog(text="Enter format: 'basepath targetfile'\nExample: C:/Users/Docs file.txt", title="Import File")
         entry_string = dialog.get_input()
         
         if not entry_string:
-            self.log("Import operation canceled.")
+            self.log("Import Helper: Import operation canceled.")
+            self.log(f"Check what was entered -> {entry_string}")
             return
 
         # Start the search process in a background thread to prevent GUI freezing
@@ -42,6 +43,7 @@ class FileImportManager:
         
         if not Path(basepath).is_dir():
             self.log(f"Error: Directory does not exist -> {basepath}")
+            self.log("Use the format: path <space> targetfile")
             return
 
         self.log(f"Searching for '{targetfile}' inside '{basepath}'...")
@@ -50,11 +52,11 @@ class FileImportManager:
         # Send the results back to the GUI thread for presentation
         if found_paths == 0:
             self.log(f"Invalid path configuration for basepath: {basepath}")
-        elif found_paths == 2 or not found_paths:
+        elif found_paths == 1 or not found_paths:
             self.log(f"File not found matching: {targetfile}")
         elif len(found_paths) == 1:
             # Exactly one file found! Proceed to copy in a background task
-            self.log(f"Match found! Processing single copy...\n {found_paths}\n")
+            self.log(f"Found the file...\n {found_paths}\n")
             self._trigger_background_copy(found_paths[0])
         else:
             # Multiple files found! Direct CustomTkinter to open the selection screen
@@ -104,14 +106,39 @@ class FileImportManager:
     def _trigger_background_copy(self, file_path):
         """Copies the selected file inside a worker thread so the UI stays smooth."""
         def copy_worker():
-            shared_folder = nail_folder_location("shared")
+            status, shared_folder = nail_folder_location("shared")
             if shared_folder:
                 try:
-                    copy_file(file_path, shared_folder)
-                    self.log(f"Successfully imported: {Path(file_path).name} -> Shared Folder")
+                    status = copy_file(file_path, shared_folder)
+
+                    if status == 1:
+                        self.log(f"The file {file_path}, doesn't exist")
+                        return
+                    elif status == 3:
+                        self.log(f"The item {file_path} is a folder, not a file....\n or path is conflicting with existing folder")
+                        return
+                    elif status == 2:
+                        self.log(f"Accessing file {file_path} denied......")
+                        return
+                    elif status == 4:
+                        self.log("Disk is full...., can't copy the file")
+                        return
+                    elif status == 5:
+                        self.log("Unknown file filesystem error occurred.......")
+
+                    self.log(f"File {Path(file_path).name}, copied to: {shared_folder}")
+
                 except Exception as e:
                     self.log(f"Write Failure: Could not copy file. {e}")
-            else:
-                self.log("Error: Target 'shared' subfolder reference could not be resolved.")
+
+            elif status == 1:
+                self.log("Error: Failed to obtain the location of the application")
+                self.log(f"Here is what we got instead: {shared_folder}")
+                return
+
+            elif status == 2:
+                self.log("Failed to get the location to the Directory 'shared'")
+                self.log(f"What was obtained instead {shared_folder} \n Please check if the folder 'shared' exists")
+                return
 
         threading.Thread(target=copy_worker, daemon=True).start()

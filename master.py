@@ -36,8 +36,8 @@ class WayerPCApp(ctk.CTk):
         self.create_main_dashboard()
 
         # --- Initialize Backend Worker ---
-        self.log_message("Initializing background networking thread...")
-        self.server_worker = threading.Thread(target=start_server, name="SocketServerThread", daemon=True)
+        self.log_message("Starting the server in the background")
+        self.server_worker = threading.Thread(target=start_server, args=(self.log_message,), name="SocketServerThread", daemon=True)
         self.server_worker.start()
 
         #initialize the import manager module
@@ -164,7 +164,7 @@ class WayerPCApp(ctk.CTk):
 
     def handle_import_file(self):
         """triggered on clicking 'importfile'. """
-        self.import_manager.start_import_workflow
+        self.import_manager.start_import_workflow()
 
     def fetch_metadata(self, folder_type):
         """Requests file metadata descriptions natively."""

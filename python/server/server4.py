@@ -20,34 +20,40 @@ server_stats = {
 
 
 
-def handle_client(conn, addr):
+def handle_client(conn, addr, logmessage=print):
     """Handles an individual client connection inside its own dedicated thread."""
     # Increment active connections safely using a Mutex (Lock)
     with stats_lock:
         server_stats["active_connections"] += 1
         server_stats["total_connections_handled"] += 1
 
-    print(f"\n[THREAD-{threading.get_ident()}] Handling connection from {addr}")
+    logmessage(f"\n[THREAD-{threading.get_ident()}] Handling connection from {addr}")
 
     try:
         data = conn.recv(1024).decode('utf-8').strip()
         if not data:
             return
 
-        Execute_server_command(data, conn, server_stats, stats_lock)
+        status, response_string = Execute_server_command(data, conn, server_stats, stats_lock)
+        if status == 0:
+            logmessage(f"Sent file: {response_string}")
+        elif status == 1:
+            logmessage(f"Upload of {response_string} interrupted")
+        elif status == 2:
+            logmessage(f"[SERVER] Failed to get location of project \n what was got: {response_string}")
         
 
     except Exception as e:
-        print(f"Server Thread Exception for {addr}: {e}")
+        logmessage(f"Server Thread Exception for {addr}: {e}")
     finally:
         conn.close()
         # Decrement active connections safely when the thread dies
         with stats_lock:
             server_stats["active_connections"] -= 1
-        print(f"[THREAD-{threading.get_ident()}] Connection with {addr} closed.")
+        logmessage(f"[THREAD-{threading.get_ident()}] Connection with {addr} closed.")
 
 
-def start_server():
+def start_server(logmessage=print):
     """Main loop accepting TCP connections. Runs inside a background thread."""
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -55,15 +61,16 @@ def start_server():
     try:
         server.bind((HOST, PORT))
         server.listen(5)
+
     except Exception as e:
-        print(f"Failed to bind server to {HOST}:{PORT}: {e}")
+        logmessage(f"[SERVER] Failed to bind server to {HOST}:{PORT}: {e}")
         return
 
     with stats_lock:
         server_stats["is_running"] = True
         server_stats["start_time"] = time.time()
 
-    print(f"[SERVER STARTED] Listening on {HOST}:{PORT}...")
+    logmessage(f"[SERVER] Listening on {HOST}:{PORT}...")
 
     try:
         while True:
@@ -72,13 +79,13 @@ def start_server():
             # Instead of processing blocking code inline, spin up a NEW thread for this client
             client_thread = threading.Thread(
                 target=handle_client,
-                args=(conn, addr),
+                args=(conn, addr, logmessage),
                 daemon=True  # Dies automatically if the main program exits
             )
             client_thread.start()
 
     except Exception as e:
-        print(f"Server main-loop encountered error: {e}")
+        logmessage(f"[SERVER] Server main-loop encountered error: {e}")
     finally:
         with stats_lock:
             server_stats["is_running"] = False

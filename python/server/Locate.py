@@ -65,35 +65,30 @@ def nail_file_location(reference_name: str) -> Path | None:
     return None
 
 # search for a folder and return the path
-
-
-def nail_folder_location(folder_name: str) -> Path | None:
+def nail_folder_location(folder_name: str) -> tuple(int, Path):
     root_path = get_project_root()
 
     if not root_path.is_dir():
-        # print(f"Path project root : {root_path} is invalid......")
-        return None
+        return 1, root_path
 
-    # print(f"Locating the folder : {folder_name}")
-
-    # Python: Still uses rglob, but we will filter specifically for directories
+    # Python: Uses rglob,to filter specifically for directories
     for item in root_path.rglob(folder_name):
         # Py: Ensures the matched item is actually a directory/folder
         # C: In your readdir loop, check if 'entry->d_type == DT_DIR'.
         if item.is_dir():
-            return item  # Return the Path object to the folder
+            return 0, item  # Return the Path object to the folder
 
-    return None
+    return 2, root_path
 
 
 def search_root_subfolder(rsubfodlername: str) -> Path | None:
-    rsubfolder_location = nail_folder_location(rsubfodlername)
+    status, rsubfolder_location = nail_folder_location(rsubfodlername)
     if not rsubfolder_location:
-        print(f"Server: Failed to get {rsubfodlername} \n Attempting to create")
+        #print(f"Server: Failed to get {rsubfodlername} \n Attempting to create")
 
         root = get_project_root()
         if not root:
-            print(f"Server: Failed to get root path,  what was obatained {root}")
+            #print(f"Server: Failed to get root path,  what was obatained {root}")
             exit(1)
 
         rsubfolder_location = root / rsubfodlername
@@ -101,7 +96,7 @@ def search_root_subfolder(rsubfodlername: str) -> Path | None:
         if not rsubfolder_location.is_dir():
             return None
 
-        print("Folder created: location -> {rsubfolder_location}")
+        #print("Folder created: location -> {rsubfolder_location}")
         return rsubfolder_location
     return rsubfolder_location
 
@@ -109,8 +104,6 @@ def search_root_subfolder(rsubfodlername: str) -> Path | None:
 """
 get a list of paths, for all items under a folder
 """
-
-
 def traverse_folder_for_paths(folder_location: str) -> list | None:
     if not folder_location.is_dir():
         return None

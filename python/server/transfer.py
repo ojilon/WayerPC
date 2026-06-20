@@ -9,4 +9,4 @@ def send_file(conn, filepath):
 
             conn.sendall(data)
 
-    print("File sent.")
+    #print("File sent.")

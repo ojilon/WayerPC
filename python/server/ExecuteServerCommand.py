@@ -4,9 +4,14 @@ from .transfer import send_file
 import os
 import threading
 
+"""
+HANDLE THE ERROR MESSAGES FOR THE intiatefilesearch to route to the GUI
+"""
+
+
 location_to_shared = search_root_subfolder("shared")
 if not location_to_shared.is_dir():
-    print(f"Failed to create the folder: {location_to_shared}")
+    #print(f"Failed to create the folder: {location_to_shared}")
     exit(1)
 
 def Initiate_file_search(filename: str) -> tuple[int, ctypes.Array[ctypes.c_char]] | None:
@@ -32,20 +37,19 @@ def Initiate_file_search(filename: str) -> tuple[int, ctypes.Array[ctypes.c_char
     return result, path_buffer
 
 
-def Execute_server_command(data: str, conn, server_stats, stats_lock):
+def Execute_server_command(data: str, conn, server_stats, stats_lock) -> tuple(int, str):
 
     #sending to client
     if data.startswith("/ask"):
         parts = data.split(" ", 1)
         if len(parts) < 2:
             conn.send(b"ERROR invalid_command")
-            return
+            return 1, parts
 
         filename = parts[1].strip()
         project_root = get_project_root()
         if not project_root:
-            print("server4.py : Failed to get project root.")
-            return
+            return 2, project_root
 
         result, path_buffer = Initiate_file_search(filename)
 
@@ -61,6 +65,8 @@ def Execute_server_command(data: str, conn, server_stats, stats_lock):
 
                 with stats_lock:
                     server_stats["bytes_sent"] += filesize
+
+                return 0, filename
 
             except FileNotFoundError:
                 conn.send(b"ERROR file_access_denied")
@@ -104,7 +110,7 @@ def Execute_server_command(data: str, conn, server_stats, stats_lock):
             with stats_lock:
                 server_stats["bytes_received"] += filesize
         else:
-            print(f"Upload of {filename} interrupted.")
+            return 1, filename
 
     else:
         conn.send(b"ERROR unknown_protocol_command.")
