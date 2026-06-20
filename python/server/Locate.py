@@ -136,16 +136,17 @@ def get_file_metadata(file_path: str) -> dict | None:
 """
 Get data on files on 'shared' and 'received' subfolders
 """
+#FIX THE ERROR HANDLING OF THIS FUNCTION
 def get_file_info(folder_name: str):
     if not Path(folder_name).is_dir():
         return
 
-    folder_location = nail_folder_location(folder_name)
+    status, folder_location = nail_folder_location(folder_name)
 
     path_list = traverse_folder_for_paths(folder_location)
 
-    for file in path_list:
-        print(get_file_metadata(file))
+    metadata_list = [get_file_metadata(d) for d in path_list]
+    return metadata_list
 
 
 

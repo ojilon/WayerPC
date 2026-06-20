@@ -170,11 +170,27 @@ class WayerPCApp(ctk.CTk):
         """Requests file metadata descriptions natively."""
         self.log_message(f"Querying file metadata profiles inside '{folder_type}' context directory...")
         try:
-            # Reuses your functional backend script component inside standard pipelines safely
             info_data = get_file_info(folder_type)
-            self.log_message(f"[{folder_type.upper()}] Details mapped successfully: {info_data}")
+            
+            # Build a clean, readable string line by line
+            log_lines = [f"[{folder_type.upper()}] Details mapped:"]
+            
+            for file in info_data:
+                # Convert bytes to MB for better readability
+                size_mb = file['size_bytes'] / (1024 * 1024)
+                
+                item_text = (
+                    f"  - {file['file_name']} ({file['file_type']})\n"
+                    f"    Size: {size_mb:.2f} MB | Modified: {file['date_modified']}"
+                )
+                log_lines.append(item_text)
+            
+            # Combine everything with newlines and send to your log_message function
+            self.log_message("\n".join(log_lines))
+
         except Exception as e:
             self.log_message(f"Metadata read error: {e}")
+
 
 if __name__ == "__main__":
     # Standard application loop runner initialization
