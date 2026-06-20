@@ -35,10 +35,12 @@ def handle_client(conn, addr, logmessage=print):
             return
 
         response = Execute_server_command(data, conn, server_stats, stats_lock)
-        status, response_string = response
+        
         if response is None:
             logmessage(f"[SERVER ERROR] {data} causing unpredictable behavior....")
             return
+
+        status, response_string = response
 
         if status == 0:
             logmessage(f"Sent file: {response_string}")

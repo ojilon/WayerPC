@@ -15,10 +15,11 @@ if not location_to_shared.is_dir():
     exit(1)
 
 def Initiate_file_search(filename: str) -> tuple[int, ctypes.Array[ctypes.c_char]] | None:
-    location_to_dll = nail_file_location("libfilesearch.dll")
+    location_to_dll = nail_file_location("filesearch.dll")
     if not location_to_dll:
         return None
-
+    
+    location_to_dll = str(location_to_dll)
     dll = ctypes.CDLL(location_to_dll)
     dll.search_file.argtypes = [ctypes.c_char_p, ctypes.c_char_p,
         ctypes.c_char_p, ctypes.c_char_p, ctypes.c_size_t]
