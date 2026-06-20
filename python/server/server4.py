@@ -34,9 +34,16 @@ def handle_client(conn, addr, logmessage=print):
         if not data:
             return
 
-        status, response_string = Execute_server_command(data, conn, server_stats, stats_lock)
+        response = Execute_server_command(data, conn, server_stats, stats_lock)
+        status, response_string = response
+        if response is None:
+            logmessage(f"[SERVER ERROR] {data} causing unpredictable behavior....")
+            return
+
         if status == 0:
             logmessage(f"Sent file: {response_string}")
+        elif status == -1:
+            logmessage(f"received file: {response_string}")
         elif status == 1:
             logmessage(f"Upload of {response_string} interrupted")
         elif status == 2:
@@ -44,7 +51,7 @@ def handle_client(conn, addr, logmessage=print):
         
 
     except Exception as e:
-        logmessage(f"Server Thread Exception for {addr}: {e}")
+        logmessage(f"Server Thread Exception for {addr}: {e}...")
     finally:
         conn.close()
         # Decrement active connections safely when the thread dies

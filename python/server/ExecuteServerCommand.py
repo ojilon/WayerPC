@@ -83,7 +83,7 @@ def Execute_server_command(data: str, conn, server_stats, stats_lock) -> tuple(i
         parts = data.split(" ")
         if len(parts) < 3:
             conn.send(b"ERROR invalid_upload_command")
-            return
+            return 1, parts
 
         filename = parts[2].strip()
         filesize = int(parts[1].strip())
@@ -91,7 +91,7 @@ def Execute_server_command(data: str, conn, server_stats, stats_lock) -> tuple(i
         save_dir = search_root_subfolder("received")
         if not save_dir.is_dir():
             conn.send(b"ERROR: Failed to obtain directory this side, to store the file to receive")
-            return
+            return 2, save_dir
 
         filepath = os.path.join(save_dir, filename)
         conn.send(b"READY")
@@ -109,8 +109,10 @@ def Execute_server_command(data: str, conn, server_stats, stats_lock) -> tuple(i
             conn.send(b"DONE")
             with stats_lock:
                 server_stats["bytes_received"] += filesize
+            return -1, filename
         else:
             return 1, filename
 
     else:
         conn.send(b"ERROR unknown_protocol_command.")
+        return 1
