@@ -8,3 +8,6 @@ shared/
 build/compile_commands.json
 compile_commands.json
 compile_flags.txt
+features_to_add.md
+map.py
+mapping.txt
