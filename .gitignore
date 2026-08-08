@@ -37,3 +37,6 @@ release/
 
 *.zig-cache/
 zig-out/
+.clangd
+python/__pycache__/
+python/server/__pycache__/
