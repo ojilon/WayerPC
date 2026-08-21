@@ -1,0 +1,30 @@
+cmake_minimum_required(VERSION 3.25)
+project(MyGreenfieldProject LANGUAGES CXX)
+
+# Tell CMake to look inside the 'cmake' folder for modules
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+
+# Pull in your strict compiler flags template
+include(CompilerFlags)
+
+# Build the file search DLL (C++23 implementation)
+add_library(filesearch SHARED
+    backend/filesearch/find_exact.cpp
+)
+
+target_include_directories(filesearch PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/filesearch)
+
+# Apply compiler flags to the filesearch library
+target_link_libraries(filesearch PRIVATE project_warnings)
+
+# Define the C-compatible export symbol for the search_file function
+set_target_properties(filesearch PROPERTIES
+    COMPILE_DEFINITIONS "_WIN32_WINNT=0x0A00"
+)
+
+# Define your application
+add_executable(my_app main.cpp)
+
+# Liquid Gold: This single line injects all C++23 rules, warnings, 
+# and the GCC static analyzer into your executable!
+target_link_libraries(my_app PRIVATE project_warnings)

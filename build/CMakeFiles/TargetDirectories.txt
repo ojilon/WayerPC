@@ -1,5 +1,0 @@
-C:/Users/ojilong/Desktop/StudyAssistant/WayerPC/build/CMakeFiles/edit_cache.dir
-C:/Users/ojilong/Desktop/StudyAssistant/WayerPC/build/CMakeFiles/rebuild_cache.dir
-C:/Users/ojilong/Desktop/StudyAssistant/WayerPC/build/c/CMakeFiles/filesearch.dir
-C:/Users/ojilong/Desktop/StudyAssistant/WayerPC/build/c/CMakeFiles/edit_cache.dir
-C:/Users/ojilong/Desktop/StudyAssistant/WayerPC/build/c/CMakeFiles/rebuild_cache.dir

@@ -1,26 +1,29 @@
-build/CmakeFile
-build/.ninja_deps
-build/.ninja_log
-build/cmake_install.cmake
-build/CmakeCache.txt
-received/
-shared/
-build/compile_commands.json
-compile_commands.json
-compile_flags.txt
+#build files
+build/
+dist/
+
+#markdown files
 features_to_add.md
+
+#python files
 map.py
+
+#text files
 mapping.txt
+version.txt
 
 *.pyc
 *.pyo
 *.pyd
 
+#environment files
 .env/
-.venv/
 
-build
-dist/
+#powershell files
+build.bat
+zipper.bat
+
+
 *.spec
 logs/
 *.log
@@ -35,5 +38,4 @@ release/
 *.o
 *.obj
 
-*.zig-cache/
-zig-out/
+.clangd
