@@ -1,29 +1,21 @@
 #pragma once
 
+#include <cstddef>
+#include <expected>
 #include <filesystem>
 #include <string>
-#include <expected>
 
 namespace Backend::Utils::FileFindExact {
     namespace fs = std::filesystem;
 
-    // Scoped enum for explicit error categorization
     enum class SearchStatus {
         DirectoryError,
         FileNotFound
     };
 
-    /**
-     * @brief Recursively searches for a file within a directory.
-     * @param search_dir The root directory to start the search from.
-     * @param filename The exact name of the file to search for (including extension).
-     * @return std::expected containing the cross-platform fs::path on success, 
-     *         or a SearchStatus error enum on failure.
-     */
     std::expected<fs::path, SearchStatus> search_file(const fs::path& search_dir, const std::string& filename);
 }
 
-// C-compatible interface for DLL export
 #ifdef _WIN32
 #define BACKEND_FILESEARCH_EXPORT __declspec(dllexport)
 #else
@@ -31,5 +23,21 @@ namespace Backend::Utils::FileFindExact {
 #endif
 
 extern "C" {
-    BACKEND_FILESEARCH_EXPORT bool search_file_c(const char* search_dir, const char* filename, char* out_path, size_t max_len);
+    // Matches the Python ctypes binding:
+    // search_file(shared, filename, project_root, out_buf, max_len) -> int
+    //  0 found, -1 directory error, -2 not found
+    BACKEND_FILESEARCH_EXPORT int search_file(
+        const char* shared_dir,
+        const char* filename,
+        const char* project_root,
+        char* out_path,
+        size_t max_len
+    );
+
+    BACKEND_FILESEARCH_EXPORT bool search_file_c(
+        const char* search_dir,
+        const char* filename,
+        char* out_path,
+        size_t max_len
+    );
 }

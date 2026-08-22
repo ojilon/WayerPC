@@ -4,9 +4,7 @@ import sys
 import ctypes
 from pathlib import Path
 
-#remove before packaging, find another way to handle the dll files
-from backend.manage_storage.bridge_to_app_folder import copy_dll_to_app_folder
-from backend.server.Locate import search_root_subfolder 
+from backend.native.dll_loader import sync_native_libs_to_app_folder
 
 
 def load_saved_paths(CONFIG_FILE: str) -> dict[str, str] | None:
@@ -24,7 +22,7 @@ CONFIG_DIR = Path(os.environ.get("LOCALAPPDATA", Path.home())) / APP_NAME
 CONFIG_FILE = CONFIG_DIR / "config.json"
 
 
-def share_path_to_config() -> Path():
+def share_path_to_config() -> Path:
     return CONFIG_FILE
 
 
@@ -61,10 +59,7 @@ def create_app_structure(drive: Path, subfolder_name: str = "Data") -> tuple[Pat
 
     # Save paths for future application runs
     save_paths(app_dir, sub_dir)
-
-    #copy the dll file(remove when packaging app)
-    copy_dll_to_app_folder(search_root_subfolder("libfilesearch"))
-
+    sync_native_libs_to_app_folder()
     return app_dir, sub_dir
 
 
@@ -118,10 +113,7 @@ def setup_storage(default_drive_letter: str = "D:\\") -> tuple[Path, Path]:
             app_path = Path(saved["app_dir"])
             sub_path = Path(saved["sub_dir"])
             if app_path.exists():
-
-                #copy the dll file(remove when packaging app)
-                copy_dll_to_app_folder(search_root_subfolder("libfilesearch"))
-
+                sync_native_libs_to_app_folder()
                 return app_path, sub_path
         except (json.JSONDecodeError, OSError):
             pass

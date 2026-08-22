@@ -2,159 +2,287 @@ import threading
 import time
 import os
 import sys
-import datetime
 
-# Import CustomTkinter for the GUI layer
 import customtkinter as ctk
 
-# Add project root to path so backend imports work
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-# Import backend logic and thread-safe variables
 from backend.server.server4 import start_server, server_stats, stats_lock
-from backend.manage_storage.bridge_to_app_folder import obtain_folder_location
-from backend.manage_storage.create_app_folder import setup_storage, get_app_path, get_subfolder_path
+from backend.manage_storage.create_app_folder import setup_storage
+from backend.native.dll_loader import sync_native_libs_to_app_folder
+from backend.manage_storage.bridge_to_app_folder import (
+    ensure_shared_folder,
+    ensure_received_folder,
+)
 
-from import_panel import FileImportManager
+from theme import COLORS, FONT_UI, FONT_MONO
+from import_panel import ImportTab
+from library_panel import LibraryTab
 
 
+ctk.set_appearance_mode("Dark")
+ctk.set_default_color_theme("blue")
 
-# Configure CustomTkinter appearance
-ctk.set_appearance_mode("Dark")      # Modes: "System", "Dark", "Light"
-ctk.set_default_color_theme("blue")  # Themes: "blue", "green", "dark-blue"
 
 class WayerPCApp(ctk.CTk):
     def __init__(self):
         super().__init__()
 
-        #setup the app folder
-        # Runs the startup check/drive picker if not configured
         app_dir, sub_dir = setup_storage(default_drive_letter="D:\\")
+        try:
+            ensure_shared_folder()
+            ensure_received_folder()
+            sync_native_libs_to_app_folder()
+        except FileNotFoundError:
+            pass
 
         print("\n--- Ready ---")
         print(f"App Directory : {app_dir}")
         print(f"Sub Directory : {sub_dir}")
 
-
-        # --- Window Setup ---
         self.title("WayerPC")
-        self.geometry("850x550")
-        self.minsize(700, 450)
+        self.geometry("1180x720")
+        self.minsize(960, 600)
+        self.configure(fg_color=COLORS["bg"])
 
-        # --- Layout Configuration ---
-        # Create a grid: 2 columns (Sidebar + Main Content panel)
-        self.grid_columnconfigure(0, weight=0, minsize=200) # Sidebar stays fixed size
-        self.grid_columnconfigure(1, weight=1)              # Main content expands
+        self.grid_columnconfigure(1, weight=1)
         self.grid_rowconfigure(0, weight=1)
 
-        # --- Components UI Setup ---
-        self.create_sidebar()
-        self.create_main_dashboard()
+        self._tab_seq = 1
+        self._closable = set()
+        self.library_tabs: list[LibraryTab] = []
 
-        # --- Initialize Backend Worker ---
+        self._build_sidebar()
+        self._build_workspace()
+
         self.log_message("Starting the server in the background")
-        self.server_worker = threading.Thread(target=start_server, args=(self.log_message,), name="SocketServerThread", daemon=True)
+        self.server_worker = threading.Thread(
+            target=start_server,
+            args=(self.log_message,),
+            name="SocketServerThread",
+            daemon=True,
+        )
         self.server_worker.start()
-
-        #initialize the import manager module
-        self.import_manager = FileImportManager(self, self.log_message)
-
-        # --- Start Dashboard Loop ---
-        # Schedule the UI to poll the thread-safe stats dictionary every 1000ms (1 second)
         self.update_dashboard_metrics()
 
-    def create_sidebar(self):
-        """Creates the navigation/action sidebar on the left side."""
-        self.sidebar = ctk.CTkFrame(self, corner_radius=0)
-        self.sidebar.grid(row=0, column=0, sticky="nsew", padx=0, pady=0)
-        
-        # Title Label
-        self.logo_label = ctk.CTkLabel(self.sidebar, text="Quick Action", font=ctk.CTkFont(size=20, weight="bold"))
-        self.logo_label.grid(row=0, column=0, padx=20, pady=30)
+    # ------------------------------------------------------------------ sidebar
+    def _build_sidebar(self):
+        self.sidebar = ctk.CTkFrame(self, width=220, corner_radius=0, fg_color=COLORS["sidebar"])
+        self.sidebar.grid(row=0, column=0, sticky="nsew")
+        self.sidebar.grid_propagate(False)
+        self.sidebar.grid_rowconfigure(8, weight=1)
 
-        # Action Buttons
-        self.btn_import = ctk.CTkButton(self.sidebar, text="Import File", command=self.handle_import_file)
-        self.btn_import.grid(row=1, column=0, padx=20, pady=10, sticky="ew")
+        ctk.CTkLabel(
+            self.sidebar,
+            text="WayerPC",
+            font=ctk.CTkFont(family=FONT_UI, size=22, weight="bold"),
+            text_color=COLORS["text"],
+        ).grid(row=0, column=0, padx=22, pady=(28, 2), sticky="w")
+        ctk.CTkLabel(
+            self.sidebar,
+            text="Phone ↔ PC transfer",
+            font=ctk.CTkFont(size=12),
+            text_color=COLORS["muted"],
+        ).grid(row=1, column=0, padx=22, pady=(0, 24), sticky="w")
 
-        self.btn_meta_received = ctk.CTkButton(self.sidebar, text="Metadata (Received)", fg_color="transparent", border_width=1, command=lambda: self.fetch_metadata("received"))
-        self.btn_meta_received.grid(row=2, column=0, padx=20, pady=10, sticky="ew")
+        self._nav_btn("Console", self._focus_console).grid(row=2, column=0, padx=16, pady=4, sticky="ew")
+        self._nav_btn("New import tab", lambda: self._add_tab("import")).grid(
+            row=3, column=0, padx=16, pady=4, sticky="ew"
+        )
+        self._nav_btn("View files", lambda: self._add_tab("library")).grid(
+            row=4, column=0, padx=16, pady=4, sticky="ew"
+        )
 
-        self.btn_meta_shared = ctk.CTkButton(self.sidebar, text="Metadata (Shared)", fg_color="transparent", border_width=1, command=lambda: self.fetch_metadata("shared"))
-        self.btn_meta_shared.grid(row=3, column=0, padx=20, pady=10, sticky="ew")
+        ctk.CTkButton(
+            self.sidebar,
+            text="Exit",
+            fg_color=COLORS["danger"],
+            hover_color=COLORS["danger_hover"],
+            command=self.quit,
+        ).grid(row=9, column=0, padx=16, pady=24, sticky="ew")
 
-        # Exit Button placed at the bottom
-        self.btn_exit = ctk.CTkButton(self.sidebar, text="Exit Application", fg_color="#B22222", hover_color="#8B0000", command=self.quit)
-        self.sidebar.grid_rowconfigure(4, weight=1) # Spacer row
-        self.btn_exit.grid(row=5, column=0, padx=20, pady=20, sticky="s")
+    def _nav_btn(self, text, command):
+        return ctk.CTkButton(
+            self.sidebar,
+            text=text,
+            fg_color="transparent",
+            hover_color=COLORS["accent_dim"],
+            anchor="w",
+            command=command,
+        )
 
-    def create_main_dashboard(self):
-        """Creates the dashboard layout displaying cards for stats and logs."""
-        self.main_container = ctk.CTkFrame(self, fg_color="transparent")
-        self.main_container.grid(row=0, column=1, sticky="nsew", padx=20, pady=20)
-        self.main_container.grid_columnconfigure((0, 1), weight=1) # Split stats into columns
-        self.main_container.grid_rowconfigure(1, weight=1)          # Give log block extra vertical scaling space
+    # ---------------------------------------------------------------- workspace
+    def _build_workspace(self):
+        wrap = ctk.CTkFrame(self, fg_color="transparent")
+        wrap.grid(row=0, column=1, sticky="nsew", padx=18, pady=16)
+        wrap.grid_rowconfigure(1, weight=1)
+        wrap.grid_columnconfigure(0, weight=1)
 
-        # --- Top Header Status Row ---
-        self.status_card = ctk.CTkFrame(self.main_container, height=60)
-        self.status_card.grid(row=0, column=0, columnspan=2, sticky="ew", pady=(0, 15))
-        self.lbl_status = ctk.CTkLabel(self.status_card, text="SYSTEM STATUS: LOADING...", font=ctk.CTkFont(size=14, weight="bold"), text_color="#FFCC00")
-        self.lbl_status.pack(side="left", padx=20, pady=15)
-        self.lbl_uptime = ctk.CTkLabel(self.status_card, text="Uptime: 0.00s", font=ctk.CTkFont(size=12))
-        self.lbl_uptime.pack(side="right", padx=20, pady=15)
+        tabbar = ctk.CTkFrame(wrap, fg_color="transparent")
+        tabbar.grid(row=0, column=0, sticky="ew", pady=(0, 8))
+        tabbar.grid_columnconfigure(0, weight=1)
 
-        # --- Statistics Grid (Left Box) ---
-        # FIXED: Removed text=" Network Metrics " from ctk.CTkFrame parameters
-        self.stats_frame = ctk.CTkFrame(self.main_container)
-        self.stats_frame.grid(row=1, column=0, sticky="nsew", padx=(0, 10), pady=(0, 10))
-        self.stats_frame.grid_columnconfigure(1, weight=1)
-        
-        # This label now cleanly handles the text framing header safely
-        self.stats_title = ctk.CTkLabel(self.stats_frame, text="Network Metrics", font=ctk.CTkFont(weight="bold", size=13))
-        self.stats_title.grid(row=0, column=0, columnspan=2, padx=15, pady=(10, 5), sticky="w")
-        
-        self.lbl_active_conn = self.create_stat_row(self.stats_frame, "Active Links:", "0 concurrent devices", 1)
-        self.lbl_total_conn = self.create_stat_row(self.stats_frame, "Total Handled:", "0 clients", 2)
-        self.lbl_bytes_sent = self.create_stat_row(self.stats_frame, "Total Outbound:", "0.00 MB", 3)
-        self.lbl_bytes_received = self.create_stat_row(self.stats_frame, "Total Inbound:", "0.00 MB", 4)
+        self.tabs = ctk.CTkTabview(
+            wrap,
+            fg_color=COLORS["bg"],
+            segmented_button_fg_color=COLORS["card"],
+            segmented_button_selected_color=COLORS["accent"],
+            segmented_button_selected_hover_color=COLORS["accent_hover"],
+            segmented_button_unselected_color=COLORS["card"],
+            segmented_button_unselected_hover_color=COLORS["accent_dim"],
+        )
+        self.tabs.grid(row=1, column=0, sticky="nsew")
 
-        # --- Log Output Engine (Right Box Window) ---
-        # FIXED: Removed text=" System Activities Window Logs " from ctk.CTkFrame parameters
-        self.log_frame = ctk.CTkFrame(self.main_container)
-        self.log_frame.grid(row=1, column=1, sticky="nsew", padx=(10, 0), pady=(0, 10))
-        self.log_frame.grid_rowconfigure(1, weight=1)
-        self.log_frame.grid_columnconfigure(0, weight=1)
+        plus = ctk.CTkButton(
+            tabbar,
+            text="+",
+            width=36,
+            height=32,
+            fg_color=COLORS["card"],
+            hover_color=COLORS["accent"],
+            command=self._plus_menu,
+        )
+        plus.pack(side="right")
+        self.btn_close_tab = ctk.CTkButton(
+            tabbar,
+            text="Close tab",
+            width=90,
+            height=32,
+            fg_color="transparent",
+            border_width=1,
+            border_color=COLORS["border"],
+            command=self._close_current,
+        )
+        self.btn_close_tab.pack(side="right", padx=8)
 
-        # This label now cleanly handles the log framing header safely
-        self.log_title = ctk.CTkLabel(self.log_frame, text="System Activities Window Logs", font=ctk.CTkFont(weight="bold", size=13))
-        self.log_title.grid(row=0, column=0, padx=15, pady=(10, 5), sticky="w")
+        self._build_console_tab()
+        self._add_tab("import", title="Import")
+        self._add_tab("library", title="Received")
 
-        # Scrollable textbox component makes reading past logs clean
-        self.log_textbox = ctk.CTkTextbox(self.log_frame, font=ctk.CTkFont(family="Consolas", size=11))
-        self.log_textbox.grid(row=1, column=0, sticky="nsew", padx=10, pady=10)
-        self.log_textbox.configure(state="disabled") # Set to read-only initially
+    def _plus_menu(self):
+        pop = ctk.CTkToplevel(self)
+        pop.title("New tab")
+        pop.geometry("280x160")
+        pop.configure(fg_color=COLORS["card"])
+        pop.attributes("-topmost", True)
+        ctk.CTkLabel(pop, text="Open a new tab", font=ctk.CTkFont(weight="bold")).pack(pady=(18, 10))
+        ctk.CTkButton(
+            pop, text="Import", command=lambda: (self._add_tab("import"), pop.destroy())
+        ).pack(fill="x", padx=24, pady=4)
+        ctk.CTkButton(
+            pop, text="View files", command=lambda: (self._add_tab("library"), pop.destroy())
+        ).pack(fill="x", padx=24, pady=4)
 
-    def create_stat_row(self, parent, label_text, default_val, row_idx):
-        """Helper to cleanly structure statistical UI row pairings inside frames."""
-        lbl_title = ctk.CTkLabel(parent, text=label_text, font=ctk.CTkFont(weight="bold"), anchor="w")
-        lbl_title.grid(row=row_idx, column=0, padx=15, pady=12, sticky="w")
-        
-        lbl_val = ctk.CTkLabel(parent, text=default_val, anchor="e")
-        lbl_val.grid(row=row_idx, column=1, padx=15, pady=12, sticky="e")
-        return lbl_val
+    def _build_console_tab(self):
+        self.tabs.add("Console")
+        page = self.tabs.tab("Console")
+        page.grid_columnconfigure((0, 1), weight=1)
+        page.grid_rowconfigure(1, weight=1)
 
-    def log_message(self, text):
-        """Thread-safe mechanism to write diagnostic logs onto the console pane frame."""
-        timestamp = time.strftime("%H:%M:%S")
-        formatted_line = f"[{timestamp}] {text}\n"
-        
-        # CustomTkinter components require unlocking modifications via normal states temporarily
-        self.log_textbox.configure(state="normal")
-        self.log_textbox.insert("end", formatted_line)
-        self.log_textbox.see("end") # Automatically scroll down to the bottom
+        status = ctk.CTkFrame(page, fg_color=COLORS["card"], corner_radius=12, height=64)
+        status.grid(row=0, column=0, columnspan=2, sticky="ew", pady=(8, 12))
+        self.lbl_status = ctk.CTkLabel(
+            status,
+            text="SYSTEM STATUS: LOADING…",
+            font=ctk.CTkFont(size=14, weight="bold"),
+            text_color=COLORS["warning"],
+        )
+        self.lbl_status.pack(side="left", padx=20, pady=14)
+        self.lbl_uptime = ctk.CTkLabel(status, text="Uptime: 0.00s", text_color=COLORS["muted"])
+        self.lbl_uptime.pack(side="right", padx=20, pady=14)
+
+        stats = ctk.CTkFrame(page, fg_color=COLORS["card"], corner_radius=12)
+        stats.grid(row=1, column=0, sticky="nsew", padx=(0, 8))
+        ctk.CTkLabel(
+            stats, text="Network", font=ctk.CTkFont(weight="bold", size=14)
+        ).pack(anchor="w", padx=16, pady=(14, 8))
+        self.lbl_active_conn = self._stat(stats, "Active links", "0")
+        self.lbl_total_conn = self._stat(stats, "Handled", "0")
+        self.lbl_bytes_sent = self._stat(stats, "Outbound", "0.00 MB")
+        self.lbl_bytes_received = self._stat(stats, "Inbound", "0.00 MB")
+
+        logs = ctk.CTkFrame(page, fg_color=COLORS["card"], corner_radius=12)
+        logs.grid(row=1, column=1, sticky="nsew", padx=(8, 0))
+        logs.grid_rowconfigure(1, weight=1)
+        logs.grid_columnconfigure(0, weight=1)
+        ctk.CTkLabel(
+            logs, text="Activity", font=ctk.CTkFont(weight="bold", size=14)
+        ).grid(row=0, column=0, sticky="w", padx=16, pady=(14, 6))
+        self.log_textbox = ctk.CTkTextbox(
+            logs, font=ctk.CTkFont(family=FONT_MONO, size=12), fg_color=COLORS["card_alt"]
+        )
+        self.log_textbox.grid(row=1, column=0, sticky="nsew", padx=12, pady=(0, 12))
         self.log_textbox.configure(state="disabled")
 
+    def _stat(self, parent, label, value):
+        row = ctk.CTkFrame(parent, fg_color=COLORS["card_alt"], corner_radius=8)
+        row.pack(fill="x", padx=16, pady=6)
+        ctk.CTkLabel(row, text=label, text_color=COLORS["muted"]).pack(side="left", padx=12, pady=10)
+        val = ctk.CTkLabel(row, text=value, font=ctk.CTkFont(weight="bold"))
+        val.pack(side="right", padx=12)
+        return val
+
+    def _add_tab(self, kind: str, title: str | None = None):
+        self._tab_seq += 1
+        if title is None:
+            title = f"Import {self._tab_seq}" if kind == "import" else f"Files {self._tab_seq}"
+        # CTkTabview cannot add duplicate names
+        existing = set(self.tabs._tab_dict.keys())  # noqa: SLF001
+        base = title
+        n = 2
+        while title in existing:
+            title = f"{base} ({n})"
+            n += 1
+        self.tabs.add(title)
+        page = self.tabs.tab(title)
+        page.grid_rowconfigure(0, weight=1)
+        page.grid_columnconfigure(0, weight=1)
+        if kind == "import":
+            panel = ImportTab(page, self.log_message, on_catalog_changed=self._refresh_libraries)
+        else:
+            panel = LibraryTab(page, self.log_message)
+            self.library_tabs.append(panel)
+        panel.grid(row=0, column=0, sticky="nsew", padx=4, pady=4)
+        self._closable.add(title)
+        self.tabs.set(title)
+        return title
+
+    def _close_current(self):
+        name = self.tabs.get()
+        if name == "Console" or name not in self._closable:
+            self.log_message("The Console tab stays open.")
+            return
+        self.tabs.delete(name)
+        self._closable.discard(name)
+        self.tabs.set("Console")
+
+    def _focus_console(self):
+        self.tabs.set("Console")
+
+    def _refresh_libraries(self):
+        for tab in self.library_tabs:
+            try:
+                tab.refresh()
+            except Exception:
+                pass
+
+    # ---------------------------------------------------------------- logging
+    def log_message(self, text):
+        timestamp = time.strftime("%H:%M:%S")
+        formatted_line = f"[{timestamp}] {text}\n"
+
+        def _write():
+            self.log_textbox.configure(state="normal")
+            self.log_textbox.insert("end", formatted_line)
+            self.log_textbox.see("end")
+            self.log_textbox.configure(state="disabled")
+
+        try:
+            self.after(0, _write)
+        except Exception:
+            pass
+
     def update_dashboard_metrics(self):
-        """Polls backend dictionary stats safely utilizing memory Mutex locks without locking UI thread."""
         with stats_lock:
             running = server_stats["is_running"]
             active = server_stats["active_connections"]
@@ -164,65 +292,20 @@ class WayerPCApp(ctk.CTk):
             start = server_stats["start_time"]
 
         if running:
-            self.lbl_status.configure(text="SYSTEM STATUS: RUNNING (ONLINE)", text_color="#2ECC71")
+            self.lbl_status.configure(text="ONLINE", text_color=COLORS["success"])
             uptime = time.time() - start if start else 0
-            self.lbl_uptime.configure(text=f"Uptime: {uptime:.2f}s")
-            self.lbl_active_conn.configure(text=f"{active} devices")
-            self.lbl_total_conn.configure(text=f"{total} clients")
-            self.lbl_bytes_sent.configure(text=f"{sent / (1024*1024):.2f} MB")
-            self.lbl_bytes_received.configure(text=f"{received / (1024*1024):.2f} MB")
+            self.lbl_uptime.configure(text=f"Uptime  {uptime:.0f}s")
+            self.lbl_active_conn.configure(text=f"{active}")
+            self.lbl_total_conn.configure(text=f"{total}")
+            self.lbl_bytes_sent.configure(text=f"{sent / (1024 * 1024):.2f} MB")
+            self.lbl_bytes_received.configure(text=f"{received / (1024 * 1024):.2f} MB")
         else:
-            self.lbl_status.configure(text="SYSTEM STATUS: OFFLINE", text_color="#E74C3C")
-            self.lbl_uptime.configure(text="Uptime: 0.00s")
+            self.lbl_status.configure(text="OFFLINE", text_color=COLORS["danger"])
+            self.lbl_uptime.configure(text="Uptime  0s")
 
-        # Recursively registers itself to evaluate data again exactly 1000ms later 
         self.after(1000, self.update_dashboard_metrics)
-
-    def handle_import_file(self):
-        """triggered on clicking 'importfile'. """
-        self.import_manager.start_import_workflow()
-
-    def fetch_metadata(self, folder_type):
-        """Requests file metadata descriptions natively."""
-        self.log_message(f"Querying file metadata profiles inside '{folder_type}' context directory...")
-        try:
-            # Use bridge to obtain folder location within app directory
-            status, folder_path = obtain_folder_location(folder_type)
-            if status != 0 or not folder_path.is_dir():
-                self.log_message(f"Metadata read error: '{folder_type}' folder not found in app storage")
-                return
-            
-            # Traverse folder and get metadata (similar to old get_file_info logic)
-            path_list = [item for item in folder_path.rglob("*") if item.is_file()]
-            metadata_list = []
-            for p in path_list:
-                stat_info = p.stat()
-                dt_local = datetime.datetime.fromtimestamp(stat_info.st_mtime, tz=None)
-                formatted_date = dt_local.strftime("%m/%d/%Y %I:%M %p")
-                metadata_list.append({
-                    "file_name": p.name,
-                    "file_type": p.suffix,
-                    "size_bytes": stat_info.st_size,
-                    "date_modified": formatted_date
-                })
-            
-            log_lines = [f"[{folder_type.upper()}] Details mapped:"]
-            
-            for file in metadata_list:
-                size_mb = file['size_bytes'] / (1024 * 1024)
-                item_text = (
-                    f"  - {file['file_name']} ({file['file_type']})\n"
-                    f"    Size: {size_mb:.2f} MB | Modified: {file['date_modified']}"
-                )
-                log_lines.append(item_text)
-            
-            self.log_message("\n".join(log_lines))
-
-        except Exception as e:
-            self.log_message(f"Metadata read error: {e}")
 
 
 if __name__ == "__main__":
-    # Standard application loop runner initialization
     app = WayerPCApp()
     app.mainloop()

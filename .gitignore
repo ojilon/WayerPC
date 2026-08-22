@@ -1,41 +1,45 @@
-#build files
-build/
-dist/
-
-#markdown files
-features_to_add.md
-
-#python files
-map.py
-
-#text files
-mapping.txt
-version.txt
-
-*.pyc
-*.pyo
-*.pyd
-
-#environment files
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
 .env/
 
-#powershell files
-build.bat
-zipper.bat
+# Native build output
+build/
+dist/
+*.o
+*.obj
+*.so
+*.dll
+*.dylib
+*.exp
+*.lib
+*.pdb
 
+# Keep the packaging spec (do not ignore packaging/*.spec)
+# Ignore generated specs in the repo root only
+/WayerPC.spec
 
-*.spec
+# SQLite amalgamation (download locally — see backend/third_party/sqlite/README.md)
+backend/third_party/sqlite/sqlite3.c
+backend/third_party/sqlite/sqlite3.h
+backend/third_party/sqlite/sqlite3ext.h
+
+# App / editor
 logs/
 *.log
-
 Thumbs.db
 Desktop.ini
-
+.clangd
+.idea/
+.vscode/
 release/
 *.zip
 
-*.dll
-*.o
-*.obj
-
-.clangd
+# Local notes
+features_to_add.md
+map.py
+mapping.txt
+version.txt

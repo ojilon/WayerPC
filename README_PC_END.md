@@ -1,103 +1,84 @@
-# Wayer - PC End
+# WayerPC — PC end guide
 
-A Python-based server for transferring files between your PC and Android phone through hotspot connection.
+## Requirements
 
-## Quick Start
+- Python 3.11+ (3.14 is fine)
+- `pip install -r requirements.txt` (`customtkinter`; `pyinstaller` only for packaging)
+- Optional native build: CMake 3.25+, a C++23 compiler (MSVC, MinGW, or GCC)
 
-### Requierments
+## Run
 
-- Python 3.x installed on your PC.
-- MinGW64 or GCC (For C)
--CMake 3.10+ (for building C DLL)
-
-### Installation
-
-1. **Clone/Navigate to the root of the project**
-   ```bash
-   git checkout main
-   ```
-
-### Running the Server
-
-Navigate to the python folder and start the server:
+From the repository root:
 
 ```bash
-cd python
-python server/app3.py
+python frontend/main.py
 ```
 
-The server will start listening on the configured host and port. You should see:
-```
-Listening on <HOST>:<PORT>
-```
-
-## Project Structure
+On first launch you pick a drive (default `D:\`). WayerPC creates:
 
 ```
-pc-end/
-├── python/
-│   ├── server/
-│   │   ├── app3.py              # Main entry point - start the server here
-│   │   ├── socket_server3.py    # Socket server handling client connections
-│   │   ├── Locate.py            # File location utilities
-│   │   ├── transfer.py          # File transfer logic
-│   │   └── config.py            # Configuration settings
-|   |   |__ ItemImporter.py      #manual instruct copying a file to 'shared' folder
-|   |   
-│   └── Filesmanager/
-│       └── FindRoot.py          # Root directory finder
-├── c/                           # C code for file search functionality
-├── build/                       # Build output directory
-└── README.md
+<drive>\WayerPC\
+  shared\
+  received\
+  Data\
+    imports.db
+  libfilesearch.dll   (copied when present)
+  libusersearch.dll
+  libimportcatalog.dll
 ```
 
-## How It Works
+Config lives at `%LOCALAPPDATA%\WayerPC\config.json`.
 
-**The server runs two main operations:**
+## UI
 
-### 1. **File Download (/ask command)**
-- The Android phone requests a file from the PC using the `/ask` command
-- The server searches for the file in the project and `shared/` folder
-- If found, the file is streamed to the phone
-- Uses a C DLL (`libfilesearch.dll`) for fast file searching
+- **Console** — server status, traffic, logs. Cannot be closed.
+- **Import** — search by file/folder name across Documents/Downloads/Desktop/extra drives. System paths and AppData are skipped. Tick results and **Import selected**, or use **Browse files** / **Browse folder**.
+- **Received** — files in `received/` plus the **Imported catalog** segment.
+- **+** — open another Import or View-files tab. **Close tab** removes extra tabs only.
 
-### 2. **File Upload (/upload command)**
-- The Android phone sends a file to the PC using `/upload` command
-- Files are saved to the `received/` folder
-- The server streams the file data and saves it to disk
+Imported items are **paths in SQLite**, not copies. That avoids duplicating large files into `shared/`.
 
-### 3. Copy file into project
--Navigate to project in your cli
-- start the script to copy file
-- `python python/server/ItemImporter.py`
-- Write the target path and the filename to search for.
-- For multiple results, you will be prompted to choose the path to the intended file
+## Protocol (phone → PC, TCP port 5000)
 
-## Key Components
+```
+/ask report.pdf
+    → FOUND 12345\n + raw bytes
+    → or MATCHES 3\nname\tpath\n...
+    → or ERROR file_not_found
 
-| File | Purpose |
-|------|----------|
-| `app3.py` | Entry point - starts the server |
-| `socket_server3.py` | Core server logic handling `/ask` and `/upload` commands |
-| `ItemImporter.py` | Helper to copy from from outside into   `shared` folder |
-| `Locate.py` | Utilities for finding files and folders, locating DLL |
-| `transfer.py` | File streaming and transfer functions |
-| `config.py` | Server configuration (HOST, PORT, etc.) |
+/upload 12345 photo.jpg
+    → READY  then the client sends 12345 bytes
+    → DONE
 
-## Folders
+/upload photo
+    → MATCHES n  (related imported names, ≥ 20% similar)
+```
 
-- **`shared/`** - Contains files available for download by the phone (auto-created if missing)
-- **`received/`** - Stores files uploaded from the phone (auto-created if missing)
+## Building native libraries
+
+See [docs/NATIVE.md](docs/NATIVE.md).
+
+```bash
+cmake -S . -B build
+cmake --build build --config Release
+```
+
+## Packaging a Windows app
+
+See [docs/PACKAGING.md](docs/PACKAGING.md). Short version:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File packaging/build_windows.ps1
+```
+
+Output: `dist/WayerPC/WayerPC.exe`.
 
 ## Troubleshooting
 
-- **DLL not found error**: Make sure `libfilesearch.dll` is in the `c/` folder
-- **Socket address in use**: Port may be occupied; check `config.py` and change PORT
-- **Folder creation failed**: Ensure the application has write permissions in the project directory
-- **Connection issues**: Verify the PC and phone are connected to the same hotspot
-
-## Notes
-
-- The server creates necessary folders (`shared/`, `received/`) automatically if they don't exist
-- All file operations are logged to console
-- The C DLL handles efficient file system searching
+| Issue | What to check |
+|-------|----------------|
+| Import search empty | Native `libusersearch` missing is OK (Python fallback). Query may be too specific, or files sit under AppData (skipped on purpose). |
+| `/ask` not found | File must be in the catalog or in `shared/`. Open the Received tab → Imported catalog. |
+| DLL not found | Build native libs, restart the app so they copy into the app folder. |
+| Port in use | Change `HOST`/`PORT` in `backend/server/server4.py` (and `config.py`). |
+| `io.UnsupportedOperation` on config | Fixed: folder helpers no longer overwrite `config.json` read-only. Pull latest. |
