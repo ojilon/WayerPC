@@ -15,10 +15,42 @@ def get_project_root() -> Path | None:
         return None
     return path
 
+def nail_file_location(reference_name: str) -> Path | None:
+    root_path = get_project_root()
 
+    """
+    py: validate directory exists
+    C: you should use 'stat()' from <sys/stat.h> to check
+       using (IS_DIR(statbuf.st_mode))
+    """
+    if not root_path.is_dir():
+        # print(f"Path project root : {root_path} is invalid......")
+        return None
+
+    # print(f"Locating the file : {reference_name}")
+
+    """
+    py: rglob returns a generator. Give it the reference name,
+     searches recursively
+    C: you should use opendir() and readdir() from <dirent.h> to
+      write a recursive function that does this.
+      On hitting subfolder condition 'if entry->d_type == DT_DIR'
+       call the search function again -> recurse.
+    """
+    for item in root_path.rglob(reference_name):
+        """
+        py: ensures the name file with the name if found
+        C: use 'entry->d_type == DT_REG' to check whether file inside the readdir loop
+        """
+        if item.is_file():
+            # return the path to the file
+            return item
+    return None
+
+    
 def nail_folder_location(folder_name: str) -> tuple:
     """
-    Searches for a folder by name starting from the project root.
+    Searches for a folder by name starting from the project root(from the root of the app).
     Returns (status, path) where:
     - status: 0 = found, 1 = not found, 2 = using root as fallback
     - path: the Path object to the folder (or root if not found)

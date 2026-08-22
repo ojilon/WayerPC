@@ -2,18 +2,22 @@ import threading
 import time
 import os
 import sys
-
-# Add project root to path so backend imports work
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+import datetime
 
 # Import CustomTkinter for the GUI layer
 import customtkinter as ctk
 
+# Add project root to path so backend imports work
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 # Import backend logic and thread-safe variables
 from backend.server.server4 import start_server, server_stats, stats_lock
-from backend.server.Locate import get_file_info
+from backend.manage_storage.bridge_to_app_folder import obtain_folder_location
+from backend.manage_storage.create_app_folder import setup_storage, get_app_path, get_subfolder_path
 
 from import_panel import FileImportManager
+
+
 
 # Configure CustomTkinter appearance
 ctk.set_appearance_mode("Dark")      # Modes: "System", "Dark", "Light"
@@ -22,6 +26,15 @@ ctk.set_default_color_theme("blue")  # Themes: "blue", "green", "dark-blue"
 class WayerPCApp(ctk.CTk):
     def __init__(self):
         super().__init__()
+
+        #setup the app folder
+        # Runs the startup check/drive picker if not configured
+        app_dir, sub_dir = setup_storage(default_drive_letter="D:\\")
+
+        print("\n--- Ready ---")
+        print(f"App Directory : {app_dir}")
+        print(f"Sub Directory : {sub_dir}")
+
 
         # --- Window Setup ---
         self.title("WayerPC")
@@ -173,22 +186,36 @@ class WayerPCApp(ctk.CTk):
         """Requests file metadata descriptions natively."""
         self.log_message(f"Querying file metadata profiles inside '{folder_type}' context directory...")
         try:
-            info_data = get_file_info(folder_type)
+            # Use bridge to obtain folder location within app directory
+            status, folder_path = obtain_folder_location(folder_type)
+            if status != 0 or not folder_path.is_dir():
+                self.log_message(f"Metadata read error: '{folder_type}' folder not found in app storage")
+                return
             
-            # Build a clean, readable string line by line
+            # Traverse folder and get metadata (similar to old get_file_info logic)
+            path_list = [item for item in folder_path.rglob("*") if item.is_file()]
+            metadata_list = []
+            for p in path_list:
+                stat_info = p.stat()
+                dt_local = datetime.datetime.fromtimestamp(stat_info.st_mtime, tz=None)
+                formatted_date = dt_local.strftime("%m/%d/%Y %I:%M %p")
+                metadata_list.append({
+                    "file_name": p.name,
+                    "file_type": p.suffix,
+                    "size_bytes": stat_info.st_size,
+                    "date_modified": formatted_date
+                })
+            
             log_lines = [f"[{folder_type.upper()}] Details mapped:"]
             
-            for file in info_data:
-                # Convert bytes to MB for better readability
+            for file in metadata_list:
                 size_mb = file['size_bytes'] / (1024 * 1024)
-                
                 item_text = (
                     f"  - {file['file_name']} ({file['file_type']})\n"
                     f"    Size: {size_mb:.2f} MB | Modified: {file['date_modified']}"
                 )
                 log_lines.append(item_text)
             
-            # Combine everything with newlines and send to your log_message function
             self.log_message("\n".join(log_lines))
 
         except Exception as e:

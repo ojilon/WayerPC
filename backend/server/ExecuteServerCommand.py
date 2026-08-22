@@ -1,14 +1,18 @@
-from .Locate import get_project_root, search_root_subfolder
+from backend.manage_storage.bridge_to_app_folder import (
+    ensure_shared_folder,
+    obtain_folder_location,
+    copy_dll_to_app_folder,
+    get_app_folder_path,
+    obtain_file_location,
+)
 import ctypes
 import os
 import threading
 
+
 # Module-level: ensure the "shared" folder exists at startup
 # This is done once when the module is loaded, not at class definition time
-location_to_shared = search_root_subfolder("shared")
-if not location_to_shared or not location_to_shared.is_dir():
-    # Could not find shared folder - exit or handle per-request
-    exit(1)
+ensure_shared_folder()
 
 
 def Initiate_file_search(filename: str) -> tuple:
@@ -17,31 +21,37 @@ def Initiate_file_search(filename: str) -> tuple:
     Returns (result_code, path_buffer) or None on failure.
     result_code: 0 = found, -1 = directory missing/unreadable, -2 = file not found
     """
-    location_to_dll = search_root_subfolder("libfilesearch.dll")
-    if not location_to_dll:
-        return None
+
+    # Copy dll to app folder if not already there (for development testing)
+    location_to_dll = obtain_file_location("libfilesearch.dll")
+
+    if not location_to_dll or not location_to_dll.is_file():
+        return -2, None
 
     try:
         dll = ctypes.CDLL(str(location_to_dll))
     except Exception:
-        return None
+        return -1, None
 
-    dll.search_file.argtypes = [ctypes.c_char_p, ctypes.c_char_p,
-        ctypes.c_char_p, ctypes.c_char_p, ctypes.c_size_t]
+    dll.search_file.argtypes = [ctypes.c_char_p, ctypes.c_char_p, ctypes.c_char_p, ctypes.c_char_p, ctypes.c_size_t]
     dll.search_file.restype = ctypes.c_int
 
-    project_root = get_project_root()
+    # Use app folder as shared path context
+    status, shared_path = obtain_folder_location("shared")
+    if not status == 0:
+        return -1, shared_path
+
+    project_root = get_app_folder_path()
     if not project_root:
-        return None
+        return -1, project_root
 
     path_buffer = ctypes.create_string_buffer(260)
-    shared_path_str = str(location_to_shared)
+    shared_path_str = str(shared_path)
     project_root_str = str(project_root)
 
-    result = dll.search_file(shared_path_str.encode('utf-8'), filename.encode('utf-8'),
-                             project_root_str.encode('utf-8'), path_buffer, 260)
+    result = dll.search_file(shared_path_str.encode('utf-8'), filename.encode('utf-8'), project_root_str.encode('utf-8'), path_buffer, 260)
 
-    return result, path_buffer
+    return 0, result
 
 
 def Execute_server_command(data: str, conn, server_stats, stats_lock) -> tuple:
@@ -54,9 +64,11 @@ def Execute_server_command(data: str, conn, server_stats, stats_lock) -> tuple:
             return 1, parts
 
         filename = parts[1].strip()
-        project_root = get_project_root()
-        if not project_root:
-            return 2, project_root
+        #app_dir = get_app_folder_path()
+        #if not app_dir:
+        #    return 2, None
+
+        #project_root_str = str(app_dir)
 
         result, path_buffer = Initiate_file_search(filename)
 
@@ -79,11 +91,14 @@ def Execute_server_command(data: str, conn, server_stats, stats_lock) -> tuple:
                 conn.send(b"ERROR file_access_denied")
 
         elif result == -1:
-            conn.send(b"ERROR shared_file_directory_missing_or_unreadable")
+            print("error -1")
+            return -1, "ERROR file_directory_missing_or_unreadable"
         elif result == -2:
             conn.send(b"ERROR file_not_found")
+            return -1, None
         else:
             conn.send(b"ERROR unknown_system_fault")
+            return -1, None
 
     #receiving files from PC
     elif data.startswith("/upload"):
@@ -95,8 +110,9 @@ def Execute_server_command(data: str, conn, server_stats, stats_lock) -> tuple:
         filename = parts[2].strip()
         filesize = int(parts[1].strip())
 
-        save_dir = search_root_subfolder("received")
-        if not save_dir or not save_dir.is_dir():
+        # Use obtain_folder_location to find 'received' subfolder within app folder
+        status, save_dir = obtain_folder_location("received")
+        if status != 0 or not save_dir.is_dir():
             conn.send(b"ERROR: Failed to obtain directory this side, to store the file to receive")
             return 2, save_dir
 
@@ -136,5 +152,5 @@ def send_file(conn, filepath):
             conn.sendall(data)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     pass

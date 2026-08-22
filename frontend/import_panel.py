@@ -9,7 +9,10 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Import your core filesystem utilities
 from backend.server.ItemImporter import pull_file_path, copy_file
-from backend.server.Locate import nail_folder_location
+from backend.manage_storage.bridge_to_app_folder import obtain_folder_location, ensure_shared_folder
+
+
+
 
 class FileImportManager:
     def __init__(self, main_app_window, log_callback):
@@ -111,7 +114,9 @@ class FileImportManager:
     def _trigger_background_copy(self, file_path):
         """Copies the selected file inside a worker thread so the UI stays smooth."""
         def copy_worker():
-            status, shared_folder = nail_folder_location("shared")
+            # Use bridge to obtain shared folder location
+            ensure_shared_folder()  # Ensure shared folder exists
+            status, shared_folder = obtain_folder_location("shared")
             if status == 0:
                 # Found the shared folder, proceed with copy
                 try:

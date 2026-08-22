@@ -2,6 +2,7 @@ import socket
 import os
 import threading
 import time
+from .ExecuteServerCommand import Execute_server_command
 
 # Configuration - HOST and PORT
 HOST = "0.0.0.0"
@@ -43,19 +44,19 @@ def handle_client(conn, addr, logmessage=print):
                     logmessage(f"[CLIENT] {addr} disconnected")
                     break
 
-                from .ExecuteServerCommand import Execute_server_command
-                response = Execute_server_command(data, conn, server_stats, stats_lock)
-                status, response_string = response
-                if response is None:
+                status, response_string = Execute_server_command(data, conn, server_stats, stats_lock)
+                if response_string is None:
                     logmessage(f"[SERVER ERROR] {data} causing unpredictable behavior....")
                     break
 
                 # Respond to client based on command status
-                if status == 0:
+                if status == -1:
+                    logmessage(f"[STORAGE ERROR] {response_string}")
+                elif status == 0:
                     # File sent - server already sent the file data via conn.send
                     # No additional response needed, wait for next command
                     pass
-                elif status == -1:
+                elif status == 3:
                     # File received - send acknowledgment
                     try:
                         conn.send(b"FILE_RECEIVED\n")
