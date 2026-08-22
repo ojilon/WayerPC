@@ -43,40 +43,47 @@ def create_new_data_subfolder(subfoldername: str):
     path_to_data_subfolder = get_data_subfolder_path()
     new_data_subfolder_path = path_to_data_subfolder / subfoldername
     new_data_subfolder_path.mkdir(parents=True, exist_ok=True)
+    return new_data_subfolder_path
 
 
 def save_path_to_new_data_subfolder(new_data_subfolder_dir: Path, subfoldername: str):
+    """
+    Merges a named subfolder path into config.json without wiping existing keys
+    (app_dir / sub_dir). Opens the file for writing.
+    """
     path_to_config = share_path_to_config()
-    data_subfolder_dir = {f"{subfoldername}": str(new_data_subfolder_dir.resolve)}
+    existing: dict = {}
+    if path_to_config.exists():
+        try:
+            with open(path_to_config, "r", encoding="utf-8") as f:
+                loaded = json.load(f)
+                if isinstance(loaded, dict):
+                    existing = loaded
+        except (json.JSONDecodeError, OSError):
+            existing = {}
 
-    with open(path_to_config, encoding="utf-8") as f:
-        json.dump(data_subfolder_dir, f, indent=4)
+    existing[subfoldername] = str(new_data_subfolder_dir.resolve())
+
+    path_to_config.parent.mkdir(parents=True, exist_ok=True)
+    with open(path_to_config, "w", encoding="utf-8") as f:
+        json.dump(existing, f, indent=4)
 
 
 def ensure_shared_folder() -> Path:
     """Ensures the 'shared' folder exists inside the app folder.
-    If not, creates an empty 'shared' folder and saves the path."""
+    Only creates the directory; path is always app_dir/shared."""
     app_dir = get_app_folder_path()
     shared_path = app_dir / "shared"
-
-    if not shared_path.is_dir():
-        shared_path.mkdir(parents=True, exist_ok=True)
-        # Save that shared folder was created
-        save_path_to_new_data_subfolder(shared_path, "shared")
-
+    shared_path.mkdir(parents=True, exist_ok=True)
     return shared_path
 
 
 def ensure_received_folder() -> Path:
     """Ensures the 'received' folder exists inside the app folder.
-    Uploads from the phone land here. Created at startup if missing."""
+    Uploads from the phone land here. Only creates the directory."""
     app_dir = get_app_folder_path()
     received_path = app_dir / "received"
-
-    if not received_path.is_dir():
-        received_path.mkdir(parents=True, exist_ok=True)
-        save_path_to_new_data_subfolder(received_path, "received")
-
+    received_path.mkdir(parents=True, exist_ok=True)
     return received_path
 
 
