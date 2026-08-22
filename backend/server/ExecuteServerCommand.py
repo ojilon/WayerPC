@@ -1,9 +1,10 @@
+from pathlib import Path
 from backend.manage_storage.bridge_to_app_folder import (
     ensure_shared_folder,
     obtain_folder_location,
+    obtain_file_location,
     copy_dll_to_app_folder,
     get_app_folder_path,
-    obtain_file_location,
 )
 import ctypes
 import os
@@ -15,15 +16,42 @@ import threading
 ensure_shared_folder()
 
 
+def locate_dll() -> Path | None:
+    """
+    Finds libfilesearch.dll for the C++ file search.
+    Priority: inside the app folder first, then dev fallback ->
+    search the project tree and copy it into the app folder.
+    Returns the Path to the dll or None if unavailable.
+    """
+    # 1. Look inside the app folder
+    status, location = obtain_file_location("libfilesearch.dll")
+    if status == 0 and location.is_file():
+        return location
+
+    # 2. Development fallback: search the project source tree
+    project_root = Path(__file__).resolve().parents[2]
+    if project_root.is_dir():
+        for candidate in project_root.rglob("libfilesearch.dll"):
+            if candidate.is_file():
+                # Copy a working copy into the app folder for future runs
+                copied = copy_dll_to_app_folder(str(candidate))
+                if copied is not None:
+                    print(f"[DLL] Copied '{candidate.name}' into app folder: {copied}")
+                    return candidate
+                return candidate
+
+    return None
+
+
 def Initiate_file_search(filename: str) -> tuple:
     """
     Searches for a file using the backend/filesearch C++23 DLL.
-    Returns (result_code, path_buffer) or None on failure.
-    result_code: 0 = found, -1 = directory missing/unreadable, -2 = file not found
+    Returns (result_code, path_buffer).
+    result_code: 0 = found, -1 = directory missing/unreadable, -2 = file not found/dll missing
     """
 
     # Copy dll to app folder if not already there (for development testing)
-    location_to_dll = obtain_file_location("libfilesearch.dll")
+    location_to_dll = locate_dll()
 
     if not location_to_dll or not location_to_dll.is_file():
         return -2, None
@@ -51,7 +79,7 @@ def Initiate_file_search(filename: str) -> tuple:
 
     result = dll.search_file(shared_path_str.encode('utf-8'), filename.encode('utf-8'), project_root_str.encode('utf-8'), path_buffer, 260)
 
-    return 0, result
+    return result, path_buffer
 
 
 def Execute_server_command(data: str, conn, server_stats, stats_lock) -> tuple:
