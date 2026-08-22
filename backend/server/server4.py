@@ -19,7 +19,7 @@ server_stats = {
     "total_connections_handled": 0,
     "bytes_sent": 0,
     "bytes_received": 0,
-    "start_time": None
+    "start_time": None,
 }
 
 
@@ -38,42 +38,45 @@ def handle_client(conn, addr, logmessage=print):
 
         while True:
             try:
-                data = conn.recv(1024).decode('utf-8').strip()
+                data = conn.recv(1024).decode("utf-8").strip()
                 if not data:
                     # Client disconnected
                     logmessage(f"[CLIENT] {addr} disconnected")
                     break
 
-                status, response_string = Execute_server_command(data, conn, server_stats, stats_lock)
-                if response_string is None:
-                    logmessage(f"[SERVER ERROR] {data} causing unpredictable behavior....")
+                status, detail = Execute_server_command(
+                    data, conn, server_stats, stats_lock
+                )
+
+                # detail is always a non-None string from Execute_server_command
+                if detail is None:
+                    # Defensive: should not happen after the return-value cleanup
+                    logmessage(
+                        f"[SERVER ERROR] {data!r} returned no detail (unexpected)"
+                    )
                     break
 
-                # Respond to client based on command status
-                if status == -1:
-                    logmessage(f"[STORAGE ERROR] {response_string}")
-                elif status == 0:
-                    # File sent - server already sent the file data via conn.send
-                    # No additional response needed, wait for next command
-                    pass
+                # Log according to status. Client-facing messages were already
+                # sent inside Execute_server_command; we only log here.
+                if status == 0:
+                    # /ask success — file streamed
+                    logmessage(f"[ASK OK] Sent file: {detail}")
                 elif status == 3:
-                    # File received - send acknowledgment
-                    try:
-                        conn.send(b"FILE_RECEIVED\n")
-                    except Exception:
-                        break
+                    # /upload success — file saved under received/
+                    logmessage(f"[UPLOAD OK] Received and saved: {detail}")
                 elif status == 1:
-                    # Upload interrupted
-                    try:
-                        conn.send(b"UPLOAD_INTERRUPTED\n")
-                    except Exception:
-                        break
+                    # Protocol / validation / incomplete transfer
+                    logmessage(f"[PROTOCOL] {detail}")
                 elif status == 2:
-                    # Failed to get project location
-                    try:
-                        conn.send(b"ERROR: Failed to get location of project\n").encode()
-                    except Exception:
-                        break
+                    # Storage / directory problem
+                    logmessage(f"[STORAGE ERROR] {detail}")
+                elif status == -1:
+                    # Logical failure already reported to client (e.g. not found)
+                    logmessage(f"[COMMAND FAIL] {detail}")
+                else:
+                    logmessage(
+                        f"[SERVER] Unexpected status={status} for {data!r}: {detail}"
+                    )
 
             except socket.timeout:
                 logmessage(f"[TIMEOUT] Connection to {addr} timed out")
@@ -118,7 +121,7 @@ def start_server(logmessage=print):
             client_thread = threading.Thread(
                 target=handle_client,
                 args=(conn, addr, logmessage),
-                daemon=True  # Dies automatically if the main program exits
+                daemon=True,  # Dies automatically if the main program exits
             )
             client_thread.start()
 

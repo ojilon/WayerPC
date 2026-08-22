@@ -58,13 +58,26 @@ def ensure_shared_folder() -> Path:
     If not, creates an empty 'shared' folder and saves the path."""
     app_dir = get_app_folder_path()
     shared_path = app_dir / "shared"
-    
+
     if not shared_path.is_dir():
         shared_path.mkdir(parents=True, exist_ok=True)
         # Save that shared folder was created
         save_path_to_new_data_subfolder(shared_path, "shared")
-    
+
     return shared_path
+
+
+def ensure_received_folder() -> Path:
+    """Ensures the 'received' folder exists inside the app folder.
+    Uploads from the phone land here. Created at startup if missing."""
+    app_dir = get_app_folder_path()
+    received_path = app_dir / "received"
+
+    if not received_path.is_dir():
+        received_path.mkdir(parents=True, exist_ok=True)
+        save_path_to_new_data_subfolder(received_path, "received")
+
+    return received_path
 
 
 def copy_dll_to_app_folder(dll_source: str) -> Path | None:
@@ -76,7 +89,7 @@ def copy_dll_to_app_folder(dll_source: str) -> Path | None:
     if dll_source is None:
         return None
     dll_source_path = Path(dll_source)
-    
+
     try:
         if dll_source_path.is_file():
             shutil.copy2(dll_source_path, dest_path)
@@ -96,10 +109,16 @@ def obtain_folder_location(folder_name: str) -> tuple:
     """
     Searches for a folder by name starting from the app folder.
     Returns (status, path) where:
-    - status: 0 = found, 1 = not found, 2 = using app root as fallback
+    - status: 0 = found, 1 = not found / app dir missing, 2 = using app root as fallback
     - path: the Path object to the folder (or app root if not found)
+
+    Auto-creates 'shared' and 'received' when requested and missing.
     """
-    app_dir = get_app_folder_path()
+    try:
+        app_dir = get_app_folder_path()
+    except FileNotFoundError:
+        return 1, Path(".")
+
     if app_dir is None or not app_dir.is_dir():
         return 1, Path(".")
 
@@ -108,12 +127,15 @@ def obtain_folder_location(folder_name: str) -> tuple:
         if item.is_dir():
             return 0, item
 
-    #create an empty folder 'shared'
-    if folder_name == 'shared':
+    # Auto-create known special folders
+    if folder_name == "shared":
         return 0, ensure_shared_folder()
+    if folder_name == "received":
+        return 0, ensure_received_folder()
 
-    #folder not found
+    # folder not found
     return 2, app_dir
+
 
 def obtain_file_location(filename: str) -> tuple:
     app_dir = get_app_folder_path()
