@@ -72,7 +72,7 @@ def Initiate_file_search(filename: str) -> tuple:
 def _send_matches(conn, hits: list) -> tuple:
     lines = [f"MATCHES {len(hits)}"]
     for h in hits[:50]:
-        lines.append(f"{h['name']}\t{h['path']}")
+        lines.append(f"{h['name']}")
     payload = ("\n".join(lines) + "\n").encode("utf-8")
     try:
         conn.send(payload)
@@ -111,7 +111,7 @@ def _resolve_and_send(query: str, conn, server_stats, stats_lock) -> tuple:
         hits = find_for_request(query, cutoff=0.2)
     except FileNotFoundError:
         hits = []
-
+    
     exact = [h for h in hits if h["name"].lower() == query.lower()]
     if len(exact) == 1:
         return _stream_file(conn, exact[0]["path"], server_stats, stats_lock)
@@ -157,7 +157,13 @@ def Execute_server_command(data: str, conn, server_stats, stats_lock) -> tuple:
             except OSError:
                 pass
             return 1, "invalid /ask command (missing filename)"
-        return _resolve_and_send(parts[1].strip(), conn, server_stats, stats_lock)
+        
+        #remove the duplicate "/ask" incase of "/ask /ask filename" from phone
+        filename = parts[1].strip()
+        if filename.startswith("/ask"):
+            filename = filename.replace("/ask", "", 1)
+
+        return _resolve_and_send(filename.strip(), conn, server_stats, stats_lock)
 
     if data.startswith("/upload"):
         parts = data.split(" ")
