@@ -16,7 +16,7 @@ running any build; everything else is generated/embedded from it.
 
 | Consumer | How it reads | When |
 |----------|--------------|------|
-| Go (`internal/version`) | `//go:embed ../../version.json` → `Info` struct, `User-Agent`/log prefix, Settings screen | compile time (always fresh) |
+| Go (`internal/version`) | generated mirror `internal/version/version.json` (copied from root by sync; `go:embed` forbids `..`) → `Info` struct, log prefix, Settings screen | compile time (always fresh) |
 | Frontend | `scripts/sync-version.mjs` generates `frontend/src/version.ts` (`export const APP_VERSION=…`) + injects `__APP_VERSION__` via Vite `define` | `pnpm --dir frontend prebuild` / `scripts/sync-version.mjs` |
 | `wails.json` `info.productVersion` | `scripts/sync-version.mjs --wails` rewrites the field | pre-build |
 | NSIS installer | `scripts/build-installer.ps1` parses `version.json` → `makensis /DAPP_VERSION=x.y.z` → `VIProductVersion`, installer filename `WayerPC-<ver>-setup.exe`, install registry key | installer build |
