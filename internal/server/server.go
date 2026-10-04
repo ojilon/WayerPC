@@ -35,8 +35,15 @@ const (
 	// StatusFail mirrors Python status -1 (failure already sent to client).
 	StatusFail = -1
 
-	// connTimeout mirrors conn.settimeout(300.0).
-	connTimeout = 300 * time.Second
+	// idleTimeout is the max silence between phone commands (mirrors the
+	// Python conn.settimeout(300.0)). It is refreshed on every chunk of an
+	// active transfer, so slow-but-alive uploads/downloads survive while
+	// truly stalled ones still time out.
+	idleTimeout = 300 * time.Second
+	// writeTimeout bounds control replies (READY/DONE/FOUND/MATCHES/ERROR).
+	// Bulk transfer chunks refresh their own deadline per chunk (see
+	// transfer.go), so this never aborts a progressing transfer.
+	writeTimeout = 60 * time.Second
 	// maxLine is the longest command line accepted (legacy recv(1024) was
 	// smaller; 64 KiB keeps long filenames safe without unbounded growth).
 	maxLine = 64 * 1024
@@ -198,7 +205,12 @@ func (s *Server) serveConn(conn net.Conn) {
 
 	r := bufio.NewReaderSize(conn, 32*1024)
 	for {
-		_ = conn.SetDeadline(time.Now().Add(connTimeout))
+		// Per-operation deadlines, refreshed every command: an absolute
+		// deadline set once per iteration could expire between the read
+		// and the reply (or mid-transfer), killing live sessions with
+		// "i/o timeout". Transfers refresh these per chunk instead.
+		_ = conn.SetReadDeadline(time.Now().Add(idleTimeout))
+		_ = conn.SetWriteDeadline(time.Now().Add(writeTimeout))
 		line, err := readCommand(r)
 		if err != nil {
 			if err == io.EOF {
@@ -211,7 +223,7 @@ func (s *Server) serveConn(conn net.Conn) {
 		if line == "" {
 			continue
 		}
-		status, detail := s.handleCommand(line, conn, r)
+		status, detail, fatal := s.handleCommand(line, conn, r)
 		switch status {
 		case StatusAskOK:
 			s.logf(fmt.Sprintf("[ASK OK] Sent file: %s", detail))
@@ -227,6 +239,12 @@ func (s *Server) serveConn(conn net.Conn) {
 			s.logf(fmt.Sprintf("[COMMAND FAIL] %s", detail))
 		default:
 			s.logf(fmt.Sprintf("[SERVER] Unexpected status=%d for %q: %s", status, line, detail))
+		}
+		if fatal {
+			// The reply could not be delivered — the peer is gone.
+			// Close now instead of lingering until the next deadline.
+			s.logf(fmt.Sprintf("[DISCONNECT] Closing %s (undeliverable reply)", remote))
+			return
 		}
 	}
 }

@@ -52,24 +52,28 @@ func runCommand(t *testing.T, srv *Server, line string) (string, int, string) {
 	type result struct {
 		status int
 		detail string
+		fatal  bool
 	}
 	done := make(chan result, 1)
 	go func() {
 		r := bufio.NewReader(server)
 		cmd, err := readCommand(r)
 		if err != nil {
-			done <- result{-99, err.Error()}
+			done <- result{-99, err.Error(), false}
 			return
 		}
-		st, detail := srv.handleCommand(cmd, server, r)
-		done <- result{st, detail}
+		st, detail, fatal := srv.handleCommand(cmd, server, r)
+		done <- result{st, detail, fatal}
 	}()
-	if _, err := fmt.Fprint(client, line+"\n"); err != nil {
+	if _, err := fmt.Fprint(client, line + "\n"); err != nil {
 		t.Fatal(err)
 	}
 	out := readAll(client)
 	select {
 	case res := <-done:
+		if res.fatal {
+			t.Fatalf("unexpected fatal for %q: %s", line, res.detail)
+		}
 		return out, res.status, res.detail
 	case <-time.After(5 * time.Second):
 		t.Fatal("server did not answer")
@@ -191,17 +195,18 @@ func TestUploadBinaryRoundTrip(t *testing.T) {
 	type result struct {
 		status int
 		detail string
+		fatal  bool
 	}
 	done := make(chan result, 1)
 	go func() {
 		r := bufio.NewReader(server)
 		cmd, err := readCommand(r)
 		if err != nil {
-			done <- result{-99, err.Error()}
+			done <- result{-99, err.Error(), false}
 			return
 		}
-		st, detail := srv.handleCommand(cmd, server, r)
-		done <- result{st, detail}
+		st, detail, fatal := srv.handleCommand(cmd, server, r)
+		done <- result{st, detail, fatal}
 	}()
 	if _, err := fmt.Fprintf(client, "/upload %d greeting.txt\n", len(body)); err != nil {
 		t.Fatal(err)
@@ -224,6 +229,9 @@ func TestUploadBinaryRoundTrip(t *testing.T) {
 	if res.status != StatusUploadOK {
 		t.Fatalf("status=%d out=%q", res.status, out)
 	}
+	if res.fatal {
+		t.Fatalf("happy-path upload must not be fatal: %s", res.detail)
+	}
 	if !strings.Contains(out, "DONE") {
 		t.Fatalf("no DONE: %q", out)
 	}
@@ -237,6 +245,28 @@ func TestUploadBinaryRoundTrip(t *testing.T) {
 	}
 	if got := srv.Snapshot().BytesReceived; got != int64(len(body)) {
 		t.Fatalf("bytesReceived=%d", got)
+	}
+}
+
+func TestReadySendFailureIsFatal(t *testing.T) {
+	// Regression: phone idles past the deadline (or vanishes), then the
+	// /upload header arrives but READY cannot be delivered
+	// ("write tcp …: i/o timeout"). The session must die immediately
+	// instead of lingering as a ghost connection.
+	srv, _, _ := testServer(t)
+	client, server := net.Pipe()
+	_ = client.Close() // peer gone — server writes now fail
+	defer server.Close()
+	r := bufio.NewReader(server)
+	status, detail, fatal := srv.handleCommand("/upload 10 gone.pptx", server, r)
+	if status != StatusProtocol {
+		t.Fatalf("status=%d detail=%q", status, detail)
+	}
+	if !fatal {
+		t.Fatal("undeliverable READY must be fatal")
+	}
+	if !strings.Contains(detail, "failed to send READY") {
+		t.Fatalf("detail should name READY: %q", detail)
 	}
 }
 

@@ -60,8 +60,18 @@ No numpy/cgo/DLL loading.
 
 - `Server{cfg, store, catalog, stats, logger, onEvent}`. `Start()` binds
   `HOST:PORT`, `Accept` loop, per-conn goroutine (mirrors
-  `handle_client`), 300s read deadline, line-buffered commands
-  (`bufio.Reader.ReadString('\n')`, trims; multi-command lines handled).
+  `handle_client`), line-buffered commands (`bufio.Reader`, trims;
+  multi-command lines handled).
+- **Timeouts are per-operation, not absolute**: each loop iteration sets a
+  300 s idle-read deadline and a 60 s control-write deadline. Bulk transfer
+  chunks (`transfer.go`) refresh their deadline on every 32 KiB of progress,
+  so slow-but-alive uploads/downloads survive while stalled ones still time
+  out (a single absolute deadline — as in the Python `settimeout(300)` —
+  could expire between the read and the reply, killing live sessions with
+  `i/o timeout`).
+- `handleCommand` returns `(status, detail, fatal)`; `fatal=true` means the
+  reply could not be delivered (peer gone) and the session is closed
+  immediately instead of lingering as a ghost connection.
 - `protocol.go` `handleCommand(line, conn, state)` implements **byte-identical
   wire behavior**: `FOUND <size>\n`+bytes / `MATCHES <n>\nname\n…` (names only,
   first 50, legacy `_send_matches`), `READY`→bytes→`DONE`, `ERROR <code>`
