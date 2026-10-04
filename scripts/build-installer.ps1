@@ -24,7 +24,26 @@ cmd /c "pnpm.cmd --dir frontend build"
 if ($LASTEXITCODE -ne 0) { throw "pnpm build failed" }
 
 Write-Host "[3/4] Building Windows exe (wails)..."
-wails build -platform windows/amd64 -o WayerPC.exe
+$wails = $null
+$wcmd = Get-Command wails -ErrorAction SilentlyContinue
+if ($wcmd) { $wails = $wcmd.Source }
+if (-not $wails) {
+  $wailsCands = @()
+  try {
+    $gopath = (go env GOPATH 2>$null).Trim()
+    if ($gopath) { $wailsCands += (Join-Path $gopath "bin\wails.exe") }
+  } catch {}
+  $wailsCands += @(
+    "D:\Dev\go-workspace\bin\wails.exe",
+    "$env:USERPROFILE\go\bin\wails.exe",
+    "$env:GOPATH\bin\wails.exe"
+  )
+  $wails = $wailsCands | Where-Object { $_ -and (Test-Path $_) } | Select-Object -First 1
+}
+if (-not $wails) {
+  throw "wails CLI not found. Run: go install github.com/wailsapp/wails/v2/cmd/wails@latest ; then add GOPATH/bin to PATH and retry in a fresh terminal."
+}
+& $wails build -platform windows/amd64 -o WayerPC.exe
 if ($LASTEXITCODE -ne 0) { throw "wails build failed" }
 $exe = "$root/build/bin/WayerPC.exe"
 if (-not (Test-Path $exe)) { throw "expected exe missing: $exe" }
@@ -42,9 +61,27 @@ if ($Portable) {
 }
 
 Write-Host "[4/4] Building installer (NSIS)..."
-if (-not (Get-Command makensis -ErrorAction SilentlyContinue)) {
-  throw "makensis not found. Install NSIS 3 (https://nsis.sourceforge.io) and retry."
+$makensis = $null
+$cmd = Get-Command makensis -ErrorAction SilentlyContinue
+if ($cmd) { $makensis = $cmd.Source }
+if (-not $makensis) {
+  $candidates = @(
+    "$env:ProgramFiles (x86)\NSIS\makensis.exe",
+    "$env:ProgramFiles\NSIS\makensis.exe"
+  )
+  foreach ($reg in @("HKLM:\SOFTWARE\NSIS", "HKLM:\SOFTWARE\WOW6432Node\NSIS")) {
+    try {
+      $dir = (Get-ItemProperty -Path $reg -ErrorAction Stop)."(default)"
+      if ($dir) { $candidates += (Join-Path $dir "makensis.exe") }
+    } catch {}
+  }
+  # NSIS installed outside Program Files (e.g. D:\Dev\NSIS)
+  $candidates += "D:\Dev\NSIS\makensis.exe", "D:\Dev\NSIS\Bin\makensis.exe"
+  $makensis = $candidates | Where-Object { $_ -and (Test-Path $_) } | Select-Object -First 1
 }
-makensis "/DAPP_VERSION=$ver" "$root/build/installer.nsi"
+if (-not $makensis) {
+  throw "makensis not found. Install NSIS 3 (https://nsis.sourceforge.io) and ensure makensis.exe is on PATH, then retry."
+}
+& $makensis "/DAPP_VERSION=$ver" "$root/build/installer.nsi"
 if ($LASTEXITCODE -ne 0) { throw "makensis failed" }
 Write-Host "Output: $root/out/WayerPC-$ver-setup.exe"
