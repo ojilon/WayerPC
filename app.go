@@ -322,6 +322,9 @@ func (a *App) CatalogList() []catalog.Entry {
 	if err != nil || rows == nil {
 		return []catalog.Entry{}
 	}
+	for i := range rows {
+		rows[i].Exists = pathExists(rows[i].Path)
+	}
 	return rows
 }
 

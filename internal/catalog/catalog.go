@@ -43,6 +43,8 @@ type Entry struct {
 	SizeBytes  int64   `json:"sizeBytes"`
 	ImportedAt string  `json:"importedAt"`
 	Score      float64 `json:"score,omitempty"`
+	// Exists is filled by callers that stat the path (List leaves it false).
+	Exists bool `json:"exists,omitempty"`
 }
 
 // DB is a single-writer SQLite handle.

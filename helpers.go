@@ -19,6 +19,11 @@ func isDir(p string) bool {
 	return err == nil && st.IsDir()
 }
 
+func pathExists(p string) bool {
+	st, err := os.Stat(p)
+	return err == nil && !st.IsDir()
+}
+
 func sameDir(a, b string) bool {
 	aa, errA := filepath.Abs(a)
 	bb, errB := filepath.Abs(b)
