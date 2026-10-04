@@ -1,0 +1,20 @@
+{
+  "$schema": "https://wails.io/schemas/config.v2.json",
+  "name": "WayerPC",
+  "outputfilename": "WayerPC.exe",
+  "frontend:dir": "frontend",
+  "frontend:install": "pnpm install",
+  "frontend:build": "pnpm build",
+  "frontend:dev:url": "http://localhost:5173",
+  "author": {
+    "name": "WayerPC contributors",
+    "email": ""
+  },
+  "info": {
+    "companyName": "WayerPC",
+    "productName": "WayerPC",
+    "productVersion": "0.2.0",
+    "description": "Phone ↔ PC transfer over hotspot",
+    "copyright": "MIT — see LICENSE"
+  }
+}
