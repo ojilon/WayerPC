@@ -2,6 +2,7 @@
 //   1. frontend/src/version.ts  (generated — do not hand-edit)
 //   1b. internal/version/version.json (generated mirror for go:embed)
 //   2. wails.json info.productVersion (when --wails or always if file exists)
+//   3. frontend/package.json version (informational)
 //
 // Usage: node scripts/sync-version.mjs [--wails] [--check]
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from "node:fs";
@@ -61,6 +62,20 @@ if (existsSync(wailsPath)) {
       console.error(`wails.json productVersion ${w.info.productVersion} != ${ver.version}`);
       process.exit(1);
     }
+  }
+}
+// 3. frontend/package.json version (informational, kept in sync)
+const pkgPath = join(root, "frontend", "package.json");
+if (existsSync(pkgPath)) {
+  const pkg = JSON.parse(readFileSync(pkgPath, "utf-8"));
+  if (pkg.version !== ver.version) {
+    if (args.has("--check")) {
+      console.error(`frontend/package.json version ${pkg.version} != ${ver.version}`);
+      process.exit(1);
+    }
+    pkg.version = ver.version;
+    writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + "\n");
+    console.log(`updated ${pkgPath} version -> ${ver.version}`);
   }
 }
 console.log(`${ver.appName} v${ver.version} (proto ${ver.protocolVersion}) synced`);

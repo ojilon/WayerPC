@@ -101,6 +101,7 @@ func (a *App) startup(ctx context.Context) {
 		a.logf(fmt.Sprintf("Storage init failed for %s: %v", root, err))
 		return
 	}
+	a.statsStop = make(chan struct{})
 	go a.statsLoop()
 }
 

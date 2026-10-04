@@ -27,6 +27,8 @@
 !include "WinMessages.nsh"
 !include "StrFunc.nsh"
 ${StrRep}
+${StrStr}
+${UnStrRep}
 
 Name "WayerPC ${APP_VERSION}"
 OutFile "..\out\WayerPC-${APP_VERSION}-setup.exe"
@@ -133,9 +135,19 @@ Section "WayerPC application (required)" SecApp
     "" "$INSTDIR\bin\WayerPC.exe" 0
   CreateShortcut "$SMPROGRAMS\WayerPC\Uninstall.lnk" "$INSTDIR\bin\uninstall.exe"
 
-  ; user PATH so the terminal finds it (`where WayerPC`)
-  EnVar::AddValue "PATH" "$INSTDIR\bin"
-  Pop $0
+  ; user PATH so the terminal finds it (`where WayerPC`).
+  ; Stock registry edit (no EnVar plugin): append once, guarded by a
+  ; ";"-aware search so "bin" never matches "bin2" and never duplicates.
+  ReadRegStr $0 HKCU "Environment" "PATH"
+  ${StrStr} $1 "$0;" "$INSTDIR\bin;"
+  ${If} $1 == ""
+    ${If} $0 == ""
+      StrCpy $0 "$INSTDIR\bin"
+    ${Else}
+      StrCpy $0 "$0;$INSTDIR\bin"
+    ${EndIf}
+    WriteRegExpandStr HKCU "Environment" "PATH" $0
+  ${EndIf}
   SendMessage ${HWND_BROADCAST} ${WM_WININICHANGE} 0 "STR:Environment" /TIMEOUT=5000
 
   WriteUninstaller "$INSTDIR\bin\uninstall.exe"
@@ -155,8 +167,19 @@ Section "Uninstall"
   Delete "$SMPROGRAMS\WayerPC\Uninstall.lnk"
   RMDir "$SMPROGRAMS\WayerPC"
   Delete "$DESKTOP\WayerPC.lnk"
-  EnVar::DeleteValue "PATH" "$INSTDIR\bin"
-  Pop $0
+  ; Remove our PATH entry (surgical: only "$INSTDIR\bin;", then trim one
+  ; leftover trailing ";"). Other entries are never touched.
+  ReadRegStr $0 HKCU "Environment" "PATH"
+  ${UnStrRep} $0 "$0;" "$INSTDIR\bin;" ""
+  StrLen $1 $0
+  ${If} $1 > 0
+    IntOp $1 $1 - 1
+    StrCpy $2 $0 1 $1
+    ${If} $2 == ";"
+      StrCpy $0 $0 $1
+    ${EndIf}
+  ${EndIf}
+  WriteRegExpandStr HKCU "Environment" "PATH" $0
   SendMessage ${HWND_BROADCAST} ${WM_WININICHANGE} 0 "STR:Environment" /TIMEOUT=5000
   DeleteRegKey HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\WayerPC"
   DeleteRegKey HKCU "Software\WayerPC"
