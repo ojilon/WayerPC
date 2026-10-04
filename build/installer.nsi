@@ -34,11 +34,11 @@ Name "WayerPC ${APP_VERSION}"
 OutFile "..\out\WayerPC-${APP_VERSION}-setup.exe"
 Unicode True
 RequestExecutionLevel user
-SetShellVarContext current
 InstallDir "$PROGRAMFILES\WayerPC"
 InstallDirRegKey HKCU "Software\WayerPC" "InstallDir"
 VIProductVersion "${APP_VERSION}.0"
 VIAddVersionKey "ProductName" "WayerPC"
+VIAddVersionKey "FileVersion" "${APP_VERSION}.0"
 VIAddVersionKey "ProductVersion" "${APP_VERSION}"
 VIAddVersionKey "FileDescription" "WayerPC — phone to PC transfer"
 VIAddVersionKey "LegalCopyright" "MIT"
@@ -59,6 +59,7 @@ VIAddVersionKey "LegalCopyright" "MIT"
 
 ; ---- default dir: D:\projects\WayerPC when D: exists ----
 Function .onInit
+  SetShellVarContext current
   IfFileExists "D:\*.*" hasD
     StrCpy $INSTDIR "$PROGRAMFILES\WayerPC"
     Goto done
@@ -81,6 +82,7 @@ FunctionEnd
 
 Section "WayerPC application (required)" SecApp
   SectionIn RO
+  SetShellVarContext current
   SetOutPath "$INSTDIR\bin"
   File "bin\WayerPC.exe"
 
@@ -96,7 +98,6 @@ Section "WayerPC application (required)" SecApp
 
   ; first-run config — only when none exists (reinstalls never clobber
   ; a relocated library)
-  SetShellVarContext current
   ReadEnvStr $2 "LOCALAPPDATA"
   ${If} $2 == ""
     ReadEnvStr $2 "USERPROFILE"
@@ -154,11 +155,13 @@ Section "WayerPC application (required)" SecApp
 SectionEnd
 
 Section "Desktop shortcut" SecDesktop
+  SetShellVarContext current
   CreateShortcut "$DESKTOP\WayerPC.lnk" "$INSTDIR\bin\WayerPC.exe" \
     "" "$INSTDIR\bin\WayerPC.exe" 0
 SectionEnd
 
 Section "Uninstall"
+  SetShellVarContext current
   Delete "$INSTDIR\bin\WayerPC.exe"
   Delete "$INSTDIR\bin\uninstall.exe"
   RMDir "$INSTDIR\bin"
