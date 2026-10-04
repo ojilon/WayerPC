@@ -40,6 +40,12 @@ const (
 	// active transfer, so slow-but-alive uploads/downloads survive while
 	// truly stalled ones still time out.
 	idleTimeout = 300 * time.Second
+	// settleTimeout is the silence window that terminates a command when
+	// the client sends no line ending (the Android client writes the
+	// header with no trailing newline, then waits for the reply).
+	// Newline-terminated commands still complete immediately with zero
+	// added latency; only unterminated ones wait out this window.
+	settleTimeout = 500 * time.Millisecond
 	// writeTimeout bounds control replies (READY/DONE/FOUND/MATCHES/ERROR).
 	// Bulk transfer chunks refresh their own deadline per chunk (see
 	// transfer.go), so this never aborts a progressing transfer.
@@ -74,6 +80,8 @@ type Server struct {
 	cat       *catalog.DB
 	logf      Logger
 	maxUpload int64
+	// cmdSettle overrides settleTimeout (tests use a short window).
+	cmdSettle time.Duration
 
 	mu            sync.Mutex
 	listener      net.Listener
@@ -205,13 +213,14 @@ func (s *Server) serveConn(conn net.Conn) {
 
 	r := bufio.NewReaderSize(conn, 32*1024)
 	for {
-		// Per-operation deadlines, refreshed every command: an absolute
-		// deadline set once per iteration could expire between the read
-		// and the reply (or mid-transfer), killing live sessions with
-		// "i/o timeout". Transfers refresh these per chunk instead.
+		// Fresh deadlines every command. The read deadline bounds the
+		// wait for the next command; the write deadline is refreshed
+		// again after a successful read (below), so a command that
+		// arrives late in the window still gets a full reply budget
+		// instead of an instant "i/o timeout".
 		_ = conn.SetReadDeadline(time.Now().Add(idleTimeout))
 		_ = conn.SetWriteDeadline(time.Now().Add(writeTimeout))
-		line, err := readCommand(r)
+		line, err := readCommand(r, conn, s.settle())
 		if err != nil {
 			if err == io.EOF {
 				s.logf(fmt.Sprintf("[CLIENT] %s disconnected", remote))
@@ -223,6 +232,7 @@ func (s *Server) serveConn(conn net.Conn) {
 		if line == "" {
 			continue
 		}
+		_ = conn.SetWriteDeadline(time.Now().Add(writeTimeout))
 		status, detail, fatal := s.handleCommand(line, conn, r)
 		switch status {
 		case StatusAskOK:
@@ -249,32 +259,51 @@ func (s *Server) serveConn(conn net.Conn) {
 	}
 }
 
-// readCommand reads one trimmed command line (without the newline).
-func readCommand(r *bufio.Reader) (string, error) {
-	var line []byte
-	for {
-		chunk, isPrefix, err := r.ReadLine()
+// settle returns the command settle window (overridable in tests).
+func (s *Server) settle() time.Duration {
+	if s.cmdSettle > 0 {
+		return s.cmdSettle
+	}
+	return settleTimeout
+}
+
+// readCommand reads one trimmed command. A trailing newline (or CR)
+// terminates immediately; otherwise the command ends after `settle` of
+// silence or at EOF — the Android client sends the header with no line
+// ending and then waits for the reply, so without this the header would
+// sit unread until the idle deadline fires minutes later.
+func readCommand(r *bufio.Reader, conn net.Conn, settle time.Duration) (string, error) {
+	first, err := r.ReadByte()
+	if err != nil {
+		return "", err // EOF (clean disconnect) or idle timeout
+	}
+	if first == '\n' || first == '\r' {
+		return "", nil // leftover half of a CRLF pair; skip
+	}
+	line := []byte{first}
+	for len(line) < maxLine {
+		// Sliding silence window: any arriving byte extends it, so a
+		// header split across TCP segments still joins up.
+		_ = conn.SetReadDeadline(time.Now().Add(settle))
+		b, err := r.ReadByte()
 		if err != nil {
-			if err == io.EOF && len(line) > 0 {
-				break // last line without newline
-			}
-			return "", err
+			break // silence (timeout) or EOF: process what we have
 		}
-		if len(line)+len(chunk) > maxLine {
-			return "", fmt.Errorf("command line too long")
-		}
-		line = append(line, chunk...)
-		if !isPrefix {
+		if b == '\n' || b == '\r' {
 			break
 		}
+		line = append(line, b)
 	}
-	// Trim trailing \r and surrounding whitespace (legacy .strip()).
-	out := string(line)
+	return trimCommand(string(line)), nil
+}
+
+// trimCommand strips trailing CR and surrounding whitespace (legacy .strip()).
+func trimCommand(out string) string {
 	for len(out) > 0 && (out[len(out)-1] == '\r' || out[len(out)-1] == ' ' || out[len(out)-1] == '\t') {
 		out = out[:len(out)-1]
 	}
 	for len(out) > 0 && (out[0] == ' ' || out[0] == '\t') {
 		out = out[1:]
 	}
-	return out, nil
+	return out
 }

@@ -63,12 +63,19 @@ No numpy/cgo/DLL loading.
   `handle_client`), line-buffered commands (`bufio.Reader`, trims;
   multi-command lines handled).
 - **Timeouts are per-operation, not absolute**: each loop iteration sets a
-  300 s idle-read deadline and a 60 s control-write deadline. Bulk transfer
+  300 s idle-read deadline and a 60 s control-write deadline, and the write
+  deadline is refreshed again after every successful read. Bulk transfer
   chunks (`transfer.go`) refresh their deadline on every 32 KiB of progress,
   so slow-but-alive uploads/downloads survive while stalled ones still time
   out (a single absolute deadline — as in the Python `settimeout(300)` —
   could expire between the read and the reply, killing live sessions with
   `i/o timeout`).
+- **Command framing is newline-optional**: a trailing `\n`/`\r` ends a
+  command immediately; otherwise it ends after 500 ms of silence or at EOF
+  (the Android client sends the header with no line ending, then waits for
+  the reply — without this the header sat unread until the idle deadline).
+  The silence window slides per byte, so headers split across TCP segments
+  still join up.
 - `handleCommand` returns `(status, detail, fatal)`; `fatal=true` means the
   reply could not be delivered (peer gone) and the session is closed
   immediately instead of lingering as a ghost connection.

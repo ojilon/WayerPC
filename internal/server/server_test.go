@@ -29,6 +29,7 @@ func testServer(t *testing.T) (*Server, *storage.Store, []string) {
 	}
 	t.Cleanup(func() { cat.Close() })
 	srv := New("127.0.0.1", 0, store, cat, func(l string) { logs = append(logs, l) })
+	srv.cmdSettle = 50 * time.Millisecond // fast framing tests; prod uses 500ms
 	return srv, store, logs
 }
 
@@ -57,7 +58,7 @@ func runCommand(t *testing.T, srv *Server, line string) (string, int, string) {
 	done := make(chan result, 1)
 	go func() {
 		r := bufio.NewReader(server)
-		cmd, err := readCommand(r)
+		cmd, err := readCommand(r, server, srv.settle())
 		if err != nil {
 			done <- result{-99, err.Error(), false}
 			return
@@ -131,6 +132,143 @@ func TestAskDuplicatePrefixTolerated(t *testing.T) {
 	}
 }
 
+// serveRaw runs one command against exactly the bytes writeFn puts on the
+// wire (newline optional — mirrors the Android client, which sends the
+// header with no line ending and then waits for the reply).
+func serveRaw(t *testing.T, srv *Server, writeFn func(client net.Conn)) (string, int, string, bool) {
+	t.Helper()
+	client, server := net.Pipe()
+	defer client.Close()
+	defer server.Close()
+	type result struct {
+		status int
+		detail string
+		fatal  bool
+	}
+	done := make(chan result, 1)
+	go func() {
+		r := bufio.NewReader(server)
+		cmd, err := readCommand(r, server, srv.settle())
+		if err != nil {
+			done <- result{-99, err.Error(), false}
+			return
+		}
+		st, detail, fatal := srv.handleCommand(cmd, server, r)
+		done <- result{st, detail, fatal}
+	}()
+	writeFn(client)
+	out := readAll(client)
+	select {
+	case res := <-done:
+		return out, res.status, res.detail, res.fatal
+	case <-time.After(5 * time.Second):
+		t.Fatal("server did not answer")
+		return "", 0, "", false
+	}
+}
+
+func TestAskWithoutNewline(t *testing.T) {
+	// Exact phone behavior: header bytes, no "\n", then wait for reply.
+	// The server must answer after the settle window, not hang for minutes.
+	srv, _, _ := testServer(t)
+	p := seed(t, t.TempDir(), "report.pdf", "PDF-BYTES-12345")
+	if _, err := srv.cat.AddPath(p); err != nil {
+		t.Fatal(err)
+	}
+	out, status, _, fatal := serveRaw(t, srv, func(client net.Conn) {
+		if _, err := client.Write([]byte("/ask report.pdf")); err != nil {
+			t.Errorf("write: %v", err)
+		}
+	})
+	if fatal {
+		t.Fatal("newline-less command must not be fatal")
+	}
+	if status != StatusAskOK || !strings.HasPrefix(out, "FOUND 15\n") {
+		t.Fatalf("status=%d out=%q", status, out)
+	}
+}
+
+func TestSplitHeaderJoinsWithinSettle(t *testing.T) {
+	// One flush split across TCP segments must still parse as one command.
+	srv, _, _ := testServer(t)
+	p := seed(t, t.TempDir(), "report.pdf", "PDF-BYTES-12345")
+	if _, err := srv.cat.AddPath(p); err != nil {
+		t.Fatal(err)
+	}
+	out, status, _, _ := serveRaw(t, srv, func(client net.Conn) {
+		if _, err := client.Write([]byte("/ask rep")); err != nil {
+			t.Errorf("write: %v", err)
+			return
+		}
+		time.Sleep(10 * time.Millisecond) // well inside the 50ms test settle
+		if _, err := client.Write([]byte("ort.pdf")); err != nil {
+			t.Errorf("write: %v", err)
+		}
+	})
+	if status != StatusAskOK || !strings.HasPrefix(out, "FOUND 15\n") {
+		t.Fatalf("status=%d out=%q", status, out)
+	}
+}
+
+func TestEofWithDataProcessesCommand(t *testing.T) {
+	// Client sends a newline-less header then half-closes: the bytes must
+	// still be processed (not discarded as a bare EOF).
+	srv, _, _ := testServer(t)
+	p := seed(t, t.TempDir(), "report.pdf", "PDF-BYTES-12345")
+	if _, err := srv.cat.AddPath(p); err != nil {
+		t.Fatal(err)
+	}
+	ln, err := net.Listen("tcp", "127.0.0.1:0")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer ln.Close()
+	type result struct {
+		status int
+		detail string
+		fatal  bool
+	}
+	done := make(chan result, 1)
+	go func() {
+		c, err := ln.Accept()
+		if err != nil {
+			return
+		}
+		defer c.Close()
+		r := bufio.NewReader(c)
+		cmd, rerr := readCommand(r, c, srv.settle())
+		if rerr != nil {
+			done <- result{-99, rerr.Error(), false}
+			return
+		}
+		st, detail, fatal := srv.handleCommand(cmd, c, r)
+		done <- result{st, detail, fatal}
+	}()
+	client, err := net.Dial("tcp", ln.Addr().String())
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer client.Close()
+	if _, err := client.Write([]byte("/ask report.pdf")); err != nil {
+		t.Fatal(err)
+	}
+	if tc, ok := client.(*net.TCPConn); ok {
+		_ = tc.CloseWrite() // EOF with data pending
+	}
+	out := readAll(client)
+	select {
+	case res := <-done:
+		if res.status != StatusAskOK || res.fatal {
+			t.Fatalf("status=%d fatal=%v detail=%q", res.status, res.fatal, res.detail)
+		}
+	case <-time.After(5 * time.Second):
+		t.Fatal("server did not answer")
+	}
+	if !strings.HasPrefix(out, "FOUND 15\n") || !strings.HasSuffix(out, "PDF-BYTES-12345") {
+		t.Fatalf("bad reply: %q", out)
+	}
+}
+
 func TestAskMatchesList(t *testing.T) {
 	srv, _, _ := testServer(t)
 	dir := t.TempDir()
@@ -200,7 +338,7 @@ func TestUploadBinaryRoundTrip(t *testing.T) {
 	done := make(chan result, 1)
 	go func() {
 		r := bufio.NewReader(server)
-		cmd, err := readCommand(r)
+		cmd, err := readCommand(r, server, srv.settle())
 		if err != nil {
 			done <- result{-99, err.Error(), false}
 			return

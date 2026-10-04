@@ -106,3 +106,4 @@ Uninstall keeps `data/` (your library outlives the app).
 | Port 5000 busy | another instance is running (single app lauches one server); stop it first |
 | `/ask` finds nothing | file must be imported (Import tab) or dropped in `shared/` |
 | `failed to send READY … i/o timeout` | phone idled past the 5-min window or the hotspot stalled (sleep/doze); fixed server-side so slow-but-alive transfers survive — just retry the upload from the phone |
+| command sent but nothing happens for minutes | ancient builds required a trailing newline; current server accepts newline-less headers (500 ms settle) — rebuild the PC app |
