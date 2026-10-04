@@ -2,6 +2,8 @@
 
 # Wails / Go outputs
 build/bin/
+build/windows/info.json
+build/windows/wails.exe.manifest
 bin/
 out/
 *.exe

@@ -5,7 +5,6 @@
   "frontend:dir": "frontend",
   "frontend:install": "pnpm install",
   "frontend:build": "pnpm build",
-  "frontend:dev:watcher": {},
   "frontend:dev:url": "http://localhost:5173",
   "author": {
     "name": "WayerPC contributors",
