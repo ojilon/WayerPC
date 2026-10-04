@@ -1,0 +1,2 @@
+Tracked so `go build` works before the first `pnpm build`.
+Vite wipes this file locally on build; the real UI lands here.

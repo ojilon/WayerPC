@@ -76,6 +76,10 @@ type Server struct {
 	bytesSent     int64
 	bytesReceived int64
 	startTime     time.Time
+
+	// backendMu guards store/cat so the app can relocate the data root
+	// (Settings screen / installer) without restarting the listener.
+	backendMu sync.RWMutex
 }
 
 // New builds a server. logf may be nil (lines are dropped).
@@ -95,6 +99,21 @@ func (s *Server) Addr() string { return fmt.Sprintf("%s:%d", s.host, s.port) }
 
 // SetMaxUploadBytes overrides the per-upload cap (tests use a small value).
 func (s *Server) SetMaxUploadBytes(n int64) { s.maxUpload = n }
+
+// Attach hot-swaps the storage + catalog backends (data-root relocate).
+func (s *Server) Attach(store *storage.Store, cat *catalog.DB) {
+	s.backendMu.Lock()
+	defer s.backendMu.Unlock()
+	s.store = store
+	s.cat = cat
+}
+
+// backends returns the current storage + catalog handles.
+func (s *Server) backends() (*storage.Store, *catalog.DB) {
+	s.backendMu.RLock()
+	defer s.backendMu.RUnlock()
+	return s.store, s.cat
+}
 
 // Start binds and serves until Stop is called (or bind fails).
 func (s *Server) Start() error {

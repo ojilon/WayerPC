@@ -1,4 +1,32 @@
-# Python
+# --- Active build: Go + Wails + Vite (pnpm) ---
+
+# Wails / Go outputs
+build/bin/
+bin/
+out/
+*.exe
+
+# Vite / pnpm (see also frontend/.gitignore)
+frontend/dist/*
+!frontend/dist/.gitkeep
+frontend/node_modules/
+frontend/.pnpm-store/
+node_modules/
+.pnpm-store/
+
+# .data dev stub: only README + .gitkeep files are tracked.
+# Real databases and dev uploads stay local.
+.data/wayerpc.db*
+.data/Data/*.db*
+.data/Data/*.db-journal
+.data/shared/*
+!.data/shared/.gitkeep
+.data/received/*
+!.data/received/.gitkeep
+.data/Data/*
+!.data/Data/.gitkeep
+
+# --- Legacy Python/C++ (kept for reference under legacy/) ---
 __pycache__/
 *.py[cod]
 *.egg-info/
@@ -6,9 +34,7 @@ __pycache__/
 venv/
 .env/
 
-# Native build output
-build/
-dist/
+# Native leftovers
 *.o
 *.obj
 *.so
@@ -18,14 +44,13 @@ dist/
 *.lib
 *.pdb
 
-# Keep the packaging spec (do not ignore packaging/*.spec)
-# Ignore generated specs in the repo root only
+# Ignore generated specs in the repo root only (legacy packaging spec is tracked)
 /WayerPC.spec
 
-# SQLite amalgamation (download locally — see backend/third_party/sqlite/README.md)
-backend/third_party/sqlite/sqlite3.c
-backend/third_party/sqlite/sqlite3.h
-backend/third_party/sqlite/sqlite3ext.h
+# SQLite amalgamation (legacy; download locally — see legacy/backend/third_party/sqlite/README.md)
+legacy/backend/third_party/sqlite/sqlite3.c
+legacy/backend/third_party/sqlite/sqlite3.h
+legacy/backend/third_party/sqlite/sqlite3ext.h
 
 # App / editor
 logs/

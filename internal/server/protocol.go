@@ -43,10 +43,11 @@ func (s *Server) handleCommand(line string, conn net.Conn, r *bufio.Reader) (int
 // resolveAndSend serves an /ask query: catalog first (20%+ related names),
 // then the exact-name fallback over shared/ + received/.
 func (s *Server) resolveAndSend(query string, conn net.Conn) (int, string) {
+	_, cat := s.backends()
 	var hits []catalog.Entry
-	if s.cat != nil {
+	if cat != nil {
 		var err error
-		hits, err = s.cat.FindForRequest(query, catalog.DefaultCutoff)
+		hits, err = cat.FindForRequest(query, catalog.DefaultCutoff)
 		if err != nil {
 			hits = nil
 		}
@@ -93,10 +94,11 @@ func (s *Server) handleUpload(line string, conn net.Conn, r *bufio.Reader) (int,
 			_ = sendLine(conn, "ERROR invalid_upload_command")
 			return StatusProtocol, "invalid /upload command (need size+name or a search query)"
 		}
+		_, cat := s.backends()
 		var hits []catalog.Entry
-		if s.cat != nil {
+		if cat != nil {
 			var err error
-			hits, err = s.cat.FindForRequest(query, catalog.DefaultCutoff)
+			hits, err = cat.FindForRequest(query, catalog.DefaultCutoff)
 			if err != nil {
 				hits = nil
 			}
@@ -125,7 +127,14 @@ func (s *Server) handleUpload(line string, conn net.Conn, r *bufio.Reader) (int,
 		return StatusProtocol, "empty filename in /upload"
 	}
 
-	saveDir := s.store.ReceivedDir()
+	saveDir := ""
+	if store, _ := s.backends(); store != nil {
+		saveDir = store.ReceivedDir()
+	}
+	if saveDir == "" {
+		_ = sendLine(conn, "ERROR: Failed to obtain directory this side, to store the file to receive")
+		return StatusStorage, "received folder unavailable (storage not initialized)"
+	}
 	if err := os.MkdirAll(saveDir, 0o755); err != nil {
 		_ = sendLine(conn, "ERROR: Failed to obtain directory this side, to store the file to receive")
 		return StatusStorage, fmt.Sprintf("received folder unavailable: %v", err)
@@ -155,8 +164,8 @@ func (s *Server) handleUpload(line string, conn net.Conn, r *bufio.Reader) (int,
 	}
 	_ = sendLine(conn, "DONE")
 	s.addReceived(filesize)
-	if s.cat != nil {
-		_, _ = s.cat.AddPath(finalPath)
+	if _, cat := s.backends(); cat != nil {
+		_, _ = cat.AddPath(finalPath)
 	}
 	return StatusUploadOK, filename
 }
@@ -198,10 +207,11 @@ func (s *Server) sendMatches(conn net.Conn, hits []catalog.Entry) (int, string) 
 }
 
 func (s *Server) appFolders() []string {
-	if s.store == nil {
+	store, _ := s.backends()
+	if store == nil {
 		return nil
 	}
-	return []string{s.store.SharedDir(), s.store.ReceivedDir()}
+	return []string{store.SharedDir(), store.ReceivedDir()}
 }
 
 func isDigits(s string) bool {
