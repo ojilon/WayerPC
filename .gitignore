@@ -43,3 +43,13 @@ features_to_add.md
 map.py
 mapping.txt
 version.txt
+
+#node_modules
+frontend/node_modules/
+
+.data/
+
+#executables
+*.exe
+
+out/
