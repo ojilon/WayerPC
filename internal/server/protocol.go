@@ -77,6 +77,7 @@ func (s *Server) resolveAndSend(query string, conn net.Conn) (int, string, bool)
 		return s.streamFile(conn, found[0])
 	}
 	_ = sendLine(conn, "ERROR file_not_found")
+	s.emitActivity(KindError, "not found · "+query, "Not found", hostOf(conn))
 	return StatusFail, fmt.Sprintf("file not found: %s", query), false
 }
 
@@ -144,30 +145,41 @@ func (s *Server) handleUpload(line string, conn net.Conn, r *bufio.Reader) (int,
 	finalPath := filepath.Join(saveDir, filename)
 	partPath := finalPath + ".part"
 
+	tp := s.startTransfer(conn, DirIn, filename, filesize, hostOf(conn))
 	if _, err := fmt.Fprint(conn, "READY"); err != nil {
+		tp.finish(TransferError)
 		return StatusProtocol, fmt.Sprintf(
 			"failed to send READY for upload of %q: %v (phone likely asleep/disconnected — it can retry on reconnect)",
 			filename, err), true
 	}
 
-	received, werr := recvExact(r, conn, partPath, filesize)
+	received, werr := recvExact(r, conn, partPath, filesize, tp)
 	if werr != nil {
 		_ = os.Remove(partPath)
+		if tp.isCancelled() {
+			tp.finish(TransferCancelled)
+			return StatusFail, fmt.Sprintf("upload cancelled: %s", filename), true
+		}
+		tp.finish(TransferError)
 		fatal := sendLine(conn, "ERROR write_failed") != nil
 		return StatusStorage, fmt.Sprintf("write failed for %q: %v", filename, werr), fatal
 	}
 	if received != filesize {
 		_ = os.Remove(partPath)
+		tp.finish(TransferError)
 		fatal := sendLine(conn, "ERROR upload_incomplete") != nil
 		return StatusProtocol, fmt.Sprintf("upload incomplete for %q (%d/%d bytes)", filename, received, filesize), fatal
 	}
 	if err := os.Rename(partPath, finalPath); err != nil {
 		_ = os.Remove(partPath)
+		tp.finish(TransferError)
 		fatal := sendLine(conn, "ERROR write_failed") != nil
 		return StatusStorage, fmt.Sprintf("write failed for %q: %v", filename, err), fatal
 	}
 	_ = sendLine(conn, "DONE")
+	tp.finish(TransferDone)
 	s.addReceived(filesize)
+	s.emitActivity(KindFileReceived, filename+" · "+humanBytes(filesize), "Complete", hostOf(conn))
 	if _, cat := s.backends(); cat != nil {
 		_, _ = cat.AddPath(finalPath)
 	}
@@ -175,14 +187,30 @@ func (s *Server) handleUpload(line string, conn net.Conn, r *bufio.Reader) (int,
 }
 
 // streamFile sends FOUND <size>\n + bytes. Mirrors _stream_file.
+// The transfer is registered for progress + cancellation before the first
+// byte leaves, so the UI strip can show (and abort) v1 downloads too.
 func (s *Server) streamFile(conn net.Conn, filePath string) (int, string, bool) {
-	size, err := sendFile(conn, filePath)
+	name := filepath.Base(filePath)
+	var total int64
+	if st, err := os.Stat(filePath); err == nil && !st.IsDir() {
+		total = st.Size()
+	}
+	tp := s.startTransfer(conn, DirOut, name, total, hostOf(conn))
+	size, err := sendFile(conn, filePath, tp)
 	if err != nil {
+		if tp.isCancelled() {
+			tp.finish(TransferCancelled)
+			return StatusFail, fmt.Sprintf("transfer cancelled: %s", name), true
+		}
+		tp.finish(TransferError)
+		s.emitActivity(KindError, name, "Failed", hostOf(conn))
 		fatal := sendLine(conn, "ERROR file_access_denied") != nil
 		return StatusFail, fmt.Sprintf("file not accessible: %s (%v)", filePath, err), fatal
 	}
+	tp.finish(TransferDone)
 	s.addSent(size)
-	return StatusAskOK, filepath.Base(filePath), false
+	s.emitActivity(KindFileSent, name+" · "+humanBytes(size), "Complete", hostOf(conn))
+	return StatusAskOK, name, false
 }
 
 // sendMatches sends "MATCHES <n>\n<name>\n…" (names only, max 50 — legacy parity).
@@ -207,6 +235,7 @@ func (s *Server) sendMatches(conn net.Conn, hits []catalog.Entry) (int, string, 
 		}
 		preview = append(preview, h.Name)
 	}
+	s.emitActivity(KindMatchesSent, fmt.Sprintf("%d match(es) · %s", n, strings.Join(preview, ", ")), "Complete", hostOf(conn))
 	return StatusMatches, fmt.Sprintf("related names (%d): %s", n, strings.Join(preview, ", ")), false
 }
 

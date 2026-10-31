@@ -1,119 +1,225 @@
-// Console view: server status hero, network stats, live log with
-// filter/pause/autoscroll, start-stop controls.
-import { api, fmtMB, onEvent, type Ctx, type Status } from "../api";
+// Console (concept 01): status line with the address a phone can dial, four
+// hairline-separated stats, and the structured activity table.
+//
+// Performance notes: `stats` arrives every second, so status values are
+// patched node-by-node and the activity table only appends the rows that are
+// actually new. A filter change (rare) rebuilds.
+import { api, type ActivityRow, type Ctx } from "../api";
+import { activityLabel, esc, fmtBytes, fmtClock, fmtUptime, q } from "../dom";
+import { icon } from "../icons";
+import { clearActivity, phoneAddr, refreshStatus, store, listen } from "../state";
 
-export function mountConsole(root: HTMLElement, ctx: Ctx): () => void {
+type Tone = "st-green" | "st-red" | "st-amber" | "st-muted";
+
+export function mountConsole(root: HTMLElement, _ctx: Ctx): () => void {
   root.innerHTML = `
     <section class="page">
       <header class="page-head">
         <div>
-          <h2>Console</h2>
-          <p class="muted">TCP link to the Android client + live activity.</p>
-        </div>
-        <div class="row">
-          <button id="c-start" class="btn primary">Start server</button>
-          <button id="c-stop" class="btn ghost">Stop</button>
+          <h1 class="screen">Console</h1>
+          <p class="screen-sub">Server activity and transfer overview</p>
         </div>
       </header>
-      <div id="c-banner" class="banner warn hidden"></div>
-      <div class="cards">
-        <div class="hero card">
-          <span id="c-dot" class="dot off"></span>
-          <div>
-            <div id="c-state" class="hero-state">LOADING…</div>
-            <div id="c-addr" class="muted small"></div>
-          </div>
-          <div class="hero-right muted small" id="c-uptime">Uptime —</div>
+
+      <div class="statusline">
+        <div class="left">
+          <span id="c-dot" class="dot amber"></span>
+          <span id="c-state" class="muted">Starting…</span>
+          <button id="c-toggle" class="link" hidden></button>
         </div>
-        <div class="statgrid">
-          <div class="card stat"><span class="muted">Active links</span><b id="c-active">0</b></div>
-          <div class="card stat"><span class="muted">Handled</span><b id="c-total">0</b></div>
-          <div class="card stat"><span class="muted">Outbound</span><b id="c-sent">0 MB</b></div>
-          <div class="card stat"><span class="muted">Inbound</span><b id="c-recv">0 MB</b></div>
+        <div class="left">
+          <span id="c-uptime" class="uptime">UPTIME 00:00:00</span>
         </div>
       </div>
-      <div class="card logcard">
-        <div class="row between">
-          <b>Activity</b>
-          <div class="row">
-            <input id="c-filter" class="input" placeholder="Filter log…" />
-            <button id="c-pause" class="btn ghost sm">Pause</button>
-            <button id="c-clear" class="btn ghost sm">Clear</button>
-          </div>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="k">Active links</div>
+          <div class="v" id="c-active">0</div>
+          <div class="s" id="c-active-sub">&nbsp;</div>
         </div>
-        <div id="c-log" class="log" aria-live="polite"></div>
+        <div class="stat">
+          <div class="k">Handled</div>
+          <div class="v" id="c-total">0</div>
+          <div class="s" id="c-total-sub">&nbsp;</div>
+        </div>
+        <div class="stat">
+          <div class="k">Outbound</div>
+          <div class="v" id="c-sent">0 B</div>
+          <div class="s" id="c-sent-sub">0 files</div>
+        </div>
+        <div class="stat">
+          <div class="k">Inbound</div>
+          <div class="v" id="c-recv">0 B</div>
+          <div class="s" id="c-recv-sub">0 files</div>
+        </div>
+      </div>
+
+      <span class="section-label">Activity log</span>
+      <div class="listhead">
+        <div class="tabletools">
+          <label class="field sm" style="width:230px">
+            ${icon("find", 13)}
+            <input id="c-filter" type="search" placeholder="Filter activity" aria-label="Filter activity" />
+          </label>
+          <button id="c-pause" class="link">Pause</button>
+          <button id="c-clear" class="link">Clear</button>
+        </div>
+        <div class="small muted" id="c-count">0 events</div>
+      </div>
+      <table class="table">
+        <thead>
+          <tr><th>Time</th><th>Event</th><th>Detail</th><th style="text-align:right">Status</th></tr>
+        </thead>
+        <tbody id="c-rows"></tbody>
+      </table>
+      <div id="c-empty" class="state hidden">
+        <span class="rule"></span>
+        <div class="title">No activity yet</div>
+        <div class="body">Server events and file transfers appear here as they happen.</div>
       </div>
     </section>`;
 
-  const $ = (id: string) => root.querySelector<HTMLElement>(`#${id}`)!;
-  const logEl = $("c-log") as HTMLElement;
+  const $ = <T extends HTMLElement = HTMLElement>(id: string) => q<T>(root, `#${id}`);
+  const rows = $("c-rows");
+  const filter = $<HTMLInputElement>("c-filter");
+  const pauseBtn = $("c-pause");
+  const empty = $("c-empty");
+  const countEl = $("c-count");
+
   let paused = false;
-  let filter = "";
+  let pausedFrom = 0;
+  let rendered = 0;
+  let filterText = "";
+  let lastStatusKey = "";
 
-  const append = (line: string) => {
-    if (paused) return;
-    if (filter && !line.toLowerCase().includes(filter)) return;
-    const ts = new Date().toLocaleTimeString();
-    const div = document.createElement("div");
-    div.className = "logline";
-    div.textContent = `[${ts}] ${line}`;
-    logEl.appendChild(div);
-    while (logEl.children.length > 2000) logEl.firstChild?.remove();
-    logEl.scrollTop = logEl.scrollHeight;
+  const tone = (status: string): Tone => {
+    const s = (status || "").toLowerCase();
+    if (s.includes("fail") || s.includes("error") || s.includes("not found") || s.includes("stopped") || s.includes("denied"))
+      return "st-red";
+    if (s.includes("pending") || s.includes("wait") || s.includes("cancel") || s.includes("disconnect")) return "st-amber";
+    if (s === "" || s === "—") return "st-muted";
+    return "st-green";
   };
 
-  const paint = (st: Status) => {
-    const running = st.server?.running ?? false;
-    ($("c-dot") as HTMLElement).className = `dot ${running ? "on" : "off"}`;
-    $("c-state").textContent = running ? "ONLINE" : "OFFLINE";
-    $("c-state").className = `hero-state ${running ? "ok" : "bad"}`;
-    $("c-addr").textContent = st.server?.addr ? `Listening on ${st.server.addr}` : "";
-    $("c-uptime").textContent = running ? `Uptime ${st.server.uptimeSecs}s` : "Uptime —";
-    $("c-active").textContent = String(st.server?.active ?? 0);
-    $("c-total").textContent = String(st.server?.total ?? 0);
-    $("c-sent").textContent = fmtMB(st.server?.bytesSent ?? 0);
-    $("c-recv").textContent = fmtMB(st.server?.bytesReceived ?? 0);
-    const banner = $("c-banner") as HTMLElement;
-    if (!st.onboarded) {
-      banner.classList.remove("hidden");
-      banner.textContent = "No data folder yet — open Settings and choose where WayerPC should live.";
-    } else {
-      banner.classList.add("hidden");
+  const matches = (row: ActivityRow): boolean => {
+    if (!filterText) return true;
+    const haystack = `${activityLabel(row.kind)} ${row.detail} ${row.status} ${row.device ?? ""}`.toLowerCase();
+    return haystack.includes(filterText);
+  };
+
+  const rowHtml = (row: ActivityRow): string => `
+    <tr>
+      <td class="time">${esc(fmtClock(row.ts))}</td>
+      <td class="event">${esc(activityLabel(row.kind))}</td>
+      <td class="detail">${esc(row.detail)}${row.device ? ` <span class="faint">· ${esc(row.device)}</span>` : ""}</td>
+      <td class="status ${tone(row.status)}">${esc(row.status || "—")}</td>
+    </tr>`;
+
+  const rebuild = (): void => {
+    const all = store.activity.filter(matches);
+    rows.innerHTML = all.map(rowHtml).join("");
+    rendered = store.activity.length;
+    countEl.textContent = `${all.length} event${all.length === 1 ? "" : "s"}`;
+    empty.classList.toggle("hidden", all.length > 0);
+  };
+
+  const appendNew = (): void => {
+    const total = store.activity.length;
+    if (total <= rendered) return; // nothing new (stats ticks land here)
+    const fresh = store.activity.slice(rendered);
+    rendered = total;
+    const visible = fresh.filter(matches);
+    if (visible.length > 0) {
+      rows.insertAdjacentHTML("beforeend", visible.map(rowHtml).join(""));
+      empty.classList.add("hidden");
     }
+    countEl.textContent = `${rows.children.length} event${rows.children.length === 1 ? "" : "s"}`;
   };
 
-  const offs = [
-    onEvent("log", (line) => append(String(line ?? ""))),
-    onEvent("stats", (st) => paint(st as Status)),
-    onEvent("catalog-changed", () => api.getStatus().then(paint).catch(() => {})),
-  ];
+  const paintStats = (): void => {
+    const st = store.status;
+    const srv = st?.server;
+    const dot = $("c-dot");
+    const state = $("c-state");
+    const toggle = $<HTMLButtonElement>("c-toggle");
+    if (!srv) {
+      state.textContent = "Waiting for the backend…";
+      return;
+    }
+    const addr = phoneAddr(st ?? null);
+    if (srv.running) {
+      dot.className = "dot green";
+      state.innerHTML = `Listening on <span class="mono">${esc(addr)}</span>`;
+      toggle.hidden = false;
+      toggle.textContent = "Stop server";
+    } else {
+      dot.className = "dot red";
+      state.textContent = "Server stopped";
+      toggle.hidden = false;
+      toggle.textContent = "Start server";
+    }
+    $("c-uptime").textContent = `UPTIME ${fmtUptime(srv.uptimeSecs)}`;
+    $("c-active").textContent = String(srv.active);
+    $("c-active-sub").innerHTML = srv.active > 0 ? "phone link open" : "&nbsp;";
+    $("c-total").textContent = String(srv.total);
+    $("c-total-sub").innerHTML = srv.total > 0 ? "connections handled" : "&nbsp;";
+    $("c-sent").textContent = fmtBytes(srv.bytesSent);
+    $("c-sent-sub").textContent = `${srv.filesSent ?? 0} file${(srv.filesSent ?? 0) === 1 ? "" : "s"}`;
+    $("c-recv").textContent = fmtBytes(srv.bytesReceived);
+    $("c-recv-sub").textContent = `${srv.filesReceived ?? 0} file${(srv.filesReceived ?? 0) === 1 ? "" : "s"}`;
+  };
 
-  ($("c-filter") as HTMLInputElement).addEventListener("input", (e) => {
-    filter = (e.target as HTMLInputElement).value.trim().toLowerCase();
+  // Stats land once a second: repaint only when a displayed value changed.
+  const paint = (): void => {
+    const srv = store.status?.server;
+    const key = srv
+      ? `${srv.running}|${srv.active}|${srv.total}|${srv.bytesSent}|${srv.bytesReceived}|${srv.uptimeSecs}|${store.status?.lanAddr}`
+      : "none";
+    if (key !== lastStatusKey) {
+      lastStatusKey = key;
+      paintStats();
+    }
+    if (paused) {
+      const pending = store.activity.length - pausedFrom;
+      pauseBtn.textContent = pending > 0 ? `Resume (${pending} new)` : "Resume";
+      return;
+    }
+    appendNew();
+  };
+
+  filter.addEventListener("input", () => {
+    filterText = filter.value.trim().toLowerCase();
+    rebuild();
   });
-  ($("c-pause") as HTMLButtonElement).addEventListener("click", (e) => {
+  pauseBtn.addEventListener("click", () => {
     paused = !paused;
-    (e.target as HTMLButtonElement).textContent = paused ? "Resume" : "Pause";
+    if (paused) {
+      pausedFrom = store.activity.length;
+      pauseBtn.textContent = "Resume";
+    } else {
+      pauseBtn.textContent = "Pause";
+      rebuild();
+    }
   });
-  ($("c-clear") as HTMLButtonElement).addEventListener("click", () => {
-    logEl.innerHTML = "";
-    api.clearLogs().catch(() => {});
+  $("c-clear").addEventListener("click", () => {
+    void clearActivity().then(() => rebuild());
   });
-  ($("c-start") as HTMLButtonElement).addEventListener("click", async () => {
-    ctx.toast(await api.startServer().catch((e) => String(e)));
-    api.getStatus().then(paint).catch(() => {});
-  });
-  ($("c-stop") as HTMLButtonElement).addEventListener("click", async () => {
-    ctx.toast(await api.stopServer().catch((e) => String(e)));
-    api.getStatus().then(paint).catch(() => {});
+  $("c-toggle").addEventListener("click", async () => {
+    const running = store.status?.server?.running;
+    if (running) {
+      await api.stopServer().catch(() => {});
+    } else {
+      await api.startServer().catch(() => {});
+    }
+    await refreshStatus();
   });
 
-  api.getLogs().then((lines) => lines.forEach(append)).catch(() => {});
-  api.getStatus().then(paint).catch(() => {});
-  const timer = window.setInterval(() => api.getStatus().then(paint).catch(() => {}), 2000);
+  const off = listen(paint);
+  rebuild();
+  paintStats();
 
   return () => {
-    offs.forEach((off) => off());
-    window.clearInterval(timer);
+    off();
   };
 }

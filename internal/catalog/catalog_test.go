@@ -123,3 +123,70 @@ func TestSettingsRoundTrip(t *testing.T) {
 		t.Fatalf("expected empty for missing key, got %q", v)
 	}
 }
+
+func TestOpenStampsSchemaVersion(t *testing.T) {
+	dir := t.TempDir()
+	db, err := Open(filepath.Join(dir, "wayerpc.db"), "test")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer db.Close()
+	v, err := db.SchemaVersionNow()
+	if err != nil {
+		t.Fatal(err)
+	}
+	if v != SchemaVersion {
+		t.Fatalf("user_version = %d, want %d", v, SchemaVersion)
+	}
+}
+
+func TestReopenKeepsDataAndVersion(t *testing.T) {
+	dir := t.TempDir()
+	path := filepath.Join(dir, "wayerpc.db")
+	file := filepath.Join(dir, "keep.txt")
+	if err := os.WriteFile(file, []byte("hi"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	db, err := Open(path, "test")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, err := db.AddPath(file); err != nil {
+		t.Fatal(err)
+	}
+	if err := db.SetSetting("ui_sidebar_collapsed", "1"); err != nil {
+		t.Fatal(err)
+	}
+	db.Close()
+
+	db2, err := Open(path, "test")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer db2.Close()
+	rows, err := db2.List()
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(rows) != 1 || rows[0].Name != "keep.txt" {
+		t.Fatalf("rows after reopen = %+v", rows)
+	}
+	if v, _ := db2.GetSetting("ui_sidebar_collapsed"); v != "1" {
+		t.Fatalf("setting lost on reopen: %q", v)
+	}
+	if v, _ := db2.SchemaVersionNow(); v != SchemaVersion {
+		t.Fatalf("user_version after reopen = %d", v)
+	}
+}
+
+func TestMigrationsAreIdempotent(t *testing.T) {
+	dir := t.TempDir()
+	path := filepath.Join(dir, "wayerpc.db")
+	for i := 0; i < 3; i++ {
+		db, err := Open(path, "test")
+		if err != nil {
+			t.Fatalf("open #%d: %v", i, err)
+		}
+		db.Close()
+	}
+}
