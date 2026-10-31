@@ -1,0 +1,6 @@
+{
+  "appName": "WayerPC",
+  "version": "0.2.0",
+  "protocolVersion": 1,
+  "description": "Phone ↔ PC transfer over hotspot"
+}
