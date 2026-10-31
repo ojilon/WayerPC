@@ -36,11 +36,14 @@ type Config struct {
 	DataRoot string `json:"data_root"`
 	// InstallDir is informational (where bin/ lives). Empty in dev runs.
 	InstallDir string `json:"install_dir,omitempty"`
+	// ProtocolV2 enables the opt-in phone protocol (first byte '@'). v1 keeps
+	// working either way; this only governs whether '@' connections are served.
+	ProtocolV2 bool `json:"protocol_v2"`
 }
 
 // Defaults returns a Config with sane defaults and no data root.
 func Defaults() Config {
-	return Config{Host: DefaultHost, Port: DefaultPort}
+	return Config{Host: DefaultHost, Port: DefaultPort, ProtocolV2: true}
 }
 
 // Addr returns "host:port".
@@ -78,6 +81,9 @@ type rawFile struct {
 	InstallDir string `json:"install_dir"`
 	AppDir     string `json:"app_dir"`
 	SubDir     string `json:"sub_dir"`
+	// ProtocolV2 is a pointer so "absent" (older config files) can default to
+	// enabled while an explicit false is honoured.
+	ProtocolV2 *bool `json:"protocol_v2"`
 }
 
 // Load reads config.json. Missing file → defaults, nil.
@@ -106,6 +112,9 @@ func Load() (Config, error) {
 		cfg.Port = rf.Port
 	}
 	cfg.InstallDir = rf.InstallDir
+	if rf.ProtocolV2 != nil {
+		cfg.ProtocolV2 = *rf.ProtocolV2
+	}
 	switch {
 	case rf.DataRoot != "":
 		cfg.DataRoot = rf.DataRoot

@@ -19,6 +19,7 @@ import (
 
 	"wayerpc/internal/catalog"
 	"wayerpc/internal/storage"
+	"wayerpc/internal/wire"
 )
 
 const (
@@ -60,6 +61,12 @@ const (
 // Logger receives human-readable server lines (wired to the UI log).
 type Logger func(line string)
 
+// V2Handler serves one protocol-v2 connection. The session manager implements
+// it; protocol v1 never notices it exists.
+type V2Handler interface {
+	ServeV2(conn net.Conn, br *bufio.Reader)
+}
+
 // Stats is a point-in-time snapshot for the Console tab.
 type Stats struct {
 	Running       bool   `json:"running"`
@@ -68,6 +75,8 @@ type Stats struct {
 	Total         int64  `json:"total"`
 	BytesSent     int64  `json:"bytesSent"`
 	BytesReceived int64  `json:"bytesReceived"`
+	FilesSent     int64  `json:"filesSent"`
+	FilesReceived int64  `json:"filesReceived"`
 	StartTime     int64  `json:"startTimeUnix"`
 	UptimeSecs    int64  `json:"uptimeSecs"`
 }
@@ -90,11 +99,24 @@ type Server struct {
 	total         int64
 	bytesSent     int64
 	bytesReceived int64
+	filesSent     int64
+	filesReceived int64
 	startTime     time.Time
 
 	// backendMu guards store/cat so the app can relocate the data root
 	// (Settings screen / installer) without restarting the listener.
 	backendMu sync.RWMutex
+
+	// v2 is the optional protocol-v2 handler (nil = v2 connections are
+	// closed with a log line, exactly as before the upgrade).
+	v2 V2Handler
+
+	// obsMu guards the optional UI observer (transfer progress + activity).
+	obsMu sync.RWMutex
+	obs   Observer
+	// cancelMu guards the cancel registry (UI "Cancel" on a transfer).
+	cancelMu sync.Mutex
+	cancels  map[string]cancelEntry
 }
 
 // New builds a server. logf may be nil (lines are dropped).
@@ -111,6 +133,20 @@ func New(host string, port int, store *storage.Store, cat *catalog.DB, logf Logg
 
 // Addr returns "host:port".
 func (s *Server) Addr() string { return fmt.Sprintf("%s:%d", s.host, s.port) }
+
+// SetV2 installs the protocol-v2 handler. Passing nil disables v2 again
+// (connections that start with '@' are then closed politely).
+func (s *Server) SetV2(h V2Handler) {
+	s.backendMu.Lock()
+	s.v2 = h
+	s.backendMu.Unlock()
+}
+
+func (s *Server) v2Handler() V2Handler {
+	s.backendMu.RLock()
+	defer s.backendMu.RUnlock()
+	return s.v2
+}
 
 // SetMaxUploadBytes overrides the per-upload cap (tests use a small value).
 func (s *Server) SetMaxUploadBytes(n int64) { s.maxUpload = n }
@@ -143,6 +179,7 @@ func (s *Server) Start() error {
 	s.startTime = time.Now()
 	s.mu.Unlock()
 	s.logf(fmt.Sprintf("[SERVER] Listening on %s...", ln.Addr()))
+	s.emitActivity(KindServerStarted, "Hotspot · "+ln.Addr().String(), "Listening", "")
 
 	for {
 		conn, err := ln.Accept()
@@ -170,7 +207,21 @@ func (s *Server) Stop() error {
 	if ln == nil {
 		return nil
 	}
-	return ln.Close()
+	err := ln.Close()
+	s.emitActivity(KindServerStopped, "Server stopped", "Stopped", "")
+	return err
+}
+
+// ListenAddr is the address the listener actually bound to (port 0 picks a
+// free port, so this differs from Addr() in tests). Falls back to the
+// configured address before Start.
+func (s *Server) ListenAddr() string {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	if s.listener != nil {
+		return s.listener.Addr().String()
+	}
+	return s.Addr()
 }
 
 // Snapshot returns current stats for the Console tab.
@@ -185,6 +236,7 @@ func (s *Server) Snapshot() Stats {
 		Running: s.running, Addr: s.Addr(),
 		Active: s.active, Total: s.total,
 		BytesSent: s.bytesSent, BytesReceived: s.bytesReceived,
+		FilesSent: s.filesSent, FilesReceived: s.filesReceived,
 		StartTime: s.startTime.Unix(), UptimeSecs: uptime,
 	}
 }
@@ -192,12 +244,14 @@ func (s *Server) Snapshot() Stats {
 func (s *Server) addSent(n int64) {
 	s.mu.Lock()
 	s.bytesSent += n
+	s.filesSent++
 	s.mu.Unlock()
 }
 
 func (s *Server) addReceived(n int64) {
 	s.mu.Lock()
 	s.bytesReceived += n
+	s.filesReceived++
 	s.mu.Unlock()
 }
 
@@ -210,8 +264,23 @@ func (s *Server) serveConn(conn net.Conn) {
 	}()
 	remote := conn.RemoteAddr().String()
 	s.logf(fmt.Sprintf("[CONNECT] Handling connection from %s", remote))
+	s.emitActivity(KindPhoneConnected, remote, "Connected", hostOf(conn))
+	defer s.emitActivity(KindPhoneDisconnect, remote, "Disconnected", hostOf(conn))
 
 	r := bufio.NewReaderSize(conn, 32*1024)
+	// Protocol v2 is opt-in per connection: the client picks it by starting
+	// with the '@' frame marker. Anything else falls through to the v1
+	// command reader below, byte for byte unchanged.
+	_ = conn.SetReadDeadline(time.Now().Add(idleTimeout))
+	if first, perr := r.Peek(1); perr == nil && first[0] == wire.Marker {
+		if h := s.v2Handler(); h != nil {
+			s.logf(fmt.Sprintf("[V2] %s negotiated protocol v2", remote))
+			h.ServeV2(conn, r)
+			return
+		}
+		s.logf(fmt.Sprintf("[V2] %s asked for protocol v2 but it is disabled here", remote))
+		return
+	}
 	for {
 		// Fresh deadlines every command. The read deadline bounds the
 		// wait for the next command; the write deadline is refreshed

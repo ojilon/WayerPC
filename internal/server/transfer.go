@@ -19,7 +19,7 @@ func sendLine(conn net.Conn, line string) error {
 // sendFile streams path to conn: "FOUND <size>\n" + raw bytes.
 // The write deadline is refreshed per chunk, so a slow-but-progressing
 // phone never trips the control writeTimeout mid-download.
-func sendFile(conn net.Conn, filePath string) (int64, error) {
+func sendFile(conn net.Conn, filePath string, tp *transferProgress) (int64, error) {
 	f, err := os.Open(filePath)
 	if err != nil {
 		return 0, err
@@ -41,6 +41,9 @@ func sendFile(conn net.Conn, filePath string) (int64, error) {
 			_ = conn.SetWriteDeadline(time.Now().Add(writeTimeout))
 			nw, werr := conn.Write(buf[:nr])
 			sent += int64(nw)
+			if nw > 0 && tp != nil {
+				tp.add(int64(nw))
+			}
 			if werr != nil {
 				return sent, werr
 			}
@@ -60,7 +63,7 @@ func sendFile(conn net.Conn, filePath string) (int64, error) {
 // recvExact reads exactly n bytes from r into a temp file at partPath.
 // The read deadline is refreshed per chunk received, so a slow-but-alive
 // upload survives; a stall longer than idleTimeout aborts it.
-func recvExact(r *bufio.Reader, conn net.Conn, partPath string, n int64) (int64, error) {
+func recvExact(r *bufio.Reader, conn net.Conn, partPath string, n int64, tp *transferProgress) (int64, error) {
 	f, err := os.Create(partPath)
 	if err != nil {
 		return 0, err
@@ -79,6 +82,9 @@ func recvExact(r *bufio.Reader, conn net.Conn, partPath string, n int64) (int64,
 				return received, werr
 			}
 			received += int64(m)
+			if tp != nil {
+				tp.add(int64(m))
+			}
 			// Progress! The peer is alive — slide the stall window.
 			_ = conn.SetReadDeadline(time.Now().Add(idleTimeout))
 		}

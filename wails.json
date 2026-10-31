@@ -13,7 +13,7 @@
   "info": {
     "companyName": "WayerPC",
     "productName": "WayerPC",
-    "productVersion": "0.2.0",
+    "productVersion": "0.3.0",
     "description": "Phone ↔ PC transfer over hotspot",
     "copyright": "MIT — see LICENSE"
   }

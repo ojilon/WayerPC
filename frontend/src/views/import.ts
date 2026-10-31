@@ -1,140 +1,153 @@
-// Import view: search user storage, tick hits, or browse via OS dialogs.
-// Selected paths are REGISTERED in SQLite — never copied.
+// Import (concept 08): search user storage, tick results, or browse via OS
+// dialogs. Paths are registered in the catalog, never copied.
+// TODO(phase2): switch the search below to the same local file index that
+// powers Find (SearchUser stays as the fallback until then).
 import { api, type Ctx, type SearchHit } from "../api";
+import { esc, q } from "../dom";
+import { icon } from "../icons";
+import { refreshStatus } from "../state";
 
 export function mountImport(root: HTMLElement, ctx: Ctx): () => void {
   root.innerHTML = `
     <section class="page">
       <header class="page-head">
         <div>
-          <h2>Import library</h2>
-          <p class="muted">Search documents and drives (system files and AppData are skipped).
-          Selected items are recorded in the catalog — they are not copied.</p>
+          <h1 class="screen">Import</h1>
+          <p class="screen-sub">Add files to your searchable catalog</p>
         </div>
       </header>
-      <div class="card">
-        <div class="searchbar">
-          <input id="i-q" class="input grow" placeholder="File or folder name…" />
-          <button id="i-go" class="btn primary">Search</button>
-          <button id="i-files" class="btn ghost">Browse files</button>
-          <button id="i-folder" class="btn ghost">Browse folder</button>
+
+      <div class="findbar">
+        <label class="field">
+          ${icon("find", 15)}
+          <input id="im-q" type="search" placeholder="Search files and folders" autocomplete="off" />
+        </label>
+        <div class="rowflex" style="gap:18px">
+          <button id="im-files" class="link">Browse files</button>
+          <button id="im-folder" class="link">Browse folder</button>
         </div>
-        <div id="i-status" class="muted small pad-top">Type a name and hit Search.</div>
       </div>
-      <div class="card grow-card">
-        <div class="row between">
-          <b>Results</b>
-          <div class="row">
-            <button id="i-all" class="btn ghost sm">Select all</button>
-            <button id="i-none" class="btn ghost sm">Clear</button>
-            <button id="i-import" class="btn primary sm">Import selected</button>
-          </div>
-        </div>
-        <div id="i-list" class="results"></div>
+
+      <div class="listhead">
+        <span class="section-label" id="im-section">Suggested files</span>
+        <span class="right tiny muted" id="im-count"></span>
+      </div>
+      <div id="im-rows" class="rows"></div>
+      <div id="im-state"></div>
+
+      <p class="hint">Items are catalogued for search. They are not copied or moved.</p>
+      <div class="rulefoot">
+        <span class="selected-count" id="im-sel">0 selected</span>
+        <button class="link" id="im-add" disabled>Add to catalog</button>
       </div>
     </section>`;
 
-  const $ = (id: string) => root.querySelector<HTMLElement>(`#${id}`)!;
-  const list = $("i-list") as HTMLElement;
-  const status = $("i-status") as HTMLElement;
-  let hits: SearchHit[] = [];
-  let busy = false;
+  const input = q<HTMLInputElement>(root, "#im-q");
+  const rowsHost = q(root, "#im-rows");
+  const countEl = q(root, "#im-count");
+  const selEl = q(root, "#im-sel");
+  const addBtn = q<HTMLButtonElement>(root, "#im-add");
 
-  const paint = () => {
-    list.innerHTML = "";
-    if (hits.length === 0) {
-      list.innerHTML = `<div class="empty">No results yet.</div>`;
-      return;
-    }
-    for (const h of hits) {
-      const row = document.createElement("label");
-      row.className = "hit";
-      row.innerHTML = `
-        <input type="checkbox" data-path="${escapeAttr(h.path)}" />
-        <div class="hit-main">
-          <div class="hit-name">${escapeHtml(h.name)}</div>
-          <div class="hit-path muted small">${escapeHtml(h.path)}</div>
-        </div>`;
-      list.appendChild(row);
-    }
+  let hits: SearchHit[] = [];
+  const selected = new Set<string>();
+  let searching = false;
+
+  const updateSel = (): void => {
+    selEl.textContent = `${selected.size} selected`;
+    addBtn.disabled = selected.size === 0;
   };
 
-  const selected = (): string[] =>
-    [...list.querySelectorAll<HTMLInputElement>("input[type=checkbox]:checked")].map(
-      (c) => c.dataset.path ?? "",
-    ).filter(Boolean);
-
-  const doImport = async (paths: string[]) => {
-    if (paths.length === 0) {
-      status.textContent = "Select at least one result.";
+  const paint = (): void => {
+    rowsHost.innerHTML = "";
+    if (!searching && hits.length === 0) {
+      countEl.textContent = "";
       return;
     }
-    busy = true;
-    status.textContent = `Importing ${paths.length} path(s)…`;
+    countEl.textContent = `${hits.length} item${hits.length === 1 ? "" : "s"}`;
+    hits.forEach((hit) => {
+      const row = document.createElement("div");
+      row.className = "row";
+      row.innerHTML = `
+        <input class="box" type="checkbox" ${selected.has(hit.path) ? "checked" : ""} aria-label="Select ${esc(hit.name)}" />
+        <div class="grow">
+          <div class="title">${esc(hit.name)}</div>
+          <div class="path">${esc(hit.path)}</div>
+        </div>
+        <div class="actions"></div>`;
+      const box = row.querySelector("input.box") as HTMLInputElement;
+      box.addEventListener("change", () => {
+        if (box.checked) selected.add(hit.path);
+        else selected.delete(hit.path);
+        updateSel();
+      });
+      const reveal = document.createElement("button");
+      reveal.className = "link";
+      reveal.textContent = "Preview";
+      reveal.addEventListener("click", () => void api.reveal(hit.path).then((r) => r !== "ok" && ctx.toast(r)));
+      (row.querySelector(".actions") as HTMLElement).appendChild(reveal);
+      rowsHost.appendChild(row);
+    });
+    updateSel();
+  };
+
+  const search = async (): Promise<void> => {
+    const query = input.value.trim();
+    if (!query) {
+      hits = [];
+      searching = false;
+      countEl.textContent = "";
+      rowsHost.innerHTML = "";
+      return;
+    }
+    searching = true;
+    try {
+      hits = await api.searchUser(query, 200);
+    } catch {
+      hits = [];
+      ctx.toast("Search failed — try again");
+    }
+    paint();
+  };
+
+  const addPaths = async (paths: string[]): Promise<void> => {
+    if (paths.length === 0) return;
     try {
       const res = await api.catalogAddPaths(paths);
-      status.textContent = `Imported ${res.added} path(s)${res.skipped ? ` (${res.skipped} skipped)` : ""}.`;
-      ctx.toast(`Imported ${res.added} path(s) into the catalog`);
-    } catch (e) {
-      status.textContent = `Import failed: ${e}`;
-    } finally {
-      busy = false;
+      ctx.toast(`Catalogued ${res.added} item(s)${res.skipped ? `, ${res.skipped} skipped` : ""}`);
+      selected.clear();
+      await refreshStatus();
+      await search();
+    } catch {
+      ctx.toast("Could not add those items");
     }
   };
 
-  const search = async () => {
-    const q = ($("i-q") as HTMLInputElement).value.trim();
-    if (!q || busy) return;
-    busy = true;
-    status.textContent = `Searching for “${q}”…`;
-    try {
-      hits = await api.searchUser(q, 200);
-      status.textContent =
-        hits.length === 0 ? "No matches in user storage." : `${hits.length} result(s) — tick the ones to import.`;
-      paint();
-    } catch (e) {
-      status.textContent = `Search failed: ${e}`;
-    } finally {
-      busy = false;
-    }
-  };
-
-  ($("i-go") as HTMLButtonElement).addEventListener("click", search);
-  ($("i-q") as HTMLInputElement).addEventListener("keydown", (e) => {
-    if (e.key === "Enter") search();
+  let timer = 0;
+  input.addEventListener("input", () => {
+    window.clearTimeout(timer);
+    timer = window.setTimeout(() => void search(), 220);
   });
-  ($("i-files") as HTMLButtonElement).addEventListener("click", async () => {
+
+  q(root, "#im-files").addEventListener("click", async () => {
     const paths = await api.pickFiles().catch(() => null);
-    if (paths?.length) doImport(paths);
+    if (paths && paths.length) await addPaths(paths);
   });
-  ($("i-folder") as HTMLButtonElement).addEventListener("click", async () => {
+  q(root, "#im-folder").addEventListener("click", async () => {
     const folder = await api.pickFolder("Choose a folder to import").catch(() => "");
-    if (folder) {
-      try {
-        const res = await api.catalogAddFolder(folder);
-        status.textContent = `Imported ${res.added} file(s) from ${folder}.`;
-        ctx.toast(`Imported ${res.added} file(s)`);
-      } catch (e) {
-        status.textContent = `Import failed: ${e}`;
-      }
+    if (!folder) return;
+    try {
+      const res = await api.catalogAddFolder(folder);
+      ctx.toast(`Catalogued ${res.added} file(s)${res.skipped ? `, ${res.skipped} skipped` : ""}`);
+      await refreshStatus();
+      await search();
+    } catch {
+      ctx.toast("Could not import that folder");
     }
   });
-  ($("i-all") as HTMLButtonElement).addEventListener("click", () => {
-    list.querySelectorAll<HTMLInputElement>("input[type=checkbox]").forEach((c) => (c.checked = true));
-  });
-  ($("i-none") as HTMLButtonElement).addEventListener("click", () => {
-    list.querySelectorAll<HTMLInputElement>("input[type=checkbox]").forEach((c) => (c.checked = false));
-  });
-  ($("i-import") as HTMLButtonElement).addEventListener("click", () => doImport(selected()));
+  addBtn.addEventListener("click", () => void addPaths(Array.from(selected)));
 
-  paint();
-  return () => {};
-}
-
-function escapeHtml(s: string): string {
-  return s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]!));
-}
-
-function escapeAttr(s: string): string {
-  return escapeHtml(s);
+  updateSel();
+  return () => {
+    window.clearTimeout(timer);
+  };
 }
