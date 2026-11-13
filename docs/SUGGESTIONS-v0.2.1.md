@@ -20,7 +20,7 @@ hotspot**. v0.2.1 should make transfers provably correct and failures loud.
   special-case read. Appending `\n` stays compatible with the existing
   Android client (it trims a single `read()`), and lets all future clients
   use one line-reader. Verify against the current APK before release.
-- [ ] **P0/S — `DONE <sha256>` checksum.** Hotspot transfers corrupt more
+- [x] **P0/S — `DONE <sha256>` checksum.** Hotspot transfers corrupt more
   often than LAN ones. Server appends the SHA-256 of the received file to
   `DONE`; the phone verifies and re-sends on mismatch. Small change,
   kills an entire class of silent corruption.
