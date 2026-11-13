@@ -1,6 +1,8 @@
 package version
 
 import (
+	"bytes"
+	"os"
 	"strings"
 	"testing"
 )
@@ -21,4 +23,15 @@ func TestCurrentParses(t *testing.T) {
 		t.Fatalf("ProtocolVersion = %d, want >= 1", in.ProtocolVersion)
 	}
 	t.Logf("version: %s", in.String())
+}
+
+// The root file is edited for releases; this copy is embedded by Go.
+func TestEmbeddedVersionMatchesRoot(t *testing.T) {
+	root, err := os.ReadFile("../../version.json")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !bytes.Equal(root, raw) {
+		t.Fatal("embedded version is stale: copy version.json to internal/version/version.json")
+	}
 }

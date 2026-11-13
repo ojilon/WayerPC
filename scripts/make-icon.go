@@ -2,7 +2,7 @@
 //
 //	go run scripts/make-icon.go
 //
-// Outputs build/appicon.png (Wails packager source) and
+// Outputs build/appicon.png (source artwork) and
 // build/windows/icon.ico (PNG-in-ICO, Vista+; used by the exe + NSIS).
 // Replace with real artwork any time — filenames stay the same.
 package main
@@ -109,7 +109,7 @@ func buildICO(pngBlob []byte) []byte {
 	_ = binary.Write(&out, binary.LittleEndian, uint16(0)) // reserved
 	_ = binary.Write(&out, binary.LittleEndian, uint16(1)) // type: icon
 	_ = binary.Write(&out, binary.LittleEndian, uint16(1)) // count
-	out.Write([]byte{0, 0, 0, 0}) // w,h,colors,reserved (0,0 = 256)
+	out.Write([]byte{0, 0, 0, 0})                          // w,h,colors,reserved (0,0 = 256)
 	_ = binary.Write(&out, binary.LittleEndian, uint16(1)) // planes
 	_ = binary.Write(&out, binary.LittleEndian, uint16(32))
 	_ = binary.Write(&out, binary.LittleEndian, uint32(len(pngBlob)))

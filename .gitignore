@@ -1,18 +1,11 @@
-# --- Active build: Go + Wails + Vite (pnpm) ---
+# --- Active build: Go + native MyGo ---
 
-# Wails / Go outputs
+# Desktop / Go outputs
 build/bin/
 build/windows/info.json
-build/windows/wails.exe.manifest
 bin/
 out/
 *.exe
-
-# Vite / pnpm (see also frontend/.gitignore for dist/ + node_modules)
-frontend/node_modules/
-frontend/.pnpm-store/
-node_modules/
-.pnpm-store/
 
 # .data dev stub: only README + .gitkeep files are tracked.
 # Real databases and dev uploads stay local.

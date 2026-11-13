@@ -3,7 +3,7 @@ package main
 // Protocol v2 bridge: the session manager (internal/session) answers "what
 // does this PC have", "where do uploads go" and "tell the UI" through Deps.
 // Everything phone-facing here is additive — the v1 bridge surface is
-// untouched, and the frontend feature-detects the new methods.
+// untouched; the native desktop controls call these methods directly.
 
 import (
 	"context"

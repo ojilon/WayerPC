@@ -1,7 +1,7 @@
 package main
 
-// App is the Wails bridge: the ONLY path between the TS frontend and the
-// pure-Go backend (internal/*). Async backend pushes use runtime.EventsEmit:
+// App connects the native UI to the pure-Go backend (internal/*).
+// Async backend notifications include:
 // "log" (string line), "stats" (Status payload), "catalog-changed" (no payload),
 // "transfer" (server.Transfer), "activity" (server.Activity).
 
@@ -13,7 +13,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/wailsapp/wails/v2/pkg/runtime"
+	"github.com/egoist/mygo"
 
 	"wayerpc/internal/catalog"
 	"wayerpc/internal/config"
@@ -101,9 +101,11 @@ type ImportResult struct {
 	Skipped int `json:"skipped"`
 }
 
-// App holds Wails context + backend handles.
+// App holds lifecycle state and backend handles.
 type App struct {
-	ctx     context.Context
+	ctx context.Context
+	// notify is installed before startup and must remain safe for concurrent calls.
+	notify  func(string, ...any)
 	version version.Info
 	cfg     config.Config
 
@@ -198,13 +200,14 @@ func (a *App) openRoot(root string) error {
 	}
 	a.srv.SetObserver(a)
 	srv := a.srv
+	a.cfg.DataRoot = root
+	cfg := a.cfg
 	a.mu.Unlock()
 
-	a.cfg.DataRoot = root
-	_ = config.Save(a.cfg)
+	_ = config.Save(cfg)
 
 	// Protocol v2 is opt-in; v1 connections never reach this handler.
-	if a.cfg.ProtocolV2 {
+	if cfg.ProtocolV2 {
 		srv.SetV2(a.sessionManager())
 	} else {
 		srv.SetV2(nil)
@@ -230,14 +233,15 @@ func (a *App) shutdown(_ context.Context) {
 		a.indexCancel()
 		a.indexCancel = nil
 	}
+	srv, cat := a.srv, a.cat
 	a.mu.Unlock()
-	a.mu.Lock()
-	defer a.mu.Unlock()
-	if a.srv != nil {
-		_ = a.srv.Stop()
+	// Stop emits an activity notification which also takes a.mu. Never hold
+	// the app lock while stopping the listener or closing the database.
+	if srv != nil {
+		_ = srv.Stop()
 	}
-	if a.cat != nil {
-		_ = a.cat.Close()
+	if cat != nil {
+		_ = cat.Close()
 	}
 }
 
@@ -391,10 +395,9 @@ func (a *App) logf(line string) {
 }
 
 func (a *App) emit(name string, data ...any) {
-	if a.ctx == nil {
-		return
+	if a.notify != nil {
+		a.notify(name, data...)
 	}
-	runtime.EventsEmit(a.ctx, name, data...)
 }
 
 // GetLogs returns the buffered log lines.
@@ -434,14 +437,15 @@ func (a *App) GetStatus() Status {
 	srv := a.srv
 	store := a.store
 	cat := a.cat
+	cfg := a.cfg
 	a.mu.Unlock()
 
-	st := Status{DataRoot: a.cfg.DataRoot}
+	st := Status{DataRoot: cfg.DataRoot}
 	if srv != nil {
 		st.Server = srv.Snapshot()
 	}
 	st.LanAddr = netutil.LanAddr()
-	st.ProtocolV2 = a.cfg.ProtocolV2
+	st.ProtocolV2 = cfg.ProtocolV2
 	if m := a.currentSession(); m != nil {
 		st.ControlLinks = m.ControlLinks()
 		if dev, ok := m.ConnectedDevice(); ok {
@@ -685,8 +689,9 @@ func (a *App) listDir(which string) []storage.FileInfo {
 func (a *App) GetStorageInfo() StorageInfo {
 	a.mu.Lock()
 	store := a.store
+	cfg := a.cfg
 	a.mu.Unlock()
-	info := StorageInfo{InstallDir: a.cfg.InstallDir, DataRoot: a.cfg.DataRoot}
+	info := StorageInfo{InstallDir: cfg.InstallDir, DataRoot: cfg.DataRoot}
 	if store != nil {
 		info.DataRoot = store.Root()
 		info.Shared = store.SharedDir()
@@ -724,11 +729,11 @@ func (a *App) PickFolder(title string) string {
 	if a.ctx == nil {
 		return ""
 	}
-	path, err := runtime.OpenDirectoryDialog(a.ctx, runtime.OpenDialogOptions{Title: title})
-	if err != nil {
+	paths, err := mygo.Dialog.Open(mygo.OpenDialogOptions{Title: title, Directory: true})
+	if err != nil || len(paths) == 0 {
 		return ""
 	}
-	return path
+	return paths[0]
 }
 
 // PickFiles opens a multi-file chooser (import).
@@ -736,7 +741,7 @@ func (a *App) PickFiles() []string {
 	if a.ctx == nil {
 		return nil
 	}
-	paths, err := runtime.OpenMultipleFilesDialog(a.ctx, runtime.OpenDialogOptions{Title: "Choose files to import"})
+	paths, err := mygo.Dialog.Open(mygo.OpenDialogOptions{Title: "Choose files to import", Multiple: true})
 	if err != nil || paths == nil {
 		return nil
 	}

@@ -207,6 +207,9 @@ func (a *App) ApplySync(names []string) string {
 		total := len(selected)
 		if total == 0 {
 			a.logf("[SYNC] Nothing selected — nothing to copy.")
+			res.RunID = runID
+			res.Note = "Nothing selected in the current plan — nothing copied."
+			a.emit("sync-result", res)
 			return
 		}
 		m := a.currentSession()

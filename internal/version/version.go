@@ -1,6 +1,6 @@
 // Package version is the single source of truth for app versioning.
 // Edit version.json at the repo root BEFORE building; everything else
-// (Go binary, frontend, installer) is generated/embedded from it.
+// (Go binary and installer) is generated/embedded from it.
 package version
 
 import (

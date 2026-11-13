@@ -3,7 +3,7 @@
 When you run the app from source without an installed config, it uses this
 directory as its data root:
 
-- `WAYERPC_DATA_DIR=$PWD/.data wails dev`, or
+- `WAYERPC_DATA_DIR=$PWD/.data go run .`, or
 - automatically when `.data/` exists and no `%LOCALAPPDATA%\WayerPC\config.json` is present.
 
 Layout mirrors a real install (`<chosen>\WayerPC\data`):
